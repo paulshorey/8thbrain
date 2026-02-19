@@ -1,0 +1,10 @@
+# Never commit API keys or secrets
+.cursor/mcp.json
+*.env
+.env.local
+
+# OS and editor artifacts
+.DS_Store
+*.swp
+*.swo
+*~
