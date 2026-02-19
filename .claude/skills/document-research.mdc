@@ -1,0 +1,90 @@
+---
+description: Structure and persist research findings into the docs/ folder with proper organization and citations
+globs: docs/**/*.md
+alwaysApply: false
+---
+
+# Document Research Skill
+
+After completing exhaustive research (via Deep Research and optionally Perplexity), you must persist your findings into the knowledge base. This skill defines how to create and maintain documentation in the `./docs/` folder.
+
+## Output Structure
+
+### Primary Document: `./docs/{topic_title}/intro.md`
+
+Create a folder named with a URL-safe, kebab-case version of the topic. The main entry point is always `intro.md`.
+
+**Required sections in intro.md:**
+
+1. **Overview** (2-4 paragraphs): What is this topic? Why does it matter?
+2. **Core Concepts**: Explain every fundamental concept. Assume a smart reader who is new to the domain.
+3. **Key Perspectives**: Summarize the main schools of thought, approaches, or viewpoints. Include what each emphasizes and what it de-emphasizes.
+4. **Practice & Application**: How is this used in the real world? Examples, patterns, anti-patterns.
+5. **Open Questions & Controversies**: What is debated? What remains uncertain?
+6. **References & Further Reading**: Full citations with links. Organize by relevance or category.
+
+### Subtopic Documents: `./docs/{topic_title}/{sub_topic}.md`
+
+Create a separate file when a subtopic is:
+- **Complex**: Requires multiple sections, examples, or diagrams
+- **Detailed**: Would make intro.md unwieldy (e.g., >500 words for that section)
+- **Important**: Frequently referenced or foundational to other topics
+
+Use kebab-case for filenames. Link from intro.md: `[SubTopic Name](./sub_topic.md)`.
+
+**Example structure:**
+```
+docs/
+  distributed-systems/
+    intro.md
+    consensus-protocols.md
+    failure-modes.md
+    case-studies.md
+```
+
+## Merging with Existing Content
+
+**If the topic folder or file already exists:**
+
+1. **Read first**: Load all existing files in that topic.
+2. **Merge, don't overwrite**: Integrate new findings with existing content. Resolve contradictions by presenting multiple views or noting the evolution of thinking.
+3. **Preserve citations**: Keep existing references. Add new ones. Avoid duplicates.
+4. **Update structure**: If the new research suggests better organization, refactor. Ensure internal links still work.
+
+## Citation Format
+
+Use consistent Markdown:
+
+```markdown
+- **Source Title** - [Author/Org, Year](URL) - Brief note on what this source contributes.
+```
+
+For inline attribution:
+```markdown
+According to [Source Name](URL), the key insight is...
+```
+
+## Quality Checklist
+
+Before considering documentation complete:
+
+- [ ] Every core concept is explained clearly
+- [ ] Multiple perspectives are represented where they exist
+- [ ] All claims are traceable to cited sources
+- [ ] No broken internal or external links
+- [ ] Subtopic files are linked from intro.md
+- [ ] Existing content has been merged if the topic existed
+- [ ] The document stands alone: a reader can understand the topic without prior context
+
+## Topic Title Guidelines
+
+- Use **kebab-case** for folder and file names: `machine-learning-basics`, `event-sourcing-patterns`
+- Be **specific enough** to avoid giant catch-all topics. Prefer `raft-consensus` over `consensus` if that's the scope.
+- Be **broad enough** to be reusable. `time-series-forecasting` is good; `arima-vs-prophet-2024` is too narrow for an intro doc.
+
+## Anti-Patterns
+
+- **Plagiarism**: Never copy-paste long verbatim blocks. Summarize and cite.
+- **Orphan files**: Every .md file should be reachable from intro.md or the docs root.
+- **Stale links**: Verify URLs work. If a source is gone, note "[Link defunct as of DATE]" and keep the citation for reference.
+- **Shallow docs**: If you didn't do deep research, the doc will show it. Go back to research first.

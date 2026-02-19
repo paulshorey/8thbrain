@@ -1,0 +1,60 @@
+---
+description: Use Perplexity Sonar via MCP for supplemental deep research when web search is insufficient
+globs: 
+alwaysApply: false
+---
+
+# Perplexity MCP Server Skill
+
+Use the Perplexity AI MCP server when your initial deep research has not yielded overwhelming, extraordinary amounts of unique information and diverse perspectives. Perplexity's "Sonar" model excels at synthesis across many sources and can surface high-quality, cited results.
+
+## When to Trigger
+
+Invoke Perplexity research when **any** of these conditions hold after your standard research phase:
+
+1. **Insufficient diversity**: You found fewer than 15-20 unique, substantive sources
+2. **Perspective gap**: You couldn't identify clearly opposing or alternative viewpoints
+3. **Recency concerns**: Fast-moving topics lack recent (within 12 months) quality material
+4. **Depth deficit**: Core concepts remain fuzzy or underspecified
+5. **Niche or emerging**: The topic is specialized, emerging, or poorly documented elsewhere
+6. **Contradiction needed**: You need to validate or challenge your current synthesis
+
+Do **not** use Perplexity as a substitute for your own deep research. Use it as an **add-on** when the deep research protocol has been followed but results are still inadequate.
+
+## How to Use
+
+1. **Ensure MCP is configured**: The Perplexity MCP server must be running and connected (see README.md for setup).
+
+2. **Formulate targeted queries**: Create 2-4 focused Perplexity queries that:
+   - Fill specific gaps from your initial research
+   - Ask for comparative or critical perspectives
+   - Request recent developments or case studies
+   - Probe for "what's missing" or "common misconceptions"
+
+3. **Integrate results**: Add Perplexity's outputs to your research context. Treat them as additional sources—cross-reference with what you already found. Resolve any contradictions.
+
+4. **Cite appropriately**: When documenting research, attribute Perplexity-sourced insights properly. Perplexity typically provides source URLs; use those for citations.
+
+## Query Best Practices
+
+**Effective Perplexity queries:**
+- "What are the main criticisms and limitations of [X]?"
+- "Compare [Approach A] and [Approach B] for [use case]"
+- "Recent developments in [topic] in 2024-2025"
+- "Case studies of [X] in production at scale"
+- "What do practitioners say are the biggest pitfalls of [X]?"
+
+**Less effective:**
+- Overly vague: "Tell me about X"
+- Redundant: Repeating exactly what you already searched
+
+## Integration with Other Skills
+
+- **Deep Research**: Perplexity augments, does not replace, the deep research protocol.
+- **Document Research**: When you write docs, include findings from both your web research and Perplexity in the synthesis. Cite all sources.
+
+## Troubleshooting
+
+- **MCP not available**: Check that the Perplexity MCP server is in your Cursor MCP configuration.
+- **API key**: Perplexity typically requires an API key. Ensure it's set in your environment or MCP config.
+- **Rate limits**: If you hit limits, batch queries and wait, or prioritize the most critical gap to fill.

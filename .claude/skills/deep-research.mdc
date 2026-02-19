@@ -1,0 +1,101 @@
+---
+description: Exhaustive multi-perspective research methodology - never settle for surface-level information
+globs: 
+alwaysApply: false
+---
+
+# Deep Research Skill
+
+When researching any topic, you must follow this methodology to ensure exhaustive, multi-perspective coverage. Surface-level or single-source research is never acceptable.
+
+## Core Principle
+
+**Never start work with insufficient information.** The research phase is not a quick prelude—it is the foundation. Incomplete research leads to incomplete understanding, biased conclusions, and knowledge gaps that propagate through everything you produce.
+
+## Research Execution Protocol
+
+### Phase 1: Query Variation & Reframing
+
+Before any search, generate 5-8 distinct query variations:
+
+1. **Direct/Canonical**: The most straightforward formulation
+2. **Academic/Scholarly**: Formal terminology, domain-specific language
+3. **Practical/Applied**: How-to, implementation, real-world usage
+4. **Comparative**: "X vs Y", "alternatives to", "compared with"
+5. **Criticism/Skepticism**: "problems with", "criticism of", "limitations of"
+6. **Historical/Evolution**: "history of", "evolution of", "how X changed"
+7. **Future/Forward-looking**: "future of", "trends in", "emerging"
+8. **Cross-domain**: Connect to adjacent domains (e.g., "X in healthcare", "X for finance")
+
+Execute searches for each variation. Different phrasings surface different sources, perspectives, and communities.
+
+### Phase 2: Perspective Diversification
+
+Ensure you've gathered views from:
+
+- **Proponents** who advocate for the approach/technology/concept
+- **Critics** who identify flaws, tradeoffs, and failures
+- **Practitioners** with hands-on implementation experience
+- **Academics** with theoretical or empirical research
+- **Industry voices** from different sectors and company sizes
+- **Historical accounts** showing how thinking evolved
+
+If your sources cluster in one camp, you have a blind spot. Keep searching until you find dissent and alternatives.
+
+### Phase 3: Source Quality Tiering
+
+Prioritize but don't exclusively rely on:
+
+1. **Primary sources**: Original papers, documentation, specification authors
+2. **Peer-reviewed**: Academic journals, conference proceedings
+3. **Established practitioners**: Recognized experts, maintainers, long-time contributors
+4. **Recent discourse**: Forums, discussions, social proof of current practice
+5. **Diverse publications**: Different publishers, blogs, newsletters, video content
+
+Avoid echo chambers: if 10 sources all cite the same origin, trace to that origin and find other independent lines of thinking.
+
+### Phase 4: Exhaustion Criteria
+
+You have not researched enough until:
+
+- [ ] You've found at least 15-25+ unique, non-redundant sources
+- [ ] You've encountered at least 2-3 genuinely different perspectives or schools of thought
+- [ ] You've identified what the "controversies" or "open questions" are
+- [ ] You can explain both the "standard view" and notable alternatives
+- [ ] You've found recent material (within 1-2 years for fast-moving topics)
+- [ ] You've found foundational/historical material for context
+
+### Phase 5: Synthesis Before Action
+
+Before writing, coding, or making recommendations:
+
+1. **Map the landscape**: What are the main approaches, tools, or frameworks?
+2. **Identify consensus**: Where do sources agree?
+3. **Identify disagreement**: Where do they diverge, and why?
+4. **Note gaps**: What is poorly documented or controversial?
+5. **Prioritize**: What matters most for your audience or use case?
+
+## When to Escalate
+
+If after this process you still feel:
+- Uncertain about core concepts
+- Lacking diverse perspectives
+- Missing authoritative or recent sources
+- That key subtopics are underspecified
+
+**Trigger the Perplexity Sonar follow-up** (see the Perplexity MCP skill) to augment your research before proceeding.
+
+## Anti-Patterns to Avoid
+
+- **Single-search bias**: One query, one set of results, done
+- **Recency only**: Ignoring foundational work because it's old
+- **Popularity bias**: Assuming the most-mentioned approach is best
+- **Confirmation seeking**: Only looking for sources that match initial assumptions
+- **Shallow aggregation**: Collecting many sources but not reading/analyzing them deeply
+
+## Output
+
+Your research should produce a mental model (or written notes) that lets you:
+- Teach the topic to someone else
+- Defend multiple positions in a debate
+- Identify when you're out of your depth and need to research more

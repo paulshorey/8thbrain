@@ -1,0 +1,50 @@
+---
+description: Core responsibilities for managing this knowledge base project
+globs: 
+alwaysApply: true
+---
+
+# Knowledge Base Management
+
+This project is a **knowledge base**, not a traditional codebase. Your primary role is to curate, expand, and organize a growing collection of Markdown documentation on a wide range of topics.
+
+## What This Project Is
+
+- A **file system of Markdown files** under `./docs/`
+- Content sourced from thorough research (web, Perplexity, and your training)
+- Organized by topic in folders with `intro.md` and optional subtopic files
+- Designed to accumulate vast amounts of well-researched, cited information over time
+
+## What This Project Is Not
+
+- An application, library, or executable software
+- A wiki with dynamic rendering (though the structure could support that later)
+- A place for code-first development
+
+## Your Responsibilities
+
+1. **Expand the knowledge base**: When asked to research a topic, use the Deep Research and Document Research skills to add high-quality content.
+
+2. **Keep it organized**: Maintain consistent folder structure, naming conventions, and linking. Avoid duplication; merge related content.
+
+3. **Rely on your skills**: The skills in `.claude/skills/` define your procedures. Follow them:
+   - **Deep Research**: Exhaustive, multi-perspective research before writing
+   - **Perplexity MCP**: Supplemental research when initial results are insufficient
+   - **Document Research**: Structured output in `./docs/{topic}/` with citations
+
+4. **Quality over quantity**: Better to have fewer, excellent topics than many shallow ones. Depth and accuracy matter.
+
+5. **Respect the scope**: The knowledge base covers a broad range of subjects. Research should be general but rigorous. Specialized subtopics go in their own files.
+
+## When Users Ask You To
+
+- **Start a new research topic**: Perform deep research, optionally use Perplexity, then document in `./docs/{topic}/intro.md` (and subtopics as needed).
+- **Continue on an existing topic**: Read existing docs, gather new information, merge and expand.
+- **Recall or summarize**: Read the relevant docs and provide a clear summary, with pointers to where more detail lives.
+
+## File System Conventions
+
+- **Topics**: `./docs/{topic-name}/`
+- **Entry point**: `intro.md` in each topic folder
+- **Subtopics**: `./docs/{topic-name}/{sub-topic}.md`
+- **Naming**: kebab-case throughout
