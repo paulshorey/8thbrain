@@ -7,6 +7,7 @@ All research output is organized by topic in this directory.
 | Topic | Description | Maturity | Last Updated |
 |-------|-------------|----------|--------------|
 | [AI-Powered Knowledge Management](./ai-powered-knowledge-management/intro.md) | Dialectical analysis of AI-KM: failures, criticisms, alternatives, epistemic harms, worker impacts, and the strongest arguments against AI-powered knowledge management | Mature | 2026-02-25 |
+| [History of Knowledge Management](./knowledge-management-history/intro.md) | 80-year evolution from Bush's memex to AI KM — waves, failures, lessons, and recurring patterns | Growing | 2026-02-25 |
 
 ## Maturity Levels
 
