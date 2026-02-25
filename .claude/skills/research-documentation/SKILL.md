@@ -1,6 +1,6 @@
 ---
 name: research-documentation
-description: Convert research into Markdown under ./docs/{topic_title}/ with perspective labels, confidence ratings, steelmanned disagreements, cross-references, merge-safe updates.
+description: Convert research into Markdown under ./docs/{topic_title}/ with citations, confidence ratings, cross-references, and merge-safe updates. Adapt structure to match the topic — exhaustive facts for technical subjects, multiple perspectives for contested topics.
 allowed-tools:
   - Read
   - Write
@@ -11,7 +11,7 @@ allowed-tools:
 
 # Research Documentation
 
-**Goal:** Transform validated research into maintainable, citation-rich Markdown under `./docs/{topic_title}/`. Produce docs that stand alone, trace to sources, and preserve prior content.
+**Goal:** Transform validated research into maintainable, citation-rich Markdown under `./docs/{topic_title}/`. Produce docs that stand alone, trace to sources, and preserve prior content. The document shape is determined by the topic — not by a fixed template.
 
 **Execute phases 1–9 in order. Do not skip phases.** Phase is complete when the gate artifact exists.
 
@@ -46,24 +46,36 @@ allowed-tools:
 
 ## Phase 3 — Write intro.md
 
-**Do:** Write or update `./docs/{topic_title}/intro.md`. Select building blocks by topic type:
+**Do:** Write or update `./docs/{topic_title}/intro.md`. Select building blocks that fit the topic. Do not force blocks that don't apply.
 
-- Topic overview
-- Core concepts
-- How it works
-- Major perspectives (label [CONSENSUS], [CONTESTED], [MINORITY VIEW])
-- Key developments / timeline
-- Trade-offs / limitations
-- Open questions
-- Strongest challenges
-- Practical applications
-- Subtopic index
+**Universal — use for most topics:**
+- Topic overview (what it is, why it matters)
+- Core concepts and terminology
+- How it works / mechanisms
+- Practical applications and use cases
+- Trade-offs, limitations, or caveats
+- Subtopic index (links to sub-files)
 - Related topics
 - Sources
 
-Intro must stand alone. Include cross-links to subtopics.
+**For technical or reference topics:**
+- Specifications, API details, or formal definitions
+- Implementation patterns and worked examples
+- Edge cases and failure modes
+- Comparison with alternatives (factual, not adversarial)
 
-**Gate:** Comprehensive, structured, cross-linked. Phase complete.
+**For historical or chronological topics:**
+- Key developments and timeline
+- Context and causes
+
+**For contested or analytical topics:**
+- Major perspectives (label [CONSENSUS], [CONTESTED], [MINORITY VIEW], etc.)
+- Strongest arguments and evidence for each position
+- Open questions and unresolved debates
+
+Intro must stand alone. Include cross-links to subtopics. Do not pad with sections the topic doesn't need.
+
+**Gate:** Comprehensive, structured for this topic type, cross-linked. Phase complete.
 
 ## Phase 4 — Subtopic Decomposition
 
@@ -103,4 +115,13 @@ Intro must stand alone. Include cross-links to subtopics.
 
 ## Anti-Patterns
 
-Do NOT: write without reading first; dump into intro; conclude one-sidedly; omit sources; treat unevidenced positions as equal to evidenced; overwrite without merge; omit confidence; force debate onto non-contested topics; force tutorial onto contested topics.
+Do NOT:
+- Write without reading existing files first
+- Dump everything into intro.md — split large sections into subtopic files
+- Omit citations for significant claims
+- Overwrite prior content without merging
+- Omit confidence ratings on major findings
+- Force analytical or debate framing onto factual/technical topics that don't need it
+- Force tutorial framing onto genuinely contested topics
+- Treat unevidenced positions as equal to evidenced ones
+- Conclude one-sidedly on contested topics

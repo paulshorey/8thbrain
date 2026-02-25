@@ -32,7 +32,7 @@ Your goal: Produce a unified research context from multiple subagent bundles, th
 | perplexity-deep-research | Perplexity MCP Sonar | PERPLEXITY_API_KEY, MCP |
 | gemini-deep-research | Gemini 100+ sources | GEMINI_API_KEY, MCP or API |
 
-**Launch instructions:** Read `.claude/subagents/{name}/AGENT.md` for each. Compose prompt: subagent instructions + "Research topic: [user request]. Topic slug: [slug]. Tier: [Quick|Standard|Deep]. Min sources: [N]. Min queries: [N]. Produce a research bundle." Use `mcp_task` with `subagent_type: "generalPurpose"` or `"explore"`. Launch all three concurrently (multiple mcp_task calls in the same turn).
+**Launch instructions:** Read `.claude/subagents/{name}/AGENT.md` for each. Compose prompt: subagent instructions + "Research topic: [user request]. Topic slug: [slug]. Tier: [Quick|Standard|Deep]. Min sources: [N]. Min queries: [N]. Topic type (if clear): [factual/technical/analytical/contested]. Produce a research bundle." Use `mcp_task` with `subagent_type: "generalPurpose"` or `"explore"`. Launch all three concurrently (multiple mcp_task calls in the same turn).
 
 **On timeout or failure:** Ignore that subagent. Continue with others. Do not retry.
 
@@ -42,9 +42,9 @@ Execute after subagents complete. Input: research bundles from successful subage
 
 1. **Collect** — Gather all research bundles. If none succeeded, document failure and stop.
 2. **Deduplicate sources** — Merge source tables by URL. Keep earliest publication date, best quality metadata.
-3. **Merge claim-to-source** — Aggregate claim-to-source mappings. When multiple subagents cite the same claim, keep all source links.
-4. **Reconcile conflicts** — When subagents disagree on a claim: keep both positions. Label with perspective tags (e.g. [CONTESTED]). Do not pick a winner.
-5. **Produce unified context** — Single structure: scope, source table, claim-to-source, perspective map, unresolved questions, confidence per finding. Pass this to dialectical-analysis and research-documentation.
+3. **Merge findings** — Aggregate all key findings and claim-to-source mappings. When multiple subagents cite the same claim, keep all source links.
+4. **Reconcile conflicts** — When subagents disagree on a factual claim: keep both and flag for verification. When subagents surface competing perspectives on a contested topic: label with perspective tags (e.g. [CONTESTED]) and document both positions. Do not pick a winner on contested claims.
+5. **Produce unified context** — Single structure: topic type, scope, source table, key findings with sources, unresolved questions, confidence per finding, and (for contested topics) a perspective map. Pass this to dialectical-analysis and research-documentation.
 
 ## When to Skip Subagents
 
