@@ -1,45 +1,17 @@
 # Deep Research Orchestration
 
-The main context thread **orchestrates** research by launching subagents in parallel, then combining their output and applying orchestrator skills.
+The main context orchestrates research by launching subagents in parallel, combining their output, and applying orchestrator skills.
 
 ## Pipeline
 
-```text
-User Request
-    │
-    ▼
-┌─────────────────────┐
-│  Scope Assessment   │  Tier (Quick/Standard/Deep), topic slug
-└──────────┬──────────┘
-           │
-           ▼
-┌──────────────────────────────────────────────────────────┐
-│  PARALLEL SUBAGENTS (launch all 3, ignore failures)      │
-│  ┌─────────────────┐ ┌─────────────────────┐ ┌────────┐ │
-│  │ deeper-research  │ │ perplexity-deep      │ │ gemini │ │
-│  │ (WebSearch)      │ │ (Perplexity MCP)     │ │ (MCP/  │ │
-│  │                  │ │                     │ │  API)  │ │
-│  └────────┬─────────┘ └──────────┬──────────┘ └───┬────┘ │
-└───────────┼──────────────────────┼────────────────┼──────┘
-            │                      │                │
-            ▼                      ▼                ▼
-┌──────────────────────────────────────────────────────────┐
-│  COMBINE BUNDLES  — Merge all research bundles into one   │
-└──────────┬───────────────────────────────────────────────┘
-           │
-           ▼
-┌──────────────────────────────┐
-│  dialectical-analysis        │  (When topic warrants it)
-└──────────┬───────────────────┘
-           ▼
-┌──────────────────────────────┐
-│  research-documentation      │  Write/update docs
-└──────────┬───────────────────┘
-           ▼
-┌──────────────────────────────┐
-│  Self-Reflection + Commit    │
-└──────────────────────────────┘
-```
+1. Scope Assessment — determine tier (Quick/Standard/Deep) and topic slug.
+2. Launch all three subagents in parallel. Do not wait for one to finish before starting the next.
+3. Combine bundles — merge research from successful subagents; ignore failures and timeouts.
+4. Run dialectical-analysis when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip for purely factual or tutorial-style topics.
+5. Run research-documentation to write or update docs under ./docs/{topic}/.
+6. Self-reflection and commit.
+
+Subagents: deeper-research (WebSearch), perplexity-deep-research (Perplexity MCP), gemini-deep-research (Gemini MCP or API).
 
 ## Launching Subagents
 
