@@ -5,7 +5,8 @@ This repository is a **knowledge base**, not a software codebase. The primary ou
 ## What This Repository Contains
 
 - `./docs/` — The knowledge base. Each topic has its own folder with an `intro.md` and optional subtopic files. Topics span any subject.
-- `.claude/skills/` — Research workflow skills (deep-research, dialectical-analysis, perplexity-sonar-followup, research-documentation). These define a structured pipeline for thorough, multi-perspective research.
+- `.claude/subagents/` — Three parallel research agents (deeper-research, perplexity-deep-research, gemini-deep-research) that run simultaneously using Claude Sonnet.
+- `.claude/skills/` — Orchestrator skills (dialectical-analysis, research-documentation) used by the main context after subagent research completes.
 - `CLAUDE.md` — The full operating manual with cognitive mandates, documentation standards, and quality checklists.
 
 ## Reading Existing Topics
@@ -29,10 +30,10 @@ This repository is a **knowledge base**, not a software codebase. The primary ou
 ```text
 ./docs/{topic-title}/
   intro.md              # Required — topic overview, understandable standalone
-  {sub-topic}.md        # When intro becomes too dense (~500+ words per section)
-  disagreements.md      # When topic has significant competing positions
-  sources.md            # When source table is large (15+ sources)
-  timeline.md           # When chronological development matters
+  {sub-topic}.md       # When intro becomes too dense (~500+ words per section)
+  disagreements.md     # When topic has significant competing positions
+  sources.md           # When source table is large (15+ sources)
+  timeline.md          # When chronological development matters
 ```
 
 ## What NOT to Do

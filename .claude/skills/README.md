@@ -1,22 +1,19 @@
-# Skills
+# Orchestrator Skills
 
-Four skills form the research pipeline:
+Two skills are used by the **main orchestrator** after subagent research completes. These run in the primary context thread — not in parallel subagents.
 
 | Order | Skill | Purpose |
 |-------|-------|---------|
-| 1 | `deep-research` | Broad multi-perspective source harvesting with saturation gates |
-| 2 | `dialectical-analysis` | Assumption extraction, challenge search, alternative framings, disagreement mapping |
-| 3 | `perplexity-sonar-followup` | Targeted gap-filling via Perplexity MCP (only when gaps remain after steps 1-2) |
-| 4 | `research-documentation` | Structured Markdown writing with adaptive structure, confidence ratings, self-reflection, and merge-safe updates |
+| 1 | `dialectical-analysis` | Assumption extraction, challenge search, alternative framings, disagreement mapping (when topic warrants it) |
+| 2 | `research-documentation` | Structured Markdown writing with adaptive structure, confidence ratings, self-reflection, and merge-safe updates |
 
-In Deep Research Mode, skills are invoked sequentially as part of the pipeline defined in `CLAUDE.md`. Each skill references `CLAUDE.md` for shared standards (cognitive mandates, perspective labels, confidence ratings, file structure).
+The orchestrator first runs the three research subagents in parallel (see `.claude/subagents/`), waits for their bundled outputs, then applies these skills to produce the final docs.
 
 ## Layout
 
 ```text
 .claude/skills/
-  deep-research/SKILL.md
   dialectical-analysis/SKILL.md
-  perplexity-sonar-followup/SKILL.md
   research-documentation/SKILL.md
+  README.md
 ```

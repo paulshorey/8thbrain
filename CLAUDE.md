@@ -14,16 +14,21 @@ Decide which mode to use based on the user's request.
 
 **Trigger:** The user asks for "deep research", "research [topic]", "all perspectives", "full analysis", or any request that clearly calls for thorough, multi-source investigation.
 
-Follow the full skills pipeline:
+Follow the subagent orchestration pipeline (see `.claude/ORCHESTRATOR.md`):
 
 ```text
-User Request → Scope Assessment → deep-research → [dialectical-analysis] → [perplexity-sonar-followup] → research-documentation → Self-Reflection → Commit
+User Request → Scope Assessment → [PARALLEL SUBAGENTS] → Combine → [dialectical-analysis] → research-documentation → Self-Reflection → Commit
 ```
 
-- **deep-research** is always required.
+**Parallel Subagents** (launch all three; ignore failures/timeouts):
+1. **deeper-research** — WebSearch, extended queries, term variations (`.claude/subagents/deeper-research/`)
+2. **perplexity-deep-research** — Perplexity MCP Sonar model (`.claude/subagents/perplexity-deep-research/`)
+3. **gemini-deep-research** — Google Gemini Deep Research MCP or API (`.claude/subagents/gemini-deep-research/`)
+
+Each subagent uses Claude Sonnet. If one fails or times out, proceed with the others. Combine their research bundles into one.
+
 - **dialectical-analysis** is recommended when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip it for purely factual, reference, or tutorial-style topics where no real controversy exists.
-- **perplexity-sonar-followup** is triggered only when specific gaps remain after the earlier phases. If Perplexity is unavailable or fails, skip it and continue — never block the pipeline on this step.
-- **research-documentation** converts validated research into the knowledge base.
+- **research-documentation** converts the combined research into the knowledge base.
 - **Self-reflection** is the final check: what surprised you, where are you least confident, what would you research next.
 
 ### Quick-Write Mode
@@ -160,7 +165,7 @@ Research can be extensive. To avoid losing work:
 ## Error Recovery
 
 - **Web search fails:** Try alternate query formulations. If search is completely unavailable, document what you can from existing knowledge and flag the topic as `[NEEDS VERIFICATION]`.
-- **Perplexity MCP unavailable or fails:** Skip `perplexity-sonar-followup` entirely and proceed to the next pipeline step. Do not retry more than once, do not wait, and do not treat this as a blocking error. The pipeline is designed to produce good output without Perplexity — it is an optional enhancement, not a requirement. Note the gap briefly in the research bundle and move on.
+- **Perplexity or Gemini MCP unavailable or fails:** The perplexity and gemini subagents will fail; the deeper-research subagent (WebSearch) will still run. Proceed with whatever subagent outputs are available. Never block the pipeline on one provider.
 - **Existing files are corrupted or contradictory:** Preserve both versions, label the conflict, and flag for human review.
 
 ## Quality Checklist

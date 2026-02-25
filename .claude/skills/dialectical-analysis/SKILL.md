@@ -1,6 +1,6 @@
 ---
 name: dialectical-analysis
-description: Systematically find contradictions, alternative framings, hidden assumptions, and opposing viewpoints for any research topic. Use after deep-research when findings feel too one-sided or the topic has meaningful disagreement.
+description: Systematically find contradictions, alternative framings, hidden assumptions, and opposing viewpoints for any research topic. Use after subagent research when findings feel too one-sided or the topic has meaningful disagreement.
 allowed-tools:
   - WebSearch
   - Read
@@ -17,20 +17,20 @@ Stress-test research findings by looking for contradictions, alternative approac
 
 ## Should You Use This Skill?
 
-Ask these questions after `deep-research` is complete:
+Ask these questions after subagent research (deeper-research, perplexity, gemini) is complete:
 
 1. **Does genuine disagreement exist?** Did the research surface credible sources that disagree with each other — not just about nuance, but about conclusions?
 2. **Are there competing approaches with real trade-offs?** (e.g., different design patterns, policy options, treatment protocols)
 3. **Are there hidden assumptions worth examining?** Could reasonable people frame the question differently and arrive at different answers?
 4. **Did the user request it?** ("find contradictions", "devil's advocate", "challenge this")
 
-**If yes to any → use this skill.** If no to all — the deep-research perspective mapping already covers what's needed. Skip this skill and proceed to `research-documentation`.
+**If yes to any → use this skill.** If no to all — the subagent research perspective mapping already covers what's needed. Skip this skill and proceed to `research-documentation`.
 
 ## When NOT to Use
 
 - The topic is primarily factual, mathematical, or reference-oriented (e.g., "list of sorting algorithms", "how does DNS work", "examples of design patterns").
-- The deep-research phase found broad source agreement with no meaningful dissent.
-- Before `deep-research` has been completed (this skill needs material to work with).
+- The subagent research phase found broad source agreement with no meaningful dissent.
+- Before subagent research has been completed (this skill needs material to work with).
 - The user asked for a summary, tutorial, or reference document — not an analysis of competing views.
 
 ## Core Principle
@@ -66,7 +66,7 @@ For each major conclusion, perform targeted challenge searches:
 - **Find historical reversals** — cases where equivalent consensus or practice was later revised.
 - **Find conditional inversions** — conditions under which the conclusion flips or breaks down.
 
-Scale the number of challenge searches to the topic's complexity and the strength of disagreement found during deep-research. For deeply contested topics, aim for **8+ targeted searches**. For mildly nuanced topics, **3-4** focused searches may suffice.
+Scale the number of challenge searches to the topic's complexity and the strength of disagreement found during subagent research. For deeply contested topics, aim for **8+ targeted searches**. For mildly nuanced topics, **3-4** focused searches may suffice.
 
 **Gate:** Major conclusions have been tested against credible alternatives where they exist.
 
