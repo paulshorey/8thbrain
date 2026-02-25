@@ -1,34 +1,7 @@
 # Topic Index
 
-All research is organized by topic in this directory.
+| Topic | Description | Maturity | Updated |
+|-------|-------------|----------|---------|
+| [Claude Subagents Setup](claude-subagents-setup/intro.md) | Perplexity and Gemini MCP setup | Seed | 2025-02 |
 
-## Topics
-
-| Topic | Description | Maturity | Last Updated |
-|-------|-------------|----------|--------------|
-| [Claude Subagents Setup](claude-subagents-setup/intro.md) | How to configure Perplexity and Gemini MCPs for parallel research subagents | Seed | 2025-02 |
-| *(Add more topics via research sessions)* | | | |
-
-## Maturity Levels
-
-| Level | Label | Meaning |
-|-------|-------|---------|
-| 1 | **Seed** | Initial research complete, basic intro exists |
-| 2 | **Growing** | Multiple subtopics, decent source diversity |
-| 3 | **Mature** | Comprehensive coverage, strong perspective diversity, well-cited |
-| 4 | **Needs Update** | Previously mature but new developments require refresh |
-
-## File Conventions
-
-```text
-docs/{topic-title}/
-  intro.md              # Entry point — understandable standalone
-  {sub-topic}.md        # Deep dives on complex areas
-  disagreements.md      # Competing positions, trade-offs, or controversies (when needed)
-  sources.md            # Extended source table (when 15+ sources)
-  timeline.md           # Chronological development (when relevant)
-```
-
-- Use perspective labels where applicable: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
-- Assign confidence ratings: `[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`
-- Update existing topics rather than creating duplicates.
+Maturity: Seed → Growing → Mature → Needs Update. Per-topic: intro.md, {sub-topic}.md, disagreements.md, sources.md.

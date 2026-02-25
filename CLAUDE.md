@@ -16,9 +16,12 @@ Decide which mode to use based on the user's request.
 
 Follow the subagent orchestration pipeline (see `.claude/ORCHESTRATOR.md`):
 
-```text
-User Request → Scope Assessment → [PARALLEL SUBAGENTS] → Combine → [dialectical-analysis] → research-documentation → Self-Reflection → Commit
-```
+1. Scope Assessment — determine tier (Quick/Standard/Deep) and topic slug.
+2. Launch all three subagents in parallel; ignore failures and timeouts.
+3. Combine research bundles from successful subagents.
+4. Optionally run dialectical-analysis when the topic has meaningful disagreement.
+5. Run research-documentation to produce structured Markdown.
+6. Self-reflection and commit.
 
 **Parallel Subagents** (launch all three; ignore failures/timeouts):
 1. **deeper-research** — WebSearch, extended queries, term variations (`.claude/subagents/deeper-research/`)

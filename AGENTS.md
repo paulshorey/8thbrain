@@ -1,44 +1,27 @@
 # Agent Configuration
 
-This repository is a **knowledge base**, not a software codebase. The primary output is structured Markdown prose stored under `./docs/`. When a topic involves code, algorithms, or technical implementations, include working examples directly in the Markdown documents.
+Knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when the topic involves implementations.
 
-## What This Repository Contains
+## Repository Layout
 
-- `./docs/` — The knowledge base. Each topic has its own folder with an `intro.md` and optional subtopic files. Topics span any subject.
-- `.claude/subagents/` — Three parallel research agents (deeper-research, perplexity-deep-research, gemini-deep-research) that run simultaneously using Claude Sonnet.
-- `.claude/skills/` — Orchestrator skills (dialectical-analysis, research-documentation) used by the main context after subagent research completes.
-- `CLAUDE.md` — The full operating manual with cognitive mandates, documentation standards, and quality checklists.
+- `./docs/` — Knowledge base. Topic folders contain `intro.md` plus optional subtopics, disagreements.md, sources.md.
+- `.claude/subagents/` — Three parallel research agents. See `.claude/ORCHESTRATOR.md` for launch logic.
+- `.claude/skills/` — dialectical-analysis, research-documentation.
+- `CLAUDE.md` — Full operating manual. Read for cognitive mandates and quality checklists.
 
-## Reading Existing Topics
+## Procedures
 
-- Check `./docs/README.md` for the master topic index.
-- Each topic lives in `./docs/{topic-title}/intro.md`.
-- Subtopics, disagreement docs, and source tables may exist alongside the intro.
+**Read existing topics:** Check `./docs/README.md` for index. Topic entry: `./docs/{topic-title}/intro.md`.
 
-## Adding or Updating Content
+**Add or update content:**
+1. Read `./docs/README.md`. Search for similar folder names. Merge into existing topics when possible.
+2. Read all existing files in the target topic folder before writing. Never overwrite blindly.
+3. Use kebab-case for folder and file names.
+4. Cite sources: `[Title - Author/Org, Date](URL)`.
+5. Assign confidence ratings on major claims: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
+6. Label perspectives where they differ: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
+7. Update `./docs/README.md` with topic name, description, maturity, date.
 
-1. **Check for existing topics first.** Read `./docs/README.md` and search for similar folder names before creating a new one. Merge into existing topics when possible.
-2. **Read before writing.** Always read existing files in a topic folder before editing. Never blindly overwrite.
-3. **Use kebab-case** for all folder and file names.
-4. **Cite sources** for key claims. Inline format: `[Title - Author/Org, Date](URL)`.
-5. **Mark uncertainty.** Use confidence ratings (`[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`) on major claims.
-6. **Label perspectives** where they differ: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
-7. **Update the index.** After creating or significantly updating a topic, update `./docs/README.md` with the topic name, description, maturity level, and date.
+**File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
 
-## File Structure
-
-```text
-./docs/{topic-title}/
-  intro.md              # Required — topic overview, understandable standalone
-  {sub-topic}.md       # When intro becomes too dense (~500+ words per section)
-  disagreements.md     # When topic has significant competing positions
-  sources.md           # When source table is large (15+ sources)
-  timeline.md          # When chronological development matters
-```
-
-## What NOT to Do
-
-- Don't create near-duplicate topic folders.
-- Don't overwrite existing research without reading it first.
-- Don't present one-sided conclusions on contested topics.
-- Don't omit sources for significant claims.
+**Prohibited:** Near-duplicate topic folders. Overwriting without reading. One-sided conclusions on contested topics. Omitting sources for significant claims.
