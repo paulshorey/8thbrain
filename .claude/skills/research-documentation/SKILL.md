@@ -11,9 +11,24 @@ allowed-tools:
 
 # Research Documentation
 
-Transform validated research into maintainable, citation-rich Markdown. See CLAUDE.md for file structure, naming, perspective labels, confidence ratings.
+Transform validated research into maintainable, citation-rich Markdown.
+`CLAUDE.md` is canonical for structure, labels, confidence, and quality gates.
 
-Use when: subagent research (and optionally dialectical-analysis) complete; user asks to create, continue, or expand a topic. Do not use when: research incomplete or uncited; user wants brainstorming only.
+Use when:
+
+- subagent research (and optionally dialectical-analysis) is complete
+- user asks to create, continue, or expand a topic
+
+Do not use when:
+
+- research is incomplete and uncited
+- user only wants brainstorming
+
+## Entry Criteria (all required)
+
+- Topic slug resolved.
+- At least one research bundle or validated local evidence exists.
+- Major claims are source-traceable.
 
 ## Phase 1 — Topic Path Resolution
 
@@ -25,7 +40,23 @@ If topic exists: read intro.md and subtopics. If research-bundles exist, treat a
 
 ## Phase 3 — Write intro.md
 
-Write or update ./docs/{topic_title}/intro.md. Select building blocks by topic: topic overview, core concepts, how it works, major perspectives (label [CONSENSUS], [CONTESTED], [MINORITY VIEW]), key developments/timeline, trade-offs/limitations, open questions, strongest challenges, practical applications, subtopic index, related topics, sources. Intro must stand alone. Gate: comprehensive, structured, cross-linked.
+Write or update `./docs/{topic_title}/intro.md`.
+Select building blocks by topic:
+
+- topic overview
+- core concepts
+- mechanism/how it works
+- major perspectives (labels as appropriate)
+- key developments/timeline
+- trade-offs and limitations
+- open questions
+- strongest challenges
+- practical applications (if relevant)
+- subtopic index
+- related topics
+
+Intro must stand alone while linking to deeper files.
+Gate: comprehensive, structured, cross-linked.
 
 ## Phase 4 — Subtopic Decomposition
 
@@ -37,7 +68,17 @@ When topic has substantial debates: create disagreements.md. Per claim: question
 
 ## Phase 6 — Citation and Confidence
 
-Major claims: [Title - Author/Org, Date](URL). 15+ sources: use sources.md table. Assign confidence per CLAUDE.md. Validate internal links. Add cross-references. Gate: source-traceable, confidence-rated, navigable.
+Major claims: `[Title - Author/Org, Date](URL)`.
+If source volume is large (15+), use `sources.md` table.
+Assign confidence using CLAUDE.md evidence rubric.
+Validate internal links and cross-references.
+Gate: source-traceable, confidence-rated, navigable.
+
+Anti-hallucination checks:
+
+- no fabricated sources
+- any inaccessible/unverified source marked explicitly
+- confidence downgraded when evidence is weak
 
 ## Phase 7 — Index Update
 
@@ -45,11 +86,27 @@ Update ./docs/README.md: topic name linked to intro.md, one-line description, ma
 
 ## Phase 8 — Self-Reflection
 
-Write reflection: what surprised, where least confident, what to research next, suspected blind spots. Gate: reflection documented.
+Write reflection to `./docs/{topic_title}/notes.md` with dated heading:
+
+- what surprised you
+- where confidence is weakest
+- what to research next
+- suspected blind spots
+
+Gate: reflection documented.
 
 ## Phase 9 — Merge-Safe Finalization
 
 Re-read existing files. Preserve prior context unless superseded. If contradictory historical content, keep both and label conflict. Run CLAUDE.md quality checklist. Gate: no valuable prior knowledge lost.
+
+## Exit Criteria
+
+- `intro.md` and needed subtopic files updated.
+- Confidence and perspective labels are applied appropriately.
+- Source traceability is preserved for major claims.
+- `docs/README.md` updated.
+- Reflection appended to `notes.md`.
+- Existing valuable content retained or explicitly superseded.
 
 ## Anti-Patterns
 

@@ -13,7 +13,21 @@ allowed-tools:
 
 # Dialectical Analysis
 
-Stress-test research findings. Optional. Use when topic has genuine disagreement, competing approaches with real trade-offs, hidden assumptions worth examining, or user requested ("find contradictions", "devil's advocate"). Skip when: topic is factual/reference-oriented, subagent research found broad agreement, research incomplete, or user wants summary/tutorial only.
+Stress-test research findings.
+
+Canonical policy lives in `CLAUDE.md`. This skill is optional and should run when disagreement is meaningful.
+
+## Entry Criteria (all required)
+
+- At least one valid research bundle exists (success or partial).
+- Major claims are source-linked.
+- Topic has genuine disagreement, competing approaches, or hidden assumptions worth testing.
+
+Skip when:
+
+- topic is factual/reference-oriented with broad agreement
+- research is incomplete or uncited
+- user requested only a concise summary/tutorial
 
 Goal: intellectual honesty about credible thought. Not balance for its own sake. Not contrarianism.
 
@@ -35,7 +49,21 @@ For each position: Position Holder, Position, Best Argument, Best Evidence, What
 
 ## Phase 5 — Contradiction Synthesis
 
-Output: Confirmed Contradictions, Hidden Assumptions, Alternative Frameworks, Conditional Claims, Unknown Unknowns, Strongest Challenge. Save to disk. Feeds into research-documentation.
+Output sections (required):
+
+1. Confirmed Contradictions
+2. Hidden Assumptions
+3. Alternative Frameworks
+4. Conditional Claims
+5. Unknown Unknowns
+6. Strongest Challenge
+
+Save to:
+
+- `./docs/{topic-slug}/research-bundles/latest-dialectical-analysis.md` when slug exists
+- otherwise return structured markdown output
+
+This output feeds `research-documentation`.
 
 ## Query Patterns
 
@@ -44,3 +72,10 @@ Direct challenge: "criticism of [X]", "problems with [X]", "limitations of [X]".
 ## Anti-Patterns
 
 Manufactured controversy; fake balance (unsupported equal to evidenced); weak-manning; nihilistic relativism; contrarianism as identity; ignoring base rates; domain blindness.
+
+## Exit Criteria
+
+- Strongest competing positions are steelmanned.
+- Evidence and assumptions are explicit.
+- Contradictions and unresolved uncertainties are clearly documented.
+- Output is saved using the expected path convention.

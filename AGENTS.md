@@ -1,27 +1,28 @@
 # Agent Configuration
 
-Knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when the topic involves implementations.
+Knowledge-base repository. Primary output is structured Markdown under `./docs/`.
 
-## Repository Layout
+## Policy Priority
 
-- `./docs/` — Knowledge base. Topic folders contain `intro.md` plus optional subtopics, disagreements.md, sources.md.
-- `.claude/subagents/` — Three parallel research agents. See `.claude/ORCHESTRATOR.md` for launch logic.
-- `.claude/skills/` — dialectical-analysis, research-documentation.
-- `CLAUDE.md` — Full operating manual. Read for cognitive mandates and quality checklists.
+`CLAUDE.md` is the canonical policy for:
 
-## Procedures
+- mode routing (Recall, Quick-Write, Deep Research)
+- confidence and perspective labels
+- citation integrity rules
+- research bundle schema
+- failure handling and acceptance gates
 
-**Read existing topics:** Check `./docs/README.md` for index. Topic entry: `./docs/{topic-title}/intro.md`.
+If guidance in this file differs from `CLAUDE.md`, follow `CLAUDE.md`.
 
-**Add or update content:**
-1. Read `./docs/README.md`. Search for similar folder names. Merge into existing topics when possible.
-2. Read all existing files in the target topic folder before writing. Never overwrite blindly.
-3. Use kebab-case for folder and file names.
-4. Cite sources: `[Title - Author/Org, Date](URL)`.
-5. Assign confidence ratings on major claims: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
-6. Label perspectives where they differ: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
-7. Update `./docs/README.md` with topic name, description, maturity, date.
+## Minimal Operating Checklist
 
-**File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
+1. Check `./docs/README.md` for existing topic paths before creating new folders.
+2. Read existing topic files before making edits; merge-first, never blind overwrite.
+3. Use kebab-case file/folder names.
+4. Cite non-trivial claims using `[Title - Author/Org, Date](URL)`.
+5. Apply confidence labels and perspective labels where relevant.
+6. Update `./docs/README.md` when topic coverage changes.
 
-**Prohibited:** Near-duplicate topic folders. Overwriting without reading. One-sided conclusions on contested topics. Omitting sources for significant claims.
+## Deep Research Execution
+
+For Deep Research, use `.claude/ORCHESTRATOR.md` plus subagent/skill docs under `.claude/`.

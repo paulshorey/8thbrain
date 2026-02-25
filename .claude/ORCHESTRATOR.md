@@ -1,50 +1,95 @@
 # Deep Research Orchestration
 
-The main context orchestrates research by launching subagents in parallel, combining their output, and applying orchestrator skills.
+This file defines execution behavior for **Deep Research Mode** only.
+Policy and conflict resolution authority live in `CLAUDE.md`.
+
+## Preconditions
+
+Before running this pipeline, the mode router in `CLAUDE.md` must already select Deep Research.
+
+Required inputs:
+
+- user research request
+- topic slug (kebab-case)
+- scope tier (`quick`, `standard`, or `deep`)
 
 ## Pipeline
 
-1. Scope Assessment — determine tier (Quick/Standard/Deep) and topic slug.
-2. Launch all three subagents in parallel. Do not wait for one to finish before starting the next.
-3. Combine bundles — merge research from successful subagents; ignore failures and timeouts.
-4. Run dialectical-analysis when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip for purely factual or tutorial-style topics.
-5. Run research-documentation to write or update docs under ./docs/{topic}/.
-6. Self-reflection and commit.
+1. **Scope Assessment**
+   - Confirm tier and topic slug.
+   - Capture known constraints (time range, geography, domain context).
+2. **Parallel Subagent Dispatch**
+   - Launch all three subagents concurrently.
+   - Do not wait for one to complete before launching the others.
+3. **Bundle Collection**
+   - Gather all successful or partial outputs.
+   - Normalize to canonical bundle schema from `CLAUDE.md`.
+4. **Bundle Combination**
+   - Deduplicate sources by URL/title/date.
+   - Merge claim-to-source mappings.
+   - Preserve contradictions and counterevidence.
+5. **Dialectical Analysis (conditional)**
+   - Run when topic has meaningful disagreement or competing frameworks.
+6. **Research Documentation**
+   - Convert unified context into docs via `research-documentation`.
+7. **Reflection + Commit**
+   - Record reflection in `./docs/{topic}/notes.md`.
+   - Commit changes.
 
-Subagents: deeper-research (WebSearch), perplexity-deep-research (Perplexity MCP), gemini-deep-research (Gemini MCP or API).
+Subagents:
+
+- `deeper-research` (WebSearch)
+- `perplexity-deep-research` (Perplexity MCP)
+- `gemini-deep-research` (Gemini MCP/API)
 
 ## Launching Subagents
 
-Use **parallel dispatch** — launch all three research subagents at once. Each receives the user's research topic and any scope context.
+Use parallel dispatch. Each subagent receives:
 
-### Cursor (mcp_task)
+- Research topic (verbatim user request)
+- Topic slug
+- Scope tier
+- Required output format: canonical bundle schema
 
-Use the `mcp_task` tool to launch subagents in parallel. For each subagent:
+### Cursor (`mcp_task`)
 
-1. **Read** `.claude/subagents/{name}/AGENT.md` for full instructions
-2. **Compose prompt** = subagent instructions + "Research topic: [user request]. Topic slug: [slug]. Produce a research bundle."
-3. **Launch** with `mcp_task` — use `subagent_type: "generalPurpose"` for research tasks, or `"explore"` for broad exploration
+For each subagent:
 
-Launch all three **concurrently** (multiple mcp_task calls in the same turn). Do not wait for one before starting the next.
+1. Read `.claude/subagents/{name}/AGENT.md`.
+2. Compose prompt with topic + slug + tier + schema requirement.
+3. Launch via `mcp_task` with suitable `subagent_type`.
 
-### Claude Code
+Launch all three in the same turn.
 
-If using Claude Code's built-in subagent support, subagents may be defined in `.claude/agents/` or invoked via the SDK. Follow the same parallel-dispatch pattern: launch all three with the research topic, then combine outputs.
+### Runtime Expectations
 
-### General
+- Individual failures/timeouts are non-fatal.
+- Partial bundle output is acceptable if clearly marked.
+- Prefer Claude Sonnet for each subagent.
 
-- **Timeout:** If a subagent fails or does not respond in reasonable time, ignore it and continue with the others.
-- **Model:** Each subagent should use Claude Sonnet when possible.
+## Bundle Combination Rules
 
-## Combining Outputs
+1. Keep source IDs stable per provider where possible.
+2. Map equivalent sources into one canonical entry.
+3. Keep both sides of conflicts; do not flatten disagreements.
+4. Track confidence at claim level, not only topic level.
+5. Build one merged context for downstream skills.
 
-1. Collect research bundles from successful subagents.
-2. Deduplicate sources.
-3. Merge claim-to-source mappings.
-4. Reconcile conflicting claims — document both with perspective labels.
-5. Produce a single unified research context for `dialectical-analysis` and `research-documentation`.
+## Failure Handling Matrix
 
-## When to Skip Subagents
+| Condition | Orchestrator Action |
+|----------|---------------------|
+| One subagent failed | Continue with remaining bundles. |
+| Two subagents failed | Continue with one bundle; increase caveat density. |
+| All three subagents failed | Fallback to direct WebSearch in main context; produce partial output labeled `[NEEDS VERIFICATION]`. |
+| Perplexity/Gemini unavailable | Continue with available providers; do not block pipeline. |
 
-- **Quick-Write Mode:** User asks to "add a note", "update [topic] with", etc. Skip subagents and write directly.
-- **Perplexity/Gemini unavailable:** Proceed with whatever subagents succeeded. Never block on one provider.
+## Completion Gates
+
+Deep Research orchestration is complete only when:
+
+- Tier and slug are recorded.
+- At least one valid research bundle exists (or fallback path executed).
+- Combined context preserves contradictions and gaps.
+- Required skills have run (dialectical-analysis when warranted, research-documentation always).
+- Reflection note has been added.
