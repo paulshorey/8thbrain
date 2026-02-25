@@ -6,7 +6,7 @@ All research output is organized by topic in this directory.
 
 | Topic | Description | Maturity | Last Updated |
 |-------|-------------|----------|--------------|
-| [AI-Powered Knowledge Management](./ai-powered-knowledge-management/intro.md) | How AI agents build, maintain, and improve structured knowledge bases | Seed | 2026-02-25 |
+| [AI-Powered Knowledge Management](./ai-powered-knowledge-management/intro.md) | How AI agents build, maintain, and improve structured knowledge bases — market trends, RAG architectures, hallucination risks, enterprise adoption, tools landscape, and critical perspectives | Growing | 2026-02-25 |
 
 ## Maturity Levels
 
