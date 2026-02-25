@@ -15,7 +15,7 @@ Transform validated research into maintainable, citation-rich, multi-perspective
 
 ## When to Use
 
-- After `deep-research` (and optionally `dialectical-analysis` and `perplexity-sonar-followup`) is complete.
+- After subagent research (deeper-research, perplexity, gemini) and optionally `dialectical-analysis` is complete.
 - User asks to create, continue, or expand a topic in the knowledge base.
 
 ## When NOT to Use
@@ -38,9 +38,10 @@ Transform validated research into maintainable, citation-rich, multi-perspective
 If topic files exist:
 
 1. Read `intro.md` and all subtopic files.
-2. Build a merge map: **keep** (still valid), **update** (needs revision), **extend** (needs more depth/perspectives), **deprecate** (superseded, with rationale preserved in a note).
+2. If subagent bundles exist (`./docs/{topic}/research-bundles/*.md`), treat them as the primary research context. The orchestrator may have already combined them; otherwise merge them here.
+3. Build a merge map: **keep** (still valid), **update** (needs revision), **extend** (needs more depth/perspectives), **deprecate** (superseded, with rationale preserved in a note).
 
-**Gate:** Existing context integrated into writing plan.
+**Gate:** Existing context and research bundles integrated into writing plan.
 
 ### Phase 3 — Write intro.md
 

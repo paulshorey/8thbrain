@@ -6,7 +6,8 @@ All research is organized by topic in this directory.
 
 | Topic | Description | Maturity | Last Updated |
 |-------|-------------|----------|--------------|
-| *(No topics yet — start a research session to populate this index)* | | | |
+| [Claude Subagents Setup](claude-subagents-setup/intro.md) | How to configure Perplexity and Gemini MCPs for parallel research subagents | Seed | 2025-02 |
+| *(Add more topics via research sessions)* | | | |
 
 ## Maturity Levels
 
