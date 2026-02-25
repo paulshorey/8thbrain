@@ -1,50 +1,60 @@
 # Deep Research Orchestration
 
-The main context orchestrates research by launching subagents in parallel, combining their output, and applying orchestrator skills.
+The main context (orchestrator) launches research subagents in parallel, combines their output, then runs skills in sequence. Subagents run independently; skills run in the main context.
 
-## Pipeline
+## Objective
 
-1. Scope Assessment — determine tier (Quick/Standard/Deep) and topic slug.
-2. Launch all three subagents in parallel. Do not wait for one to finish before starting the next.
-3. Combine bundles — merge research from successful subagents; ignore failures and timeouts.
-4. Run dialectical-analysis when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip for purely factual or tutorial-style topics.
-5. Run research-documentation to write or update docs under ./docs/{topic}/.
-6. Self-reflection and commit.
+Your goal: Produce a unified research context from multiple subagent bundles, then document it under `./docs/{topic}/` via skills.
 
-Subagents: deeper-research (WebSearch), perplexity-deep-research (Perplexity MCP), gemini-deep-research (Gemini MCP or API).
+## Routing
 
-## Launching Subagents
+| Condition | Action |
+|-----------|--------|
+| User asks for deep research, multi-perspective analysis, thorough investigation | Run this pipeline |
+| User asks to "add a note", "update [topic] with", small edit | Skip. Use Quick-Write (CLAUDE.md). |
+| Perplexity or Gemini MCP/API unavailable | Launch subagents anyway. Proceed with whatever succeeds. Never block on one provider. |
 
-Use **parallel dispatch** — launch all three research subagents at once. Each receives the user's research topic and any scope context.
+## Pipeline (Execute in Order)
 
-### Cursor (mcp_task)
+1. **Scope Assessment** — Determine tier (Quick/Standard/Deep) and topic slug. Use CLAUDE.md Scope Tiers table.
+2. **Launch Subagents** — All three in parallel. Pass: user topic, topic slug, tier with min sources/queries. Do not wait for one before starting the next.
+3. **Combine** — Execute combine procedure below on successful subagent outputs.
+4. **Dialectical-Analysis** — Run when topic has meaningful disagreement. Skip for factual/tutorial topics. Read `.claude/skills/dialectical-analysis/SKILL.md` and execute phases 1–5 in order.
+5. **Research-Documentation** — Always run. Read `.claude/skills/research-documentation/SKILL.md` and execute phases 1–9 in order.
+6. **Self-Reflection** — What surprised you? Where least confident? What to research next?
+7. **Commit** — Save all changes and commit.
 
-Use the `mcp_task` tool to launch subagents in parallel. For each subagent:
+## Subagents
 
-1. **Read** `.claude/subagents/{name}/AGENT.md` for full instructions
-2. **Compose prompt** = subagent instructions + "Research topic: [user request]. Topic slug: [slug]. Produce a research bundle."
-3. **Launch** with `mcp_task` — use `subagent_type: "generalPurpose"` for research tasks, or `"explore"` for broad exploration
+| Subagent | Purpose | Config |
+|----------|---------|--------|
+| deeper-research | WebSearch, term variations, min queries per tier | none |
+| perplexity-deep-research | Perplexity MCP Sonar | PERPLEXITY_API_KEY, MCP |
+| gemini-deep-research | Gemini 100+ sources | GEMINI_API_KEY, MCP or API |
 
-Launch all three **concurrently** (multiple mcp_task calls in the same turn). Do not wait for one before starting the next.
+**Launch instructions:** Read `.claude/subagents/{name}/AGENT.md` for each. Compose prompt: subagent instructions + "Research topic: [user request]. Topic slug: [slug]. Tier: [Quick|Standard|Deep]. Min sources: [N]. Min queries: [N]. Produce a research bundle." Use `mcp_task` with `subagent_type: "generalPurpose"` or `"explore"`. Launch all three concurrently (multiple mcp_task calls in the same turn).
 
-### Claude Code
+**On timeout or failure:** Ignore that subagent. Continue with others. Do not retry.
 
-If using Claude Code's built-in subagent support, subagents may be defined in `.claude/agents/` or invoked via the SDK. Follow the same parallel-dispatch pattern: launch all three with the research topic, then combine outputs.
+## Combine Procedure
 
-### General
+Execute after subagents complete. Input: research bundles from successful subagents. Output: single unified research context for skills.
 
-- **Timeout:** If a subagent fails or does not respond in reasonable time, ignore it and continue with the others.
-- **Model:** Each subagent should use Claude Sonnet when possible.
-
-## Combining Outputs
-
-1. Collect research bundles from successful subagents.
-2. Deduplicate sources.
-3. Merge claim-to-source mappings.
-4. Reconcile conflicting claims — document both with perspective labels.
-5. Produce a single unified research context for `dialectical-analysis` and `research-documentation`.
+1. **Collect** — Gather all research bundles. If none succeeded, document failure and stop.
+2. **Deduplicate sources** — Merge source tables by URL. Keep earliest publication date, best quality metadata.
+3. **Merge claim-to-source** — Aggregate claim-to-source mappings. When multiple subagents cite the same claim, keep all source links.
+4. **Reconcile conflicts** — When subagents disagree on a claim: keep both positions. Label with perspective tags (e.g. [CONTESTED]). Do not pick a winner.
+5. **Produce unified context** — Single structure: scope, source table, claim-to-source, perspective map, unresolved questions, confidence per finding. Pass this to dialectical-analysis and research-documentation.
 
 ## When to Skip Subagents
 
-- **Quick-Write Mode:** User asks to "add a note", "update [topic] with", etc. Skip subagents and write directly.
-- **Perplexity/Gemini unavailable:** Proceed with whatever subagents succeeded. Never block on one provider.
+- **Quick-Write Mode** — User asks to add a note, update topic, jot down. Skip entire pipeline. Write directly per CLAUDE.md.
+
+## When to Skip Dialectical-Analysis
+
+- Topic is purely factual, reference, or tutorial.
+- Subagent research found broad agreement, no real controversy.
+- Research incomplete or uncited.
+- User wants summary or tutorial only.
+
+Do not skip research-documentation when research is complete.

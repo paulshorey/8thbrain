@@ -6,29 +6,31 @@ Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective r
 
 ```text
 .
-├── CLAUDE.md              # Claude Code operating manual (AI)
+├── CLAUDE.md              # Operating manual — routing, modes, cognitive mandates (AI)
 ├── AGENTS.md              # Cursor/Copilot agent orientation (AI)
 ├── .claude/
-│   ├── ORCHESTRATOR.md    # Subagent launch and combine (AI)
-│   ├── subagents/         # 3 parallel research agents
-│   └── skills/            # dialectical-analysis, research-documentation
+│   ├── ORCHESTRATOR.md    # Pipeline, combine procedure, subagent launch (AI)
+│   ├── subagents/         # 3 parallel research agents — README + AGENT.md per agent
+│   └── skills/            # dialectical-analysis, research-documentation — README + SKILL.md each
 └── docs/
-    ├── README.md          # Topic index
+    ├── README.md          # Topic index (human + agent)
     └── {topic}/
 ```
+
+**Note:** Files under `.claude/` serve both human orientation and AI agent instructions. For agents: `AGENT.md` and `SKILL.md` hold full procedural instructions; `README` files are indexes.
 
 ## Pipeline (Deep Research Mode)
 
 ```text
-User Request → Scope Assessment (Quick/Standard/Deep)
+User Request → Routing (Deep Research vs Quick-Write)
     ↓
-PARALLEL SUBAGENTS (launch all 3, ignore failures)
+Scope Assessment (tier + slug) → PARALLEL SUBAGENTS (launch all 3, ignore failures)
     deeper-research | perplexity-deep-research | gemini-deep-research
     ↓
 Combine bundles → dialectical-analysis (if warranted) → research-documentation → Commit
 ```
 
-**Quick-Write Mode:** "add a note", "update [topic] with" — skips subagents, writes directly.
+**Quick-Write Mode:** "add a note", "update [topic] with" — skips subagents, writes directly. See CLAUDE.md routing rules.
 
 ## Quick Start
 

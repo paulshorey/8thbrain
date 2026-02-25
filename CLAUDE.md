@@ -6,56 +6,54 @@ This repository is a **knowledge base**, not a software codebase. The primary ou
 
 Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
 
-## Operating Modes
+## Routing Rules
 
-Decide which mode to use based on the user's request.
+Choose mode by matching the user's request to triggers. Use exactly one path.
+
+| User Request Pattern | Mode | Action |
+|---------------------|------|--------|
+| "deep research", "research [topic]", "all perspectives", "full analysis", thorough multi-source investigation | **Deep Research** | Run full pipeline: scope → parallel subagents → combine → dialectical-analysis (if warranted) → research-documentation. See `.claude/ORCHESTRATOR.md`. |
+| "add a note", "jot down", "update [topic] with", "log this", small addition/correction/editorial | **Quick-Write** | Skip subagents. Resolve topic path, read existing files, write or update directly. Update index if new topic. Commit. |
+| Unclear or ambiguous | **Deep Research** | Default to thorough investigation. Over-research is preferable to poorly sourced content. |
+
+Do not mix modes. Quick-Write never launches subagents. Deep Research always launches all three subagents in parallel.
+
+## Operating Modes
 
 ### Deep Research Mode
 
-**Trigger:** The user asks for "deep research", "research [topic]", "all perspectives", "full analysis", or any request that clearly calls for thorough, multi-source investigation.
+Follow the subagent orchestration pipeline in `.claude/ORCHESTRATOR.md`:
 
-Follow the subagent orchestration pipeline (see `.claude/ORCHESTRATOR.md`):
+1. **Scope Assessment** — Determine tier (Quick/Standard/Deep) and topic slug. Pass tier and slug to every subagent.
+2. **Launch** — Invoke all three subagents in parallel. Do not wait for one to finish before starting the next. Ignore failures and timeouts.
+3. **Combine** — Execute the combine procedure in ORCHESTRATOR.md: collect bundles, deduplicate sources, merge claim-to-source, reconcile conflicts.
+4. **Dialectical-Analysis** — Run when topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip for purely factual, reference, or tutorial topics.
+5. **Research-Documentation** — Convert combined research into Markdown under `./docs/{topic}/`.
+6. **Self-Reflection** — What surprised you? Where are you least confident? What would you research next?
+7. **Commit** — Save and commit the research session.
 
-1. Scope Assessment — determine tier (Quick/Standard/Deep) and topic slug.
-2. Launch all three subagents in parallel; ignore failures and timeouts.
-3. Combine research bundles from successful subagents.
-4. Optionally run dialectical-analysis when the topic has meaningful disagreement.
-5. Run research-documentation to produce structured Markdown.
-6. Self-reflection and commit.
+**Subagents** (launch all three; see `.claude/subagents/` for full instructions):
 
-**Parallel Subagents** (launch all three; ignore failures/timeouts):
-1. **deeper-research** — WebSearch, extended queries, term variations (`.claude/subagents/deeper-research/`)
-2. **perplexity-deep-research** — Perplexity MCP Sonar model (`.claude/subagents/perplexity-deep-research/`)
-3. **gemini-deep-research** — Google Gemini Deep Research MCP or API (`.claude/subagents/gemini-deep-research/`)
+- **deeper-research** — WebSearch, 20+ queries, term variations
+- **perplexity-deep-research** — Perplexity MCP Sonar
+- **gemini-deep-research** — Gemini Deep Research MCP or API
 
-Each subagent uses Claude Sonnet. If one fails or times out, proceed with the others. Combine their research bundles into one.
-
-- **dialectical-analysis** is recommended when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip it for purely factual, reference, or tutorial-style topics where no real controversy exists.
-- **research-documentation** converts the combined research into the knowledge base.
-- **Self-reflection** is the final check: what surprised you, where are you least confident, what would you research next.
+Each subagent receives: user topic, topic slug, scope tier (with min sources/queries from Scope Tiers table). Each subagent returns a research bundle. Combine outputs; never block on one provider.
 
 ### Quick-Write Mode
 
-**Trigger:** The user asks to "add a note", "jot down", "update [topic] with", "log this", or makes a request that is clearly a small addition, correction, or editorial change — not a call for broad research.
-
-Skip the skills pipeline. Instead:
-
-1. Resolve the target topic path (create the folder if new, merge if existing).
-2. Read existing files in that topic folder.
+1. Resolve the target topic path (create folder if new, merge if existing). Check `docs/README.md` for similar topics.
+2. Read all existing files in that topic folder before writing.
 3. Write or update the relevant Markdown file(s) directly.
-4. Follow the knowledge base file structure, naming rules, and merge-first behavior defined below.
+4. Follow knowledge base file structure, naming rules, and merge-first behavior defined below.
 5. Update `docs/README.md` if a new topic was created.
 6. Commit.
 
-Quick-write mode still respects documentation standards (citations where possible, confidence ratings on claims, no blind overwrites), but does not require the full query lattice, saturation gates, or dialectical analysis.
-
-### When in doubt
-
-Default to **Deep Research Mode**. It is better to over-research than to add poorly sourced content to the knowledge base.
+Respect documentation standards: citations where possible, confidence ratings on claims, no blind overwrites. Do not run subagents, dialectical-analysis, or full research-documentation skill.
 
 ## Scope Tiers
 
-These apply to Deep Research Mode. Assess topic complexity before starting. This controls research depth and prevents runaway sessions.
+Apply to Deep Research Mode only. Assess topic complexity before launching subagents. **Pass the tier and its numeric targets to every subagent** so they scale effort accordingly.
 
 | Tier | Complexity | Min Sources | Min Queries | Min Alternative Perspectives | Estimated Effort |
 |------|-----------|-------------|-------------|------------------------------|------------------|
@@ -78,6 +76,15 @@ These govern every research task:
 7. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
 8. **Reason from mechanisms and first principles.** Decompose complex topics into foundational components. Explain *why* something happens, not just *that* it happens.
 9. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
+
+### Before You Finish (Cognitive Check)
+
+Before completing any research update, confirm:
+
+- [ ] Steelman considered — strongest form of opposing positions presented.
+- [ ] Assumptions named — key assumptions underlying conclusions are visible.
+- [ ] Confidence tagged — every major finding has High/Medium/Low with rationale.
+- [ ] Fact vs interpretation distinguished — what is established vs inferred is clear.
 
 ## Perspective Labeling System
 
