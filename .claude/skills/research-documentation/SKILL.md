@@ -1,6 +1,6 @@
 ---
 name: research-documentation
-description: Convert research into Markdown under ./docs/{topic_title}/ with perspective labels, confidence ratings, steelmanned disagreements, cross-references, merge-safe updates.
+description: Convert combined research into adaptive, source-backed Markdown in ./docs with merge-safe updates.
 allowed-tools:
   - Read
   - Write
@@ -11,96 +11,73 @@ allowed-tools:
 
 # Research Documentation
 
-**Goal:** Transform validated research into maintainable, citation-rich Markdown under `./docs/{topic_title}/`. Produce docs that stand alone, trace to sources, and preserve prior content.
-
-**Execute phases 1–9 in order. Do not skip phases.** Phase is complete when the gate artifact exists.
+Goal: turn combined research into clear, source-backed Markdown that can be maintained over time.
 
 ## Run When
 
-- Subagent research (and optionally dialectical-analysis) is complete.
-- User asks to create, continue, or expand a topic.
+- Subagent outputs are combined (and optional dialectical analysis is complete when needed).
+- User requested creation, continuation, or expansion of a research topic.
 
-## Do NOT Run When
+## Skip When
 
-- Research is incomplete or uncited.
-- User wants brainstorming only.
+- Research context is too incomplete to support source-backed writing.
 
-## Required Conventions (Inline)
+## Core Principles
 
-- **Citations:** `[Title - Author/Org, Date](URL)` for key claims.
-- **Perspective labels:** [CONSENSUS], [MAJORITY VIEW], [CONTESTED], [MINORITY VIEW], [HETERODOX], [EVOLVING].
-- **Confidence:** [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE] on major findings.
-- **File naming:** Lowercase kebab-case. Check `docs/README.md` before creating topics. Merge into existing if near-duplicate.
+1. Merge-first: read existing docs before editing.
+2. Adaptive structure: one file for simple topics, multiple files for complex topics.
+3. Evidence traceability: major claims should map to sources.
+4. Fit the topic type: factual, technical, or contested.
 
-## Phase 1 — Topic Path Resolution
+## Procedure
 
-**Do:** Normalize topic to kebab-case slug. Check `./docs/README.md` for existing or similar topics. Merge into existing if near-duplicate.
+### 1) Resolve Topic Path and Existing Content
 
-**Gate:** Target directory selected, no duplication. Phase complete.
+- Check `docs/README.md` for existing or similar topics.
+- If topic exists, read relevant files and merge rather than overwrite.
+- Avoid creating near-duplicate topics.
 
-## Phase 2 — Existing Content Intake
+### 2) Choose Documentation Shape
 
-**Do:** If topic exists, read intro.md and subtopics. If research-bundles exist, treat as primary context; merge if orchestrator did not combine. Build merge map: keep, update, extend, deprecate.
+Select based on complexity:
 
-**Gate:** Context integrated into writing plan. Phase complete.
+- **Simple topic** -> one file (for example `./docs/{topic}.md`)
+- **Complex topic** -> folder with multiple files (for example `./docs/{topic}/intro.md` plus subtopics)
 
-## Phase 3 — Write intro.md
+No mandatory fixed template.
 
-**Do:** Write or update `./docs/{topic_title}/intro.md`. Select building blocks by topic type:
+### 3) Draft Content for Topic Type
 
-- Topic overview
-- Core concepts
-- How it works
-- Major perspectives (label [CONSENSUS], [CONTESTED], [MINORITY VIEW])
-- Key developments / timeline
-- Trade-offs / limitations
-- Open questions
-- Strongest challenges
-- Practical applications
-- Subtopic index
-- Related topics
-- Sources
+Prioritize according to topic type:
 
-Intro must stand alone. Include cross-links to subtopics.
+- **Factual/reference:** definitions, key facts, timelines, examples.
+- **Technical:** mechanisms, architecture/options, implementation steps, constraints, code examples where useful.
+- **Contested:** strongest competing views, supporting evidence, and what would resolve disagreements.
 
-**Gate:** Comprehensive, structured, cross-linked. Phase complete.
+### 4) Apply Source and Confidence Standards
 
-## Phase 4 — Subtopic Decomposition
+- Cite consequential claims.
+- Prefer primary/high-quality sources where available.
+- Mark confidence on major findings when useful:
+  - `[HIGH CONFIDENCE]`
+  - `[MEDIUM CONFIDENCE]`
+  - `[LOW CONFIDENCE]`
 
-**Do:** Create `./docs/{topic_title}/{sub_topic}.md` when a section exceeds ~500 words, may update independently, or has significant disagreement. Include: focused explanation, perspective labels, confidence ratings, citations.
+Perspective labels are optional; use only when clarifying disagreement.
 
-**Gate:** Complex areas split. Phase complete.
+### 5) Finalize and Link
 
-## Phase 5 — Disagreements
+- Add internal links when the topic has multiple files.
+- Ensure claims remain traceable to sources.
+- Preserve useful prior context unless clearly superseded.
 
-**Do:** When topic has substantial debates, create `disagreements.md`. Per claim: question at issue, Position A (steelmanned + evidence), Position B (steelmanned + evidence), what resolves it, who holds each.
+### 6) Update Topic Index
 
-**Gate:** Steelmanned positions documented. Phase complete.
-
-## Phase 6 — Citation and Confidence
-
-**Do:** Major claims: `[Title - Author/Org, Date](URL)`. If 15+ sources, use `sources.md` table. Assign confidence per CLAUDE.md. Validate internal links. Add cross-references.
-
-**Gate:** Source-traceable, confidence-rated, navigable. Phase complete.
-
-## Phase 7 — Index Update
-
-**Do:** Update `./docs/README.md`: topic name linked to intro.md, one-line description, maturity (Seed/Growing/Mature/Needs Update), last updated.
-
-**Gate:** Index reflects current state. Phase complete.
-
-## Phase 8 — Self-Reflection
-
-**Do:** Write reflection: what surprised, where least confident, what to research next, suspected blind spots.
-
-**Gate:** Reflection documented. Phase complete.
-
-## Phase 9 — Merge-Safe Finalization
-
-**Do:** Re-read existing files. Preserve prior context unless superseded. If contradictory historical content, keep both and label conflict. Run CLAUDE.md quality checklist.
-
-**Gate:** No valuable prior knowledge lost. Phase complete.
+Update `docs/README.md` when creating a new topic or significantly changing scope/structure.
 
 ## Anti-Patterns
 
-Do NOT: write without reading first; dump into intro; conclude one-sidedly; omit sources; treat unevidenced positions as equal to evidenced; overwrite without merge; omit confidence; force debate onto non-contested topics; force tutorial onto contested topics.
+- writing without reading existing topic files
+- forcing multi-perspective debate onto non-contested topics
+- omitting sources for consequential claims
+- rigidly enforcing one template regardless of topic needs

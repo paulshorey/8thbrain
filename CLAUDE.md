@@ -1,194 +1,113 @@
 # Claude Code Operating Manual
 
-This repository is a **knowledge base**, not a software codebase. The primary output is structured Markdown prose stored under `./docs/`. When a topic involves code, algorithms, or technical implementations, include working examples directly in the Markdown documents.
+This repository is a research knowledge base. The primary output is Markdown in `./docs/`.
+
+The workflow is designed for **any research topic**:
+
+- factual reference topics
+- technical deep dives and implementation planning
+- historical or policy topics with competing interpretations
+
+Use analysis when it is useful, but do not force debate framing onto straightforward factual or technical subjects.
 
 ## Mission
 
-Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
+Convert user requests into comprehensive, source-backed documentation that is easy to maintain over time.
 
-## Routing Rules
+## Core Routing Rule
 
-Choose mode by matching the user's request to triggers. Use exactly one path.
+Route requests to exactly one mode.
 
-| User Request Pattern | Mode | Action |
-|---------------------|------|--------|
-| "deep research", "research [topic]", "all perspectives", "full analysis", thorough multi-source investigation | **Deep Research** | Run full pipeline: scope → parallel subagents → combine → dialectical-analysis (if warranted) → research-documentation. See `.claude/ORCHESTRATOR.md`. |
-| "add a note", "jot down", "update [topic] with", "log this", small addition/correction/editorial | **Quick-Write** | Skip subagents. Resolve topic path, read existing files, write or update directly. Update index if new topic. Commit. |
-| Unclear or ambiguous | **Deep Research** | Default to thorough investigation. Over-research is preferable to poorly sourced content. |
+| User intent | Mode | Action |
+|---|---|---|
+| Any research intent ("research", "investigate", "find examples", "gather sources", "analyze", "deep dive", evidence-heavy planning) | **Deep Research** | Run orchestrator pipeline in `.claude/ORCHESTRATOR.md` (parallel subagents, combine, optional dialectical-analysis, research-documentation). |
+| Small editorial update with no new sourcing required ("add a note", "log this", minor correction) | **Quick-Write** | Update existing docs directly; skip subagents and skills. |
+| Ambiguous | **Deep Research** | Default to thorough evidence collection. |
 
-Do not mix modes. Quick-Write never launches subagents. Deep Research always launches all three subagents in parallel.
+**Hard rule:** If the user request mentions research or implies evidence gathering, run Deep Research.
 
-## Operating Modes
+## Deep Research Mode (Main Workflow)
 
-### Deep Research Mode
+1. **Scope** — Determine topic slug, tier (Quick/Standard/Deep), topic type (factual, technical, contested), and documentation goal.
+2. **Launch subagents in parallel** — Always launch all configured research subagents.
+3. **Wait and combine** — Collect successful bundles, deduplicate sources, reconcile overlaps/conflicts.
+4. **Dialectical analysis (conditional)** — Run only when there are meaningful disagreements or competing approaches.
+5. **Research documentation (always)** — Write/update docs in an adaptive structure.
+6. **Quality pass** — Verify coverage, source traceability, merge safety.
+7. **Commit** — Save the session.
 
-Follow the subagent orchestration pipeline in `.claude/ORCHESTRATOR.md`:
+See `.claude/ORCHESTRATOR.md` for exact execution order and handoff format.
 
-1. **Scope Assessment** — Determine tier (Quick/Standard/Deep) and topic slug. Pass tier and slug to every subagent.
-2. **Launch** — Invoke all three subagents in parallel. Do not wait for one to finish before starting the next. Ignore failures and timeouts.
-3. **Combine** — Execute the combine procedure in ORCHESTRATOR.md: collect bundles, deduplicate sources, merge claim-to-source, reconcile conflicts.
-4. **Dialectical-Analysis** — Run when topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip for purely factual, reference, or tutorial topics.
-5. **Research-Documentation** — Convert combined research into Markdown under `./docs/{topic}/`.
-6. **Self-Reflection** — What surprised you? Where are you least confident? What would you research next?
-7. **Commit** — Save and commit the research session.
+## Quick-Write Mode
 
-**Subagents** (launch all three; see `.claude/subagents/` for full instructions):
+Use only for small updates that do not require new external research.
 
-- **deeper-research** — WebSearch, 20+ queries, term variations
-- **perplexity-deep-research** — Perplexity MCP Sonar
-- **gemini-deep-research** — Gemini Deep Research MCP or API
+1. Locate existing topic in `docs/README.md`.
+2. Read relevant existing files before editing.
+3. Merge updates without losing prior useful content.
+4. Update `docs/README.md` if new files/topics are created.
+5. Commit.
 
-Each subagent receives: user topic, topic slug, scope tier (with min sources/queries from Scope Tiers table). Each subagent returns a research bundle. Combine outputs; never block on one provider.
+## Scope Tiers (for Deep Research)
 
-### Quick-Write Mode
+| Tier | Typical use | Min sources | Min queries |
+|---|---|---:|---:|
+| Quick | Narrow factual question | 5 | 6 |
+| Standard | Most requests | 12 | 14 |
+| Deep | Complex or high-stakes topics | 20+ | 20+ |
 
-1. Resolve the target topic path (create folder if new, merge if existing). Check `docs/README.md` for similar topics.
-2. Read all existing files in that topic folder before writing.
-3. Write or update the relevant Markdown file(s) directly.
-4. Follow knowledge base file structure, naming rules, and merge-first behavior defined below.
-5. Update `docs/README.md` if a new topic was created.
-6. Commit.
+Default to **Standard** unless the request is clearly narrower or clearly more complex.
 
-Respect documentation standards: citations where possible, confidence ratings on claims, no blind overwrites. Do not run subagents, dialectical-analysis, or full research-documentation skill.
+## Topic Type Guidance
 
-## Scope Tiers
+### Factual / Reference
 
-Apply to Deep Research Mode only. Assess topic complexity before launching subagents. **Pass the tier and its numeric targets to every subagent** so they scale effort accordingly.
+Prioritize completeness, precise facts, dates, definitions, and edge cases. Do not force opposing-position analysis when none exists.
 
-| Tier | Complexity | Min Sources | Min Queries | Min Alternative Perspectives | Estimated Effort |
-|------|-----------|-------------|-------------|------------------------------|------------------|
-| Quick | Simple factual, narrow scope | 5 | 6 | 1 | Light |
-| Standard | Moderate analysis, some nuance | 12 | 14 | 3 | Medium |
-| Deep | Complex, contested, high-stakes | 20+ | 20+ | 5+ | Heavy |
+### Technical / Implementation
 
-Default to **Standard**. Escalate to **Deep** when the topic is deeply contested, has significant real-world consequences, or resists simple answers. Use **Quick** only for narrow factual lookups.
+Prioritize mechanisms, architecture options, constraints, examples, and implementation steps. Include code snippets when useful.
 
-## Cognitive Mandates
+### Contested / Multi-Interpretation
 
-These govern every research task:
+Represent strongest competing views with evidence. Clearly separate established facts from interpretation.
 
-1. **Don't stop at the first answer.** If the topic has depth or nuance, look beyond the obvious conclusion. For contested topics, search for the negation. For factual topics, look for edge cases, caveats, or common misconceptions.
-2. **Steelman before dismissing.** When multiple positions exist, present the strongest form of each, especially unpopular ones.
-3. **Name your assumptions.** Every conclusion rests on assumptions — make them visible.
-4. **Track confidence explicitly.** Use High / Medium / Low. Explain what would change each rating.
-5. **Distinguish fact from interpretation.** Separate what is established from what is inferred.
-6. **Respect temporal context.** Ideas that seem wrong now may have been reasonable then, and vice versa.
-7. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
-8. **Reason from mechanisms and first principles.** Decompose complex topics into foundational components. Explain *why* something happens, not just *that* it happens.
-9. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
+## Evidence Standards
 
-### Before You Finish (Cognitive Check)
+1. Cite key claims with links to original or high-quality sources when possible.
+2. Prefer primary sources (official docs, standards, papers, data, firsthand material).
+3. Track source recency and note when a source may be outdated.
+4. Mark confidence on major findings: **[HIGH CONFIDENCE]**, **[MEDIUM CONFIDENCE]**, **[LOW CONFIDENCE]**.
+5. When sources conflict, preserve the conflict and explain what would resolve it.
 
-Before completing any research update, confirm:
+Perspective labels are optional and should be used only when they add clarity: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, `[EVOLVING]`.
 
-- [ ] Steelman considered — strongest form of opposing positions presented.
-- [ ] Assumptions named — key assumptions underlying conclusions are visible.
-- [ ] Confidence tagged — every major finding has High/Medium/Low with rationale.
-- [ ] Fact vs interpretation distinguished — what is established vs inferred is clear.
+## Documentation Shape (Adaptive, Not Fixed)
 
-## Perspective Labeling System
+Choose output structure based on complexity:
 
-Use these inline labels when documenting topics where perspectives differ. Not every topic requires every label — use what fits.
+- **Simple topic:** one file (for example `./docs/topic-name.md`)
+- **Complex topic:** topic folder with multiple files (for example `./docs/topic-name/intro.md` + subtopics)
 
-| Label | Meaning |
-|-------|---------|
-| `[CONSENSUS]` | Widely agreed upon by credible sources in the relevant field |
-| `[MAJORITY VIEW]` | Held by most qualified voices but with notable dissent |
-| `[CONTESTED]` | Actively debated — specific claims or interpretations under dispute with strong reasoning on multiple sides |
-| `[MINORITY VIEW]` | Held by a credible minority; not fringe |
-| `[HETERODOX]` | Outside mainstream but intellectually serious |
-| `[EVOLVING]` | Understanding is actively changing |
+Do not force a rigid template. Let the topic and user request determine structure.
 
-## Confidence Ratings
+## Merge-First Rule
 
-Assign to every major finding:
+Always read existing topic material before writing. Merge new evidence into existing docs. Do not blindly overwrite prior content.
 
-- **[HIGH CONFIDENCE]** — Multiple independent, high-quality sources agree. Would be surprised if wrong.
-- **[MEDIUM CONFIDENCE]** — Supported but with caveats, limited sources, or active debate. State what would move it higher or lower.
-- **[LOW CONFIDENCE]** — Preliminary, contested, or poorly sourced. State what evidence is needed.
+## Reliability and Recovery
 
-## Knowledge Base File Structure
+- If one subagent fails, continue with remaining bundles.
+- If all external research tools fail, produce a clearly marked partial result and flag what needs verification.
+- If existing docs contain contradictions, preserve both claims with clear labeling and sources.
 
-### Layout
+## Final Checklist
 
-```text
-./docs/{topic-title}/
-  intro.md              # Required — topic-level synthesis and navigation
-  {sub-topic}.md        # Required when intro becomes too dense
-  disagreements.md      # When topic has significant debates
-  sources.md            # When source table is large (15+ sources)
-  timeline.md           # When chronological development matters
-```
+Before finishing:
 
-### Naming Rules
-
-- Lowercase kebab-case for all folder and file names.
-- Short but descriptive.
-- No near-duplicate topics — merge semantically equivalent folders. Check `docs/README.md` before creating a new topic.
-
-### Merge-First Behavior
-
-Always read existing topic files before writing. Merge new findings with existing content. Never blindly overwrite. If sources contradict prior content, document both positions and label the conflict.
-
-## Documentation Standards
-
-1. **Citations required.** Link to original sources for key claims. Inline format: `[Title - Author/Org, Date](URL)`.
-2. **Perspective coverage.** When multiple viewpoints exist, present and label them. Not every topic is contested — for settled or technical topics, focus on completeness and accuracy instead.
-3. **Uncertainty handling.** Mark uncertain, disputed, or evolving claims explicitly.
-4. **Subtopic extraction.** If a section exceeds ~500 words of dense material, split it into its own file and link from `intro.md`.
-5. **Contradiction preservation.** When sources disagree, document both positions with their best evidence.
-6. **Assumption visibility.** State key assumptions underlying major conclusions.
-7. **Adaptive structure.** Let the topic dictate the document shape. A technical tutorial, a policy analysis, and a historical overview each need different section structures. Select from the building blocks in `research-documentation` rather than following a rigid template.
-
-## Cross-Referencing
-
-- Add a `## Related Topics` section at the bottom of each `intro.md`.
-- Use relative links: `[Related Topic](../related-topic/intro.md)`.
-- Briefly explain the connection.
-- Maintain `./docs/README.md` as the master topic index with name, description, maturity level, and last-updated date.
-
-## Topic Maturity
-
-| Level | Name | Description |
-|-------|------|-------------|
-| 1 | Seed | Initial research, basic intro exists |
-| 2 | Growing | Multiple subtopics, decent source diversity |
-| 3 | Mature | Comprehensive coverage, strong perspective diversity, well-cited |
-| 4 | Needs Update | Previously mature but stale |
-
-## Topic Lifecycle
-
-- **New topic:** Create folder + intro + initial subtopics + index entry.
-- **Continue topic:** Update existing files with new sources and insights. Update index date.
-- **Challenge topic:** Run dialectical analysis to find weaknesses and blind spots.
-- **Recall topic:** Summarize from existing local docs first, then optionally refresh.
-
-## Context and Session Management
-
-Research can be extensive. To avoid losing work:
-
-1. **Save incrementally.** Write docs to disk after each major phase, not only at the end.
-2. **Commit after each research session.** Don't wait until everything is perfect.
-3. **Summarize before continuing.** If context is growing large, write a concise summary of findings so far into the topic files before starting new phases.
-4. **Prioritize depth over breadth when constrained.** It's better to deeply cover 3 subtopics than to shallowly cover 10.
-
-## Error Recovery
-
-- **Web search fails:** Try alternate query formulations. If search is completely unavailable, document what you can from existing knowledge and flag the topic as `[NEEDS VERIFICATION]`.
-- **Perplexity or Gemini MCP unavailable or fails:** The perplexity and gemini subagents will fail; the deeper-research subagent (WebSearch) will still run. Proceed with whatever subagent outputs are available. Never block the pipeline on one provider.
-- **Existing files are corrupted or contradictory:** Preserve both versions, label the conflict, and flag for human review.
-
-## Quality Checklist
-
-Before finishing any research update, verify:
-
-- [ ] Topic folder is correctly placed under `./docs/`
-- [ ] `intro.md` is coherent, comprehensive, and structured appropriately for the topic
-- [ ] Complex sections have dedicated subtopic files
-- [ ] Citations are present for key claims
-- [ ] Existing content was preserved or thoughtfully merged
-- [ ] Alternative perspectives, approaches, or trade-offs are represented where they exist
-- [ ] Confidence ratings are assigned to major findings
-- [ ] At least one finding challenges or complicates the obvious answer (where the topic permits)
-- [ ] Cross-references to related topics are included
-- [ ] `docs/README.md` index is updated
+- [ ] Correct routing mode used
+- [ ] Research depth meets tier targets
+- [ ] Sources are traceable for major claims
+- [ ] Output format fits topic complexity (single file vs multi-file)
+- [ ] Existing knowledge preserved or intentionally superseded
+- [ ] `docs/README.md` updated when needed
