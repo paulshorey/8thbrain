@@ -1,20 +1,20 @@
-# Agent Configuration (Cursor / Copilot)
+# Agent Configuration
 
-This file is for AI agents running in **Cursor, Copilot, or similar editors**. If you are running in **Claude Code**, follow `CLAUDE.md` instead — it contains the full deep-research pipeline and skills workflow.
+This repository is a **knowledge base**, not a software codebase. The primary output is structured Markdown prose stored under `./docs/`. When a topic involves code, algorithms, or technical implementations, include working examples directly in the Markdown documents.
 
-## What This Repository Is
+## What This Repository Contains
 
-A Markdown knowledge base stored under `./docs/`. Each topic has its own folder with an `intro.md` and optional subtopic files. The knowledge base spans any subject — technical, scientific, historical, political, or otherwise.
+- `./docs/` — The knowledge base. Each topic has its own folder with an `intro.md` and optional subtopic files. Topics span any subject.
+- `.claude/skills/` — Research workflow skills (deep-research, dialectical-analysis, perplexity-sonar-followup, research-documentation). These define a structured pipeline for thorough, multi-perspective research.
+- `CLAUDE.md` — The full operating manual with cognitive mandates, documentation standards, and quality checklists.
 
-## How to Work With It
-
-### Reading existing topics
+## Reading Existing Topics
 
 - Check `./docs/README.md` for the master topic index.
 - Each topic lives in `./docs/{topic-title}/intro.md`.
 - Subtopics, disagreement docs, and source tables may exist alongside the intro.
 
-### Adding or updating content
+## Adding or Updating Content
 
 1. **Check for existing topics first.** Read `./docs/README.md` and search for similar folder names before creating a new one. Merge into existing topics when possible.
 2. **Read before writing.** Always read existing files in a topic folder before editing. Never blindly overwrite.
@@ -24,7 +24,7 @@ A Markdown knowledge base stored under `./docs/`. Each topic has its own folder 
 6. **Label perspectives** where they differ: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
 7. **Update the index.** After creating or significantly updating a topic, update `./docs/README.md` with the topic name, description, maturity level, and date.
 
-### File structure
+## File Structure
 
 ```text
 ./docs/{topic-title}/
@@ -35,13 +35,9 @@ A Markdown knowledge base stored under `./docs/`. Each topic has its own folder 
   timeline.md           # When chronological development matters
 ```
 
-### What NOT to do
+## What NOT to Do
 
 - Don't create near-duplicate topic folders.
 - Don't overwrite existing research without reading it first.
 - Don't present one-sided conclusions on contested topics.
 - Don't omit sources for significant claims.
-
-## Deep Research
-
-This repository includes a structured deep-research pipeline defined in `CLAUDE.md` and `.claude/skills/`. That pipeline is designed for Claude Code and involves multi-phase source harvesting, dialectical analysis, and gated quality checks. You do not need to follow that pipeline — but if the user asks for "deep research" or "full analysis," point them toward running it in Claude Code where the skills are available.
