@@ -1,10 +1,10 @@
 # Claude Code Operating Manual
 
-This repository is a **knowledge base**, not a software codebase. All output is structured Markdown prose, not executable code.
+This repository is a **knowledge base**, not a software codebase. The primary output is structured Markdown prose stored under `./docs/`. When a topic involves code, algorithms, or technical implementations, include working examples directly in the Markdown documents.
 
 ## Mission
 
-Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics span engineering, mathematics, investing, politics, world events, history, and current affairs.
+Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
 
 ## Research Pipeline
 
@@ -15,7 +15,7 @@ User Request → Scope Assessment → deep-research → dialectical-analysis →
 ```
 
 - **deep-research** is always required for non-trivial topics.
-- **dialectical-analysis** is required when the topic is contested, multi-stakeholder, or politically charged.
+- **dialectical-analysis** is required when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives.
 - **perplexity-sonar-followup** is triggered only when specific gaps remain after the first two phases.
 - **research-documentation** converts validated research into the knowledge base.
 - **Self-reflection** is the final check: what surprised you, where are you least confident, what would you research next.
@@ -24,39 +24,42 @@ User Request → Scope Assessment → deep-research → dialectical-analysis →
 
 Assess topic complexity before starting. This controls research depth and prevents runaway sessions.
 
-| Tier | Complexity | Min Sources | Min Queries | Min Opposing Views | Estimated Effort |
-|------|-----------|-------------|-------------|--------------------|------------------|
+| Tier | Complexity | Min Sources | Min Queries | Min Alternative Perspectives | Estimated Effort |
+|------|-----------|-------------|-------------|------------------------------|------------------|
 | Quick | Simple factual, narrow scope | 5 | 6 | 1 | Light |
-| Standard | Moderate analysis, some debate | 12 | 14 | 3 | Medium |
+| Standard | Moderate analysis, some nuance | 12 | 14 | 3 | Medium |
 | Deep | Complex, contested, high-stakes | 20+ | 20+ | 5+ | Heavy |
 
-Default to **Standard**. Escalate to **Deep** when the topic is politically charged, scientifically contested, or has significant real-world consequences. Use **Quick** only for narrow factual lookups.
+Default to **Standard**. Escalate to **Deep** when the topic is deeply contested, has significant real-world consequences, or resists simple answers. Use **Quick** only for narrow factual lookups.
 
 ## Cognitive Mandates
 
 These govern every research task:
 
 1. **Challenge the obvious answer.** If your first instinct points to a conclusion, search for its negation.
-2. **Steelman before dismissing.** Present the strongest form of every argument, especially unpopular ones.
+2. **Steelman before dismissing.** Present the strongest form of every position, especially unpopular ones.
 3. **Name your assumptions.** Every conclusion rests on assumptions — make them visible.
 4. **Track confidence explicitly.** Use High / Medium / Low. Explain what would change each rating.
 5. **Seek the uncomfortable finding.** Zero surprises means something was missed.
-6. **Distinguish fact from interpretation.** Separate what happened from what it means.
+6. **Distinguish fact from interpretation.** Separate what is established from what is inferred.
 7. **Respect temporal context.** Ideas that seem wrong now may have been reasonable then, and vice versa.
-8. **Watch for AI-generated noise.** Evaluate whether sources are primary reporting or AI-regurgitated content. Prefer original journalism, data, and primary documents.
+8. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
+9. **Reason from first principles.** Decompose complex topics into foundational components before building up to conclusions.
+10. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
+11. **Prefer mechanisms over correlations.** When possible, explain *why* something happens, not just *that* it happens.
 
 ## Perspective Labeling System
 
-Use these inline labels when documenting contested topics:
+Use these inline labels when documenting topics where perspectives differ. Not every topic requires every label — use what fits.
 
 | Label | Meaning |
 |-------|---------|
-| `[CONSENSUS]` | Widely agreed upon by credible experts |
-| `[MAJORITY VIEW]` | Held by most experts but with notable dissent |
-| `[CONTESTED]` | Actively debated with strong arguments on multiple sides |
+| `[CONSENSUS]` | Widely agreed upon by credible sources in the relevant field |
+| `[MAJORITY VIEW]` | Held by most qualified voices but with notable dissent |
+| `[CONTESTED]` | Actively debated with strong reasoning on multiple sides |
 | `[MINORITY VIEW]` | Held by a credible minority; not fringe |
 | `[HETERODOX]` | Outside mainstream but intellectually serious |
-| `[DISPUTED]` | Specific factual claims under active dispute |
+| `[DISPUTED]` | Specific claims under active dispute |
 | `[EVOLVING]` | Understanding is actively changing |
 | `[LOW CONFIDENCE]` | Insufficient evidence for strong conclusions |
 
@@ -94,11 +97,12 @@ Always read existing topic files before writing. Merge new findings with existin
 ## Documentation Standards
 
 1. **Citations required.** Link to original sources for key claims. Inline format: `[Title - Author/Org, Date](URL)`.
-2. **Perspective coverage.** Include multiple viewpoints for contested topics. Label each clearly.
+2. **Perspective coverage.** When multiple viewpoints exist, present and label them. Not every topic is contested — for settled or technical topics, focus on completeness and accuracy instead.
 3. **Uncertainty handling.** Mark uncertain, disputed, or evolving claims explicitly.
 4. **Subtopic extraction.** If a section exceeds ~500 words of dense material, split it into its own file and link from `intro.md`.
 5. **Contradiction preservation.** When sources disagree, document both positions with their best evidence.
 6. **Assumption visibility.** State key assumptions underlying major conclusions.
+7. **Adaptive structure.** Let the topic dictate the document shape. A technical tutorial, a policy analysis, and a historical overview each need different section structures. Use the intro skeleton as a starting point, not a rigid template.
 
 ## Cross-Referencing
 
@@ -143,12 +147,12 @@ Research can be extensive. To avoid losing work:
 Before finishing any research update, verify:
 
 - [ ] Topic folder is correctly placed under `./docs/`
-- [ ] `intro.md` is coherent, comprehensive, and multi-perspective
+- [ ] `intro.md` is coherent, comprehensive, and structured appropriately for the topic
 - [ ] Complex sections have dedicated subtopic files
 - [ ] Citations are present for key claims
 - [ ] Existing content was preserved or thoughtfully merged
-- [ ] Multiple perspectives are represented and steelmanned
+- [ ] Alternative perspectives, approaches, or trade-offs are represented where they exist
 - [ ] Confidence ratings are assigned to major findings
-- [ ] At least one finding challenges the default narrative
+- [ ] At least one finding challenges or complicates the obvious answer
 - [ ] Cross-references to related topics are included
 - [ ] `docs/README.md` index is updated

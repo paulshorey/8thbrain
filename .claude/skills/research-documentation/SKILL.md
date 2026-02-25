@@ -44,21 +44,26 @@ If topic files exist:
 
 ### Phase 3 — Write intro.md
 
-Write or update `./docs/{topic_title}/intro.md` with:
+Write or update `./docs/{topic_title}/intro.md`. The structure should fit the topic — choose and adapt sections from the building blocks below rather than mechanically including all of them:
 
-1. **Topic overview** — what this is and why it matters
-2. **Core concepts** — foundational ideas needed to understand the topic
-3. **Major perspectives** — clearly labeled with `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
-4. **Key developments** — what happened and when
-5. **Open questions** — what we don't know, with confidence ratings
-6. **Strongest counterarguments** — steelmanned challenges to the dominant narrative
-7. **Subtopic index** — links to deeper files
-8. **Related topics** — cross-references to other `./docs/` topics
-9. **Sources** — linked references for major claims
+**Building blocks** (select and order based on what serves the topic):
+
+- **Topic overview** — what this is and why it matters
+- **Core concepts / foundations** — key ideas or mechanisms needed to understand the topic
+- **How it works** — technical detail, algorithms, processes, or implementations (include code when relevant)
+- **Major perspectives or approaches** — labeled with `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc. where applicable
+- **Key developments or timeline** — what happened and when, or how understanding has evolved
+- **Trade-offs and limitations** — what the main approaches sacrifice, where they break down
+- **Open questions** — what remains uncertain, with confidence ratings
+- **Strongest challenges** — the best arguments against the dominant position or approach
+- **Practical applications** — how this is used in practice, real-world examples
+- **Subtopic index** — links to deeper files
+- **Related topics** — cross-references to other `./docs/` topics
+- **Sources** — linked references for major claims
 
 The intro must be understandable standalone.
 
-**Gate:** `intro.md` is comprehensive, multi-perspective, and cross-linked.
+**Gate:** `intro.md` is comprehensive, appropriately structured, and cross-linked.
 
 ### Phase 4 — Subtopic Decomposition
 
@@ -66,21 +71,21 @@ Create `./docs/{topic_title}/{sub_topic}.md` files when a section is:
 
 - Complex enough to exceed concise intro treatment (~500+ words of dense material)
 - Likely to be updated independently
-- A site of significant disagreement deserving full treatment
+- A site of significant disagreement or nuance deserving full treatment
 
-Each subtopic file includes: focused explanation, perspective differences with labels, confidence ratings, and citations.
+Each subtopic file includes: focused explanation, perspective differences with labels (where relevant), confidence ratings, and citations.
 
 **Gate:** Complex areas are split into dedicated files.
 
-### Phase 5 — Disagreement Documentation
+### Phase 5 — Disagreement / Trade-off Documentation
 
-When a topic has substantial debates, create `./docs/{topic_title}/disagreements.md`:
+When a topic has substantial debates or design trade-offs, create `./docs/{topic_title}/disagreements.md`:
 
-1. **Disagreement inventory** — list of contested claims
-2. For each: claim under dispute, Position A (steelmanned + evidence), Position B (steelmanned + evidence), additional positions if relevant, what evidence would resolve it, who holds each position and why
+1. **Inventory** — list of contested claims or competing approaches
+2. For each: the question at issue, Position A (steelmanned + evidence), Position B (steelmanned + evidence), additional positions if relevant, what evidence or outcome would resolve it, who holds each position and why
 3. **Meta-observations** — patterns in what is disputed and why
 
-**Gate:** Disagreements documented fairly with steelmanned positions.
+**Gate:** Disagreements and trade-offs documented fairly with steelmanned positions.
 
 ### Phase 6 — Citation and Confidence Integrity
 
@@ -105,12 +110,12 @@ Update `./docs/README.md` with:
 
 ### Phase 8 — Self-Reflection
 
-Before finalizing, write a brief reflection (can be a comment block at the bottom of `intro.md` or a separate note):
+Before finalizing, write a brief reflection (can be a section at the bottom of `intro.md` or a separate note):
 
 1. **What surprised me** — findings that contradicted initial expectations
 2. **Where I'm least confident** — claims that feel weakest and why
 3. **What I'd research next** — promising threads that weren't fully explored
-4. **Blind spots I suspect** — perspectives or source types that may be underrepresented
+4. **Blind spots I suspect** — perspectives, source types, or framings that may be underrepresented
 
 This reflection serves as a roadmap for future research sessions on the topic.
 
@@ -127,46 +132,14 @@ Before saving:
 
 **Gate:** Topic files updated without losing valuable prior knowledge.
 
-## Intro Skeleton
-
-```markdown
-# {Topic Title}
-
-## Why this topic matters
-
-## Core concepts
-
-## Major perspectives
-
-### [CONSENSUS] Mainstream view
-### [CONTESTED] Key debate areas
-### [MINORITY VIEW] Notable dissenting positions
-
-## Key developments and timeline
-
-## Open questions and uncertainties
-
-## Strongest counterarguments to the dominant narrative
-
-## Subtopics
-- [Subtopic A](./subtopic-a.md)
-- [Subtopic B](./subtopic-b.md)
-
-## Related Topics
-- [Related Topic](../related-topic/intro.md) — connection description
-
-## Sources and citations
-
-## Research Reflection
-<!-- What surprised me, where I'm least confident, what I'd explore next -->
-```
-
 ## Anti-Patterns
 
 - Writing without reading existing files first
 - Dumping all detail into intro instead of splitting subtopics
 - One-sided conclusions on contested topics
 - Omitting source links
-- Treating all perspectives as equally valid regardless of evidence
+- Treating all positions as equally valid regardless of evidence
 - Overwriting previous research without merge consideration
 - Omitting confidence ratings
+- Forcing a debate structure onto non-contested topics
+- Forcing a tutorial structure onto contested topics

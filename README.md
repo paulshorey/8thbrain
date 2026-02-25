@@ -1,18 +1,19 @@
 # Knowledge Base
 
-A Markdown-first knowledge base managed through **Claude Code**. Designed for continuous, deep, multi-perspective research across engineering, mathematics, investing, politics, world events, history, and current affairs.
+A Markdown-first knowledge base managed through **Claude Code**. Designed for continuous, deep, multi-perspective research on any topic — from technical implementations to historical analysis to scientific inquiry.
 
 ## What Makes This Different
 
-This system fights the most common failure mode of AI-assisted research: **confirmation bias and premature closure.** It enforces:
+This system fights the most common failure modes of AI-assisted research: **confirmation bias, shallow coverage, and premature closure.** It enforces:
 
-- **Adversarial search** — deliberately hunting for contradictions and opposing evidence
-- **Steelmanning** — presenting every viewpoint in its strongest form
+- **Broad search** — deliberately seeking contradictions, alternative approaches, and overlooked evidence
+- **Steelmanning** — presenting every position in its strongest form
 - **Assumption extraction** — making hidden premises visible and testable
 - **Perspective labeling** — marking claims as `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
 - **Confidence ratings** — explicit High / Medium / Low on major claims
-- **Dialectical analysis** — a dedicated skill for systematic contradiction-finding
+- **Dialectical analysis** — a dedicated skill for systematic challenge of findings
 - **Self-reflection** — documenting surprises, weaknesses, and future research directions
+- **Adaptive structure** — document shape follows the topic, not a rigid template
 
 ## Repository Structure
 
@@ -45,11 +46,11 @@ User Request
 └────────┬─────────┘
          ▼
 ┌──────────────────┐
-│  deep-research    │  14-20+ queries, 4+ source classes, saturation gates
+│  deep-research    │  Broad multi-perspective source harvesting with saturation gates
 └────────┬─────────┘
          ▼
 ┌──────────────────────┐
-│ dialectical-analysis  │  Assumption extraction, inversion search, paradigm discovery
+│ dialectical-analysis  │  Assumption extraction, challenge search, alternative framings
 └────────┬─────────────┘
          ▼
 ┌────────────────────────────┐

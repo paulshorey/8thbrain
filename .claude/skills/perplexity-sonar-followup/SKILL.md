@@ -1,6 +1,6 @@
 ---
 name: perplexity-sonar-followup
-description: Use Perplexity API MCP tools as a second-pass research accelerator when deep-research coverage is insufficient, stale, low-diversity, or missing strong opposing viewpoints.
+description: Use Perplexity API MCP tools as a second-pass research accelerator when deep-research coverage is insufficient, stale, low-diversity, or missing important perspectives.
 allowed-tools:
   - WebSearch
   - Read
@@ -18,8 +18,8 @@ Use Perplexity MCP tools to close specific research gaps identified after deep-r
 ## When to Use
 
 - Deep research did not reach saturation on key claims.
-- Perspective coverage lacks informed counterarguments.
-- Topic is rapidly changing and needs a current-events refresh.
+- Perspective coverage is missing important alternatives or challenges.
+- Topic is rapidly changing and needs a freshness refresh.
 - Core claims still have low confidence.
 
 ## When NOT to Use
@@ -35,9 +35,9 @@ Use Perplexity MCP tools to close specific research gaps identified after deep-r
 From the deep-research bundle, list concrete gaps:
 
 - Missing source classes
-- Weak disagreement coverage
+- Weak coverage of alternative perspectives or trade-offs
 - Stale timestamps on key claims
-- Unresolved contradictions
+- Unresolved contradictions or open questions
 
 Convert each gap into an explicit follow-up question.
 

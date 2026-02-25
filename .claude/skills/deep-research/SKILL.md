@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: Perform exhaustive multi-perspective research before writing. Use for any request needing external knowledge, current events, technical background, policy context, historical framing, investment analysis, mathematical references, or evidence-backed synthesis.
+description: Perform exhaustive multi-perspective research before writing. Use for any request needing external knowledge, evidence-backed analysis, technical depth, or synthesis across sources.
 allowed-tools:
   - WebSearch
   - Read
@@ -17,8 +17,8 @@ Disciplined research process prioritizing completeness, perspective diversity, a
 
 ## When to Use
 
-- User asks for analysis, explanation, comparison, recommendation, or forecast.
-- The answer depends on facts that may be recent, disputed, or context-sensitive.
+- User asks for analysis, explanation, comparison, recommendation, or in-depth coverage of any topic.
+- The answer depends on facts that may be recent, disputed, nuanced, or context-sensitive.
 - User asks for "deep research", "sources", "citations", "evidence", or "all perspectives".
 
 ## When NOT to Use
@@ -31,7 +31,7 @@ Disciplined research process prioritizing completeness, perspective diversity, a
 ### Phase 1 — Define Research Contract
 
 1. Restate the objective in one sentence.
-2. Define scope: time horizon, geography, audience, acceptable confidence level.
+2. Define scope: time horizon, domain boundaries, audience, acceptable confidence level.
 3. **Assess scope tier** (Quick / Standard / Deep per `CLAUDE.md`). This determines minimum source counts and query depth.
 4. Generate a topic slug for `./docs/`.
 5. Create a tracking checklist with `TodoWrite`.
@@ -46,83 +46,92 @@ Create a query lattice scaled to the scope tier. For Standard/Deep, use at least
 | Framing Type | Example Pattern |
 |-------------|----------------|
 | Direct | User's own wording |
-| Terminology variants | Synonyms, domain jargon |
-| Causal | "why/how did X happen" |
-| Comparative | "X vs Y" |
-| Contrarian | "criticisms of X", "why X is wrong" |
-| Regional | Country/region-specific angles |
-| Temporal | Historical background, latest developments |
-| Stakeholder | Investor, regulator, engineer, policymaker, consumer, worker perspectives |
-| Adversarial | "who benefits from X", "hidden costs of X" |
-| Alternative-paradigm | "alternatives to X", "what if X is the wrong question" |
+| Terminology variants | Synonyms, alternative names, domain jargon |
+| Causal / mechanistic | "why does X happen", "how does X work" |
+| Comparative | "X vs Y", "X compared to Y" |
+| Critical | "problems with X", "limitations of X", "why X fails" |
+| Contextual | Region-specific, field-specific, or era-specific angles |
+| Temporal | Historical background, latest developments, trend over time |
+| Stakeholder / role | How different groups (users, builders, critics, beneficiaries) see X |
+| Adversarial | "who benefits from X", "hidden costs of X", "X trade-offs" |
+| Alternative-paradigm | "alternatives to X", "what if X is the wrong approach" |
 | Failure-mode | "what went wrong with X", "unintended consequences" |
-| Meta-analytical | "meta-analysis of X", "replication crisis in X" |
+| Synthesis | "meta-analysis of X", "systematic review of X", "state of the art in X" |
 
-At least **one-third of queries must be intentionally non-obvious or adversarial.**
+At least **one-third of queries should probe weaknesses, alternatives, or non-obvious angles.**
 
-**Gate:** Query lattice covers broad, contrarian, and domain-specific variants.
+**Gate:** Query lattice covers broad, critical, and domain-appropriate variants.
 
 ### Phase 3 — Source Harvesting
 
-Collect sources across multiple classes:
+Collect sources across multiple classes. Which classes matter most depends on the topic — choose what fits:
 
-1. **Primary** — official reports, filings, standards, datasets, raw data
-2. **Academic/technical** — peer-reviewed papers, preprints, technical standards
-3. **Quality journalism** — investigative reporting, detailed long-form features
-4. **Practitioner/institutional** — professional organizations, industry reports
-5. **Critical/dissenting** — known critics, contrarian analysts, whistleblower accounts
-6. **Historical/archival** — how similar situations played out before
+1. **Primary** — original research, official documents, specifications, datasets, raw data, source code
+2. **Academic / technical** — peer-reviewed papers, preprints, technical standards, documentation
+3. **Long-form analysis** — investigative reporting, detailed features, expert commentary
+4. **Practitioner / institutional** — professional organizations, industry reports, conference talks
+5. **Critical / dissenting** — known critics, alternative approaches, documented failures
+6. **Historical / archival** — how similar problems were approached or resolved before
+7. **Community / applied** — forums, open-source projects, case studies, real-world usage reports
 
-Target at least **4 distinct source classes** per the scope tier.
+Target at least **4 distinct source classes** per the scope tier. Let the topic dictate which classes are most relevant.
 
 **Freshness check:** For each source, note the publication date. Flag anything older than 2 years on fast-moving topics. Watch for AI-generated content masquerading as primary sources.
 
 **Gate:** Multi-class source set exists, deduplicated, with dates noted.
 
-### Phase 4 — Perspective Mapping and Disagreement
+### Phase 4 — Perspective Mapping
 
-Build a perspective matrix:
+Build a perspective map appropriate to the topic. The goal is to capture the full landscape of credible thought, not to force debate where none exists.
+
+For **contested topics**, map:
 
 | Perspective | Description | Min Sources |
 |------------|-------------|-------------|
-| Supporting case | Best evidence for mainstream view | 3 |
+| Supporting case | Best evidence for the dominant position | 3 |
 | Critical case | Strongest arguments against it | 3 |
-| Nuanced/conditional | "It depends" positions | 2 |
-| Outlier/minority | Unconventional but non-trivial | 1 |
-| Historical parallel | How similar situations resolved | 1 |
-| Dissenting stakeholder | A party with skin in the game who disagrees | 1 |
+| Conditional / nuanced | "It depends" positions | 2 |
+| Outlier / minority | Unconventional but non-trivial | 1 |
+| Historical precedent | How similar situations resolved | 1 |
 
-**Dialectical stress test** (must all pass before proceeding):
+For **technical topics**, map:
 
-- [ ] Can you articulate the strongest opposing argument as its proponent would?
-- [ ] Have you found at least one credible source disagreeing with your emerging conclusion?
-- [ ] Have you found evidence of past predictions on this topic that turned out wrong?
+| Perspective | Description | Min Sources |
+|------------|-------------|-------------|
+| Standard approach | The established way to do it | 3 |
+| Alternative approaches | Credible alternatives with different trade-offs | 2 |
+| Known limitations | Where the standard approach breaks down | 2 |
+| Emerging developments | What's changing or improving | 1 |
+
+**Stress test** (must all pass before proceeding):
+
+- [ ] Can you articulate the strongest alternative position as its advocate would?
+- [ ] Have you found at least one credible source that challenges your emerging conclusion?
 - [ ] Have you identified which assumptions, if changed, would reverse the conclusion?
 
-**Gate:** Core claims have explicit supporting and opposing evidence.
+**Gate:** Core claims have explicit supporting and challenging evidence.
 
-### Phase 5 — Quality Scoring
+### Phase 5 — Quality Assessment
 
-Score each source:
+Assess source reliability:
 
-- **A:** Primary, rigorous, transparent methodology
-- **B:** Credible secondary with clear sourcing
-- **C:** Weak, opinionated, low transparency
-- **D:** Misleading, retracted, or discredited (document why)
+- **Strong:** Primary source, rigorous methodology, transparent reasoning
+- **Moderate:** Credible secondary source with clear sourcing
+- **Weak:** Opinionated, low transparency, or poorly sourced (document why it's still included)
 
-**Saturation check:** If the last two search passes produce less than 10% net-new insights, saturation is near. If no contradictions have been found, perform one more targeted adversarial search before accepting saturation.
+**Saturation check:** If the last two search passes produce less than 10% net-new insights, saturation is near. If no challenges to the main findings have emerged, perform one more targeted critical search before accepting saturation.
 
-**Gate:** Sources are quality-ranked and saturation trend is known.
+**Gate:** Sources are assessed and saturation trend is known.
 
 ### Phase 6 — Exhaustiveness Gate
 
 Do not proceed unless **all** are true:
 
 - [ ] At least 4 source classes represented
-- [ ] At least 3 opposing perspectives documented with steelmanned arguments
-- [ ] Major claims cite A or B sources
+- [ ] Alternative perspectives documented where they exist
+- [ ] Major claims cite strong or moderate sources
 - [ ] Key uncertainties are named with resolution conditions
-- [ ] At least one "uncomfortable finding" that challenges the obvious narrative
+- [ ] At least one finding that challenges or complicates the obvious answer
 - [ ] Alternative framings of the core question have been explored
 - [ ] Saturation reached or limitations documented
 
@@ -133,10 +142,10 @@ If gate fails, return to Phase 2 with targeted gap-filling queries.
 Produce a research context bundle containing:
 
 - Scope statement and tier
-- Source table (title, author/org, date, URL, class, quality tier)
+- Source table (title, author/org, date, URL, class, quality assessment)
 - Claim-to-source mapping
-- Perspective matrix with strength ratings
-- Disagreement map (which claims are contested, by whom, how strongly)
+- Perspective map with strength ratings
+- Disagreement or trade-off map (which claims are contested, by whom, how strongly)
 - Assumption sensitivity analysis (which assumptions matter most)
 - Unresolved questions
 - Confidence assessment per major finding (High / Medium / Low with rationale)
@@ -151,10 +160,10 @@ Escalate to `perplexity-sonar-followup` when:
 
 - Source diversity is weak (fewer than 4 classes)
 - Confidence remains low despite research effort
-- Current-events coverage is stale or fragmented
-- Topic is fast-moving or highly contested
-- Opposing perspectives are poorly sourced
-- Research feels "too clean" — no real disagreements found
+- Coverage is stale or fragmented on time-sensitive topics
+- The topic is fast-moving or highly contested
+- Alternative perspectives are poorly sourced
+- Research feels "too clean" — no real disagreements or trade-offs found
 
 Otherwise, proceed to `dialectical-analysis` (if warranted by topic complexity) or directly to `research-documentation`.
 
@@ -164,6 +173,7 @@ Otherwise, proceed to `dialectical-analysis` (if warranted by topic complexity) 
 - Searching only one framing of the question
 - Writing conclusions before saturation checks pass
 - Confirmation bias — only finding evidence for the emerging narrative
-- False balance — treating fringe views as equal to well-evidenced consensus
-- Recency bias — ignoring historical context
-- Premature closure — settling on an answer before adversarial search completes
+- False balance — treating fringe claims as equal to well-evidenced findings
+- Recency bias — ignoring historical context and established foundations
+- Premature closure — settling on an answer before critical search completes
+- Domain tunnel vision — ignoring relevant insights from adjacent fields
