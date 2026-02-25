@@ -1,11 +1,23 @@
 # Research Subagents
 
-**For agents:** This index lists subagents. Full instructions are in each folder's `AGENT.md`. The orchestrator (ORCHESTRATOR.md) launches and combines them.
+This file is an index and quick reference. Operational instructions live in each subagent's `AGENT.md`.
 
-| Subagent | Purpose | Min Queries (Standard tier) | Config |
-|----------|---------|----------------------------|--------|
-| deeper-research | WebSearch, term variations, exhaustive harvesting | 20+ | none |
-| perplexity-deep-research | Perplexity MCP Sonar | 8+ | PERPLEXITY_API_KEY, MCP |
-| gemini-deep-research | Gemini Deep Research 100+ sources | via Gemini | GEMINI_API_KEY, MCP or API |
+## Role in Workflow
 
-Launch all three in parallel. Pass topic slug, tier, and tier's min sources/queries. On failure or timeout, ignore and continue with others.
+The orchestrator (`../ORCHESTRATOR.md`) launches all research subagents in parallel for research-intent requests, then combines their bundles.
+
+## Subagent Catalog
+
+| Subagent | Primary role | Typical strength | Config |
+|---|---|---|---|
+| `deeper-research` | Broad web harvesting with query variation | Coverage breadth and edge cases | none |
+| `perplexity-deep-research` | Perplexity-powered research synthesis | Fast synthesis with linked citations | Perplexity MCP/API |
+| `gemini-deep-research` | Gemini deep research runs | Large-source autonomous scans | Gemini MCP/API |
+
+## Parallel Launch Rule
+
+Launch all available subagents in parallel with the same input contract (topic, tier, targets, topic type). Do not serialize worker starts.
+
+## Failure Rule
+
+If one subagent fails, continue with remaining bundles. Never block the whole run on a single provider.

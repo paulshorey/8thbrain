@@ -13,61 +13,71 @@ allowed-tools:
 
 # Dialectical Analysis
 
-**Goal:** Stress-test research findings. Surface credible contradictions, hidden assumptions, and alternative framings. Aim for intellectual honesty about credible thought — not balance for its own sake, not contrarianism.
+Goal: stress-test findings only when disagreement analysis is genuinely useful.
 
-**Execute phases 1–5 in order. Do not skip phases.** Phase is complete when the gate artifact exists.
+Do not run this skill by default for every topic.
 
 ## Run When
 
-- Topic has genuine disagreement, competing approaches with real trade-offs.
-- Hidden assumptions worth examining.
-- User requested ("find contradictions", "devil's advocate").
+- Topic has meaningful disagreement or competing approaches.
+- Major conclusions depend on assumptions that could plausibly fail.
+- User explicitly asks for counterarguments, contradictions, or trade-off analysis.
 
-## Do NOT Run When
+## Skip When
 
-- Topic is purely factual, reference-oriented, or tutorial-style.
-- Subagent research found broad agreement.
-- Research is incomplete or uncited.
-- User wants summary or tutorial only.
+- Topic is mostly factual/reference/tutorial with broad agreement.
+- User wants straightforward factual or technical documentation only.
+- Upstream research is incomplete or poorly sourced.
 
-## Phase 1 — Assumption Extraction
+## Inputs
 
-**Do:** List every implicit and explicit assumption underlying conclusions. For each: Is it universal or context-dependent? Who would reject it and why? What changes if it is false? Categorize: structural, normative, empirical, temporal, methodological.
+Use the orchestrator's unified research context:
 
-**Gate:** Produce an assumption inventory with vulnerability ratings. Phase complete when this artifact exists.
+- claim-to-source map
+- key conclusions
+- confidence notes
+- unresolved questions
 
-## Phase 2 — Challenge Search
+## Procedure
 
-**Do:** For each major conclusion: negate and search ("X is effective" → "X failures", "X limitations"); find strongest credible critic; find historical reversals; find conditional inversions.
+### 1) Assumption Inventory
 
-**Scale:** Deeply contested topics: 8+ searches. Mildly nuanced: 3–4.
+List major assumptions behind each key conclusion. Tag each assumption type (empirical, methodological, structural, temporal, normative).
 
-**Gate:** Every conclusion tested against credible alternatives. Phase complete when documented.
+### 2) Strong Challenge Pass
 
-## Phase 3 — Alternative Framing
+For each major conclusion, find strongest credible opposing evidence or limiting case. Prefer high-quality critiques over weak objections.
 
-**Do:** Reframe the question. Try: cross-disciplinary lens, contextual reframing (settings, cultures, use cases), temporal reframing, scale reframing. Contested topics: 4+ explorations, 2+ genuinely different framings.
+### 3) Alternative Framing
 
-**Gate:** Alternative framings documented. Phase complete when recorded.
+Reframe the problem from at least one substantially different lens (for example scale, stakeholder, timeline, or mechanism).
 
-## Phase 4 — Disagreement Map
+### 4) Disagreement Map
 
-**Do:** For each position: Position Holder, Position, Best Argument, Best Evidence, What Would Change This Position. Present strongest argument (not weakest). Note absent perspectives.
+When multiple positions exist, capture:
 
-**Gate:** Disagreements mapped with specific reasoning. Phase complete when map exists.
+- position statement
+- strongest supporting evidence
+- strongest counter-evidence
+- what evidence would change the conclusion
 
-## Phase 5 — Contradiction Synthesis
+### 5) Synthesis Output
 
-**Do:** Produce output with: Confirmed Contradictions, Hidden Assumptions, Alternative Frameworks, Conditional Claims, Unknown Unknowns, Strongest Challenge. Save to disk. Feeds into research-documentation.
+Return a concise artifact for documentation with:
 
-## Query Patterns
+- tested assumptions
+- strongest challenges
+- conditional claims (what is true under which conditions)
+- unresolved disputes
 
-- Direct challenge: "criticism of [X]", "problems with [X]", "limitations of [X]"
-- Assumption: "[X] assumes", "[X] myth", "rethinking [X]"
-- Alternatives: "alternative to [X]", "instead of [X]", "beyond [X]"
-- Failure: "[X] failed", "unintended consequences [X]"
-- Who disagrees: "[X] critics", "[X] skeptics", "[X] controversy"
+## Output Requirements
+
+- Preserve evidence traceability (link claims back to sources).
+- Do not force "both sides" framing when evidence strongly favors one side.
+- Keep output useful for integration into final docs.
 
 ## Anti-Patterns
 
-Do NOT: manufacture controversy; fake balance (unsupported equal to evidenced); weak-manning; nihilistic relativism; contrarianism as identity; ignore base rates; domain blindness.
+- manufacturing controversy where none exists
+- weak-manning opposing views
+- treating unsupported claims as equal to evidence-backed claims

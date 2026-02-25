@@ -1,50 +1,72 @@
 # Knowledge Base
 
-Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective research on any topic.
+This repository configures Claude Code agents to build and maintain a source-backed knowledge base in `./docs/`.
+
+The default behavior is **research-first**: when a user request suggests research or evidence gathering, the main agent should run the deep research orchestrator workflow with parallel subagents.
 
 ## Repository Structure
 
 ```text
 .
-├── CLAUDE.md              # Operating manual — routing, modes, cognitive mandates (AI)
-├── AGENTS.md              # Cursor/Copilot agent orientation (AI)
+├── CLAUDE.md              # Primary operating manual (routing + standards)
+├── AGENTS.md              # Secondary orientation for AI coding agents
 ├── .claude/
-│   ├── ORCHESTRATOR.md    # Pipeline, combine procedure, subagent launch (AI)
-│   ├── subagents/         # 3 parallel research agents — README + AGENT.md per agent
-│   └── skills/            # dialectical-analysis, research-documentation — README + SKILL.md each
+│   ├── ORCHESTRATOR.md    # Main-thread orchestration workflow
+│   ├── subagents/         # Parallel research workers
+│   │   ├── README.md      # Index + guidance
+│   │   └── */AGENT.md     # Executable instructions for each subagent
+│   └── skills/
+│       ├── README.md      # Index + skill usage rules
+│       └── */SKILL.md     # Executable instructions for each skill
 └── docs/
-    ├── README.md          # Topic index (human + agent)
-    └── {topic}/
+    ├── README.md          # Topic index
+    └── ...
 ```
 
-**Note:** Files under `.claude/` serve both human orientation and AI agent instructions. For agents: `AGENT.md` and `SKILL.md` hold full procedural instructions; `README` files are indexes.
+## Which Files Are Operational vs Reference
 
-## Pipeline (Deep Research Mode)
+- `CLAUDE.md`, `.claude/ORCHESTRATOR.md`, `AGENT.md`, and `SKILL.md` are the **primary operational instruction files**.
+- `.claude/**/README.md` files are **indexes and orientation aids**. Agents can read them, but they are intentionally lighter than `AGENT.md`/`SKILL.md`.
+
+## Routing Summary
+
+### Deep Research (default for research intent)
+
+Use deep research when the request includes any of:
+
+- "research", "investigate", "analyze", "deep dive"
+- requests for many examples, evidence, citations, or source collection
+- requests for comprehensive factual coverage
+- requests for technical implementation planning that depend on external knowledge
+
+Flow:
 
 ```text
-User Request → Routing (Deep Research vs Quick-Write)
-    ↓
-Scope Assessment (tier + slug) → PARALLEL SUBAGENTS (launch all 3, ignore failures)
-    deeper-research | perplexity-deep-research | gemini-deep-research
-    ↓
-Combine bundles → dialectical-analysis (if warranted) → research-documentation → Commit
+Route to Deep Research
+  -> Scope task
+  -> Launch all research subagents in parallel
+  -> Wait for completions/timeouts
+  -> Combine and deduplicate evidence
+  -> Optional dialectical-analysis (only when meaningful disagreement exists)
+  -> Research-documentation to ./docs
 ```
 
-**Quick-Write Mode:** "add a note", "update [topic] with" — skips subagents, writes directly. See CLAUDE.md routing rules.
+### Quick-Write (narrow updates only)
 
-## Quick Start
+Use quick-write only for small edits that do not require new external research, such as:
 
-1. `claude` (CLI installed, authenticated)
-2. Optional MCPs: Perplexity (`PERPLEXITY_API_KEY`), Gemini (`GEMINI_API_KEY`)
-3. See `docs/claude-subagents-setup/` for setup.
+- "add a short note"
+- "fix wording"
+- "log this update"
 
-## Example Prompts
+## Documentation Shape
 
-- **Deep research:** *Research [topic]. Perform deep research with multiple perspectives.*
-- **Continue:** *Continue research on [topic].*
-- **Quick note:** *Add a note to [topic] about [thing].*
-- **Recall:** *Summarize what we know about [topic].*
+Documentation is **adaptive**, not rigid:
+
+- Use **one Markdown file** for simple topics.
+- Use **multiple Markdown files** for complex topics with distinct subtopics.
+- Choose structure based on topic complexity and user request style.
 
 ## References
 
-[Claude Sub-Agents](https://code.claude.com/docs/en/sub-agents) · [Perplexity MCP](https://github.com/perplexityai/modelcontextprotocol) · [Gemini Deep Research MCP](https://pypi.org/project/gemini-deep-research-mcp/)
+[Claude Code Subagents Docs](https://docs.anthropic.com/en/docs/claude-code/sub-agents) · [Claude Code Skills Docs](https://code.claude.com/docs/en/skills) · [Anthropic Multi-Agent Guidance](https://www.anthropic.com/engineering/built-multi-agent-research-system)

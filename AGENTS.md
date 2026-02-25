@@ -1,36 +1,41 @@
 # Agent Configuration
 
-**Objective:** Maintain a knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when topics involve implementations.
+Objective: maintain a source-backed knowledge base in `./docs/` for any topic type (factual, technical, or contested).
 
 ## Routing
 
-- **Deep research** (research [topic], all perspectives, full analysis) → CLAUDE.md Deep Research Mode → `.claude/ORCHESTRATOR.md` pipeline.
-- **Quick-write** (add a note, update [topic] with) → CLAUDE.md Quick-Write Mode. Skip subagents and skills.
+- If the request mentions or implies **research/evidence gathering**, run **Deep Research** via `.claude/ORCHESTRATOR.md`.
+- Use **Quick-Write** only for small edits that do not require new external research.
+- If unsure, choose Deep Research.
 
-## Repository Layout
+## Key Files
 
-- `./docs/` — Knowledge base. Topic folders: `intro.md`, optional subtopics, disagreements.md, sources.md.
-- `./docs/README.md` — Topic index. Check before creating or updating topics.
-- `.claude/ORCHESTRATOR.md` — Pipeline, combine procedure, subagent launch logic.
-- `.claude/subagents/` — Three parallel research agents. Read `AGENT.md` in each folder.
-- `.claude/skills/` — dialectical-analysis, research-documentation. Read `SKILL.md` in each folder.
-- `CLAUDE.md` — Full operating manual. Cognitive mandates, quality checklist, scope tiers.
+- `CLAUDE.md` — primary operating manual
+- `.claude/ORCHESTRATOR.md` — orchestrator workflow (main context thread)
+- `.claude/subagents/*/AGENT.md` — parallel research worker instructions
+- `.claude/skills/*/SKILL.md` — post-research skills
+- `docs/README.md` — topic index
 
-## Procedures
+## Working Rules
 
-**Read existing topics:** Check `./docs/README.md` for index. Topic entry: `./docs/{topic-title}/intro.md`.
+1. Read `docs/README.md` before creating new topics.
+2. Merge into existing topic material when appropriate.
+3. Read existing topic files before editing.
+4. Cite major claims and track confidence levels.
+5. Update `docs/README.md` when you create or significantly expand topics.
 
-**Add or update content:**
-1. Read `./docs/README.md`. Search for similar folder names. Merge into existing topics when possible.
-2. Read all existing files in the target topic folder before writing. Never overwrite blindly.
-3. Use kebab-case for folder and file names.
-4. Cite sources: `[Title - Author/Org, Date](URL)`.
-5. Assign confidence ratings: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
-6. Label perspectives: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
-7. Update `./docs/README.md` with topic name, description, maturity, date.
+## Documentation Shape
 
-**File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
+Use adaptive structure:
 
-## Prohibited
+- one markdown file for simple topics
+- multiple files for complex topics or independent subtopics
 
-Near-duplicate topic folders. Overwriting without reading. One-sided conclusions on contested topics. Omitting sources for significant claims.
+Do not force a fixed template.
+
+## Avoid
+
+- creating near-duplicate topics
+- overwriting existing content without reading it
+- forcing controversy framing onto non-contested topics
+- omitting sources for consequential claims
