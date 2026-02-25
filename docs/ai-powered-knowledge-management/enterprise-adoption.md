@@ -2,97 +2,111 @@
 
 ## Overview
 
-Enterprise adoption of AI-powered knowledge management is in a transitional phase. Organizations are moving from early GenAI pilots — many of which failed to scale — toward more mature "knowledge-first" architectures that treat structured knowledge as a prerequisite for effective AI deployment, not an afterthought.
+Enterprise adoption of AI-KM is accelerating rapidly by spending metrics, but the gap between investment and demonstrated value remains wide. Organizations are shifting from "data-first" to "knowledge-first" architectures after many early GenAI pilots failed to scale. The pattern mirrors previous KM adoption cycles, with some genuinely new elements.
 
-## Market Context
+## Market Size and Growth
 
-**[HIGH CONFIDENCE]** The AI KM market is growing rapidly:
+**[HIGH CONFIDENCE on spending figures; LOW CONFIDENCE on value projections]**
 
-- Market grew from $5.23B (2024) to $7.71B (2025) at 47.2% CAGR
-- Projections: $35.83B by 2029, potentially $251.2B by 2034
-- Long-term forecasts: $6.7B (2023) to $62.4B (2033) at 25% CAGR
+| Metric | Value | Source |
+|--------|-------|--------|
+| AI-KM market (2025) | $7.71B | DMG Consulting |
+| KM software market (2025) | ~$17.3B | Mordor Intelligence |
+| Overall KM market (2025) | ~$780B+ | Global Growth Insights |
+| AI-KM growth rate | 47.2% CAGR | DMG Consulting |
+| KM software growth rate | 13.2% CAGR | Mordor Intelligence |
+| Projected AI-KM market (2029) | $35.83B | DMG Consulting |
 
-([DMG Consulting](https://www.dmgconsult.com/reports/2025-2026-knowledge-management-for-the-ai-enabled-enterprise/); [Denser AI](https://denser.ai/blog/ai-knowledge-management/); [Glitter AI](https://www.glitter.io/blog/knowledge-sharing/ai-knowledge-management))
+Market projections vary wildly -- some sources project $62.4B, others $251.2B by different target years. This dispersion reflects genuine uncertainty about market boundaries and definitions, not just optimism.
 
-## The 2026 Shift: "Data-First" to "Knowledge-First"
+**58% of vendors have introduced AI-based enhancements.** Asia-Pacific is the fastest-growing region; North America holds 35-38% of global revenue.
 
-**[MEDIUM CONFIDENCE]** The 2026 State of KM & AI Report identifies a fundamental reorientation: enterprises are moving from prioritizing raw data and compute power to prioritizing context and meaningful knowledge models ([KMWorld 2026](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm)).
+## Reported Benefits
 
-This shift reflects hard lessons from 2024-2025, when many organizations discovered that AI tools perform poorly without properly prepared knowledge foundations. The insight: AI cannot fix broken knowledge management — it amplifies whatever state knowledge is in, whether organized or chaotic.
+**[MEDIUM CONFIDENCE -- mostly vendor/consulting-sourced data]**
 
-## Quantified Business Impact
+| Benefit | Reported Improvement | Source |
+|---------|---------------------|--------|
+| Search time | -35% | KMWorld 2026 |
+| Onboarding speed | +50% faster | KMWorld 2026 |
+| Error rates | -40% | KMWorld 2026 |
+| Innovation rates | +20% | KMWorld 2026 |
+| Decision quality | +73% (of advanced KM orgs) | TSIA |
+| Retrieval speed | +48% with AI | Fact.MR |
+| Knowledge worker search time | 0.7 hrs/week vs 8.2 hrs | Glean |
 
-Reported benefits from organizations with mature AI KM implementations ([MAIA Guide](https://docs.getmaia.ai/help/articles/4145956-the-business-impact-of-ai-knowledge-management-an-implementation-guide)):
+**Critical caveat:** Most of these figures come from vendor-affiliated or industry reports. Independent academic validation of enterprise AI-KM ROI is sparse. The selection bias is strong -- organizations that report results are disproportionately successful ones.
 
-| Metric | Improvement |
-|--------|-------------|
-| Daily information search time | Reduced up to 35% |
-| Employee onboarding speed | 50% faster |
-| Decision quality | 73% of companies report improvement |
-| Error rates | Decreased up to 40% |
-| Innovation rates | 20% higher |
-| Product development cycles | 30% shorter |
-| Critical knowledge retention (vs. turnover) | Up to 80% preserved |
-| Duplicate work | Reduced 25% |
-| Training costs | Reduced 30% |
+## Failure Rates and Reality Check
 
-**Caveat:** These figures come primarily from vendor and consulting reports. Independent academic validation of enterprise KM ROI claims remains sparse. The figures should be treated as indicative rather than definitive.
+**[HIGH CONFIDENCE]**
 
-## Key Adoption Challenges
+- 95% of AI pilots fail to deliver measurable business impact despite $644B in enterprise GenAI spending ([MIT Sloan](https://mitsmr.com/4qcrj9F))
+- 68% of enterprise data remains unanalyzed and inaccessible to AI queries ([IBM](https://elium.com/blog/why-ai-projects-fail-knowledge-foundation/))
+- 98% of senior leaders encountered AI-related data quality issues
+- Gartner predicted 30% of GenAI initiatives would be abandoned after proof of concept by end of 2025
 
-### Prerequisite: KM Maturity
+### Root Causes of Failure
 
-**[HIGH CONFIDENCE]** A strong correlation exists between KM program maturity and successful AI deployment. Organizations need robust processes for knowledge capture, curation, and governance *before* AI can add value. Culture, people, and process foundations are more important than technology selection ([TSIA Report](https://portal.tsia.com/portal/report/abridged/5CAfRyYqf39BVZgwirHuHt/the-state-of-knowledge-management-in-the-age-of-ai)).
+**[HIGH CONFIDENCE]** The root causes are organizational, not technological:
 
-### Content Quality Problem
+1. **Knowledge infrastructure debt**: Organizations lack the foundational knowledge organization that AI requires. "AI-KM fails because organizations lack the foundational knowledge infrastructure AI requires -- the technology is solving the easy part while ignoring the hard part" ([Elium, 2026](https://elium.com/blog/why-ai-projects-fail-knowledge-foundation/))
+2. **Data quality**: Garbage in, garbage out. Messy, contradictory, outdated content degrades AI outputs
+3. **Cultural barriers**: Knowledge hoarding, siloed teams, lack of incentive to contribute
+4. **Unrealistic expectations**: Executives expect plug-and-play intelligence; reality requires sustained organizational change
+5. **Maintenance neglect**: Pilot enthusiasm fades; no one owns ongoing curation
 
-47% of employees don't use their company's knowledge base due to disorganized content, poor search functionality, and context switching ([Slack](https://slack.com/blog/productivity/what-is-an-ai-knowledge-base-tools-features-and-best-practices)). Adding AI on top of poor-quality content amplifies problems rather than solving them.
+### The Maturity Prerequisite
 
-### Knowledge Turnover Cost
+**[MEDIUM CONFIDENCE]** KM maturity is a prerequisite -- organizations with poor knowledge practices before AI continue to struggle after adding it. AI amplifies existing organizational capabilities (and dysfunction); it does not create new ones from scratch.
 
-Employee knowledge loss during turnover can cost companies up to 213% of that individual's salary ([Glean](https://www.glean.com/perspectives/best-ai-driven-knowledge-management-solutions)), making knowledge preservation a critical business driver for AI KM adoption.
+## What Organizations Are Actually Doing
 
-### Fragmentation and Compliance
+### Common Deployment Patterns
 
-Organizations face fragmented data across dozens of systems, knowledge chaos from inconsistent practices, and compliance concerns about AI-generated content in regulated industries ([KMWorld 2026](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm)).
+1. **Internal knowledge search**: Natural-language search over existing documentation (Confluence, SharePoint, internal wikis)
+2. **Customer support knowledge bases**: AI-powered self-service and agent-assist for support teams
+3. **Onboarding acceleration**: AI-guided learning paths through existing training materials
+4. **Meeting and document summarization**: Converting unstructured content into searchable summaries
+5. **Code and technical documentation**: Developer-facing knowledge systems with RAG over codebases
 
-## Agentic AI Enablement
+### Emerging Pattern: "Knowledge-First" Architecture
 
-**[LOW CONFIDENCE]** An emerging trend: organizations are preparing knowledge systems not just for human users but for autonomous AI agents. This "agentic AI enablement" requires knowledge to be machine-readable, well-structured, and trustworthy enough for AI agents to consume and act on without human review ([KMWorld 2026](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm)).
+Enterprises are shifting from "data-first" (collect data, then decide what to do) to "knowledge-first" (define what knowledge is needed, then design data collection). This shift came after many early GenAI pilots failed because they had data but not knowledge ([MIT Sloan, 2025](https://sloanreview.mit.edu/article/genai-manage-knowledge/)).
 
-This is speculative and early-stage. The gap between vision and reality here is substantial. Most organizations are still struggling with basic knowledge hygiene, let alone preparing for autonomous agent consumption.
+### Emerging Pattern: "Agentic AI Enablement"
 
-## How KM Platforms Are Evolving
+Organizations are preparing for autonomous AI agents by making knowledge systems machine-readable. The goal is knowledge bases that agents can query, update, and reason over without human intermediation. **[EVOLVING]** This is the earliest-stage trend and carries the highest risk -- autonomous agents operating on unreliable knowledge bases could compound errors at machine speed.
 
-According to the DMG Consulting report, enterprise KM platforms are shifting along three axes:
+## The Human Cost
 
-1. **From archival to action** — KM moves from passive storage to real-time, decision-ready intelligence
-2. **Governance core** — KM becomes the governance layer for AI systems, curating trusted sources and managing AI inputs/outputs
-3. **Orchestrated ecosystems** — KM connects CRM, CCaaS, WEM, and ERP into unified knowledge flows across organizational silos
+**[CONTESTED]**
 
-([DMG Consulting](https://www.dmgconsult.com/reports/2025-2026-knowledge-management-for-the-ai-enabled-enterprise/))
+**Mainstream industry view:** AI-KM augments knowledge workers, making them more productive and freeing them from tedious search-and-synthesis work.
 
-## Focus Areas for AI in Enterprise KM
+**Critical counter-view:** AI-KM commodifies and appropriates worker knowledge as corporate property. McKinsey's own analysis identifies knowledge workers as the "biggest losers of the AI boom," with up to 300 million at risk of displacement ([Bloomberg Law/McKinsey, 2024](https://news.bloomberglaw.com/daily-labor-report/biggest-losers-of-ai-boom-are-knowledge-workers-mckinsey-says)).
 
-Organizations are leveraging AI to ([IDC Report](https://www.idc.com/getdoc.jsp?containerId=US52553424)):
+Expert identification systems embedded in KM platforms can enable surveillance and workload manipulation. Workers have begun organizing collective resistance to AI solutionism in knowledge work ([Microsoft Research, 2023](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/)).
 
-- Improve knowledge search and discovery
-- Recommend relevant content proactively
-- Create new content from existing knowledge
-- Identify knowledge gaps and missing documentation
-- Ensure trustworthiness with traceability and provenance
+## Recommendations from the Evidence
 
-## Empirical Research on AI + KM Decision-Making
+Based on the research -- both the optimistic and critical perspectives -- the strongest evidence supports:
 
-**[MEDIUM CONFIDENCE]** A study across worldwide organizations found that AI-empowered KM processes improve organizational decision-making, but the effect is mediated by organizational culture and process maturity. Technology alone does not drive outcomes — it must be embedded in supportive organizational practices ([Emerald - JKM](https://www.emerald.com/insight/content/doi/10.1108/jkm-03-2024-0262/full/html)).
+1. **Start with knowledge organization, not AI.** Fix your information architecture before adding AI on top
+2. **Human-AI hybrid, not AI-only.** Hybrid approaches consistently outperform AI-only in quality metrics
+3. **Invest in maintenance.** Budget 3-5x more for ongoing curation than for initial deployment
+4. **Measure outcomes, not activity.** Track decision quality and error rates, not query volume
+5. **Preserve human expertise.** Actively design for continued human learning, not just AI delegation
+6. **Plan for failure modes.** Hallucination, knowledge collapse, and the verification paradox are real risks that require mitigation strategies
 
 ## Sources
 
-- [DMG Consulting - 2025-2026 KM for AI-Enabled Enterprise](https://www.dmgconsult.com/reports/2025-2026-knowledge-management-for-the-ai-enabled-enterprise/)
-- [KMWorld - 2026 State of KM & AI Report](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm)
-- [TSIA - State of KM in the Age of AI](https://portal.tsia.com/portal/report/abridged/5CAfRyYqf39BVZgwirHuHt/the-state-of-knowledge-management-in-the-age-of-ai)
-- [MAIA - Business Impact Implementation Guide](https://docs.getmaia.ai/help/articles/4145956-the-business-impact-of-ai-knowledge-management-an-implementation-guide)
-- [IDC - AI and GenAI Impact on KM](https://www.idc.com/getdoc.jsp?containerId=US52553424)
-- [Emerald - AI-Empowered KM for Decision-Making](https://www.emerald.com/insight/content/doi/10.1108/jkm-03-2024-0262/full/html)
-- [Slack - AI Knowledge Base Guide 2026](https://slack.com/blog/productivity/what-is-an-ai-knowledge-base-tools-features-and-best-practices)
-- [Glean - AI Knowledge Management Solutions](https://www.glean.com/perspectives/best-ai-driven-knowledge-management-solutions)
+- [KMWorld 2026 State of KM & AI Report](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm) [B-tier]
+- [MIT Sloan: AI Pilot Failures](https://mitsmr.com/4qcrj9F) [A-tier]
+- [Elium: Why AI Projects Fail](https://elium.com/blog/why-ai-projects-fail-knowledge-foundation/) [B-tier]
+- [TSIA Report](https://portal.tsia.com/portal/report/abridged/5CAfRyYqf39BVZgwirHuHt/the-state-of-knowledge-management-in-the-age-of-ai) [B-tier]
+- [DMG Consulting](https://www.dmgconsult.com/reports/2025-2026-knowledge-management-for-the-ai-enabled-enterprise/) [B-tier]
+- [Mordor Intelligence: KM Software Market](https://www.mordorintelligence.com/industry-reports/knowledge-management-software-market) [B-tier]
+- [Bloomberg Law/McKinsey](https://news.bloomberglaw.com/daily-labor-report/biggest-losers-of-ai-boom-are-knowledge-workers-mckinsey-says) [B-tier]
+- [MIT Sloan: GenAI and Knowledge](https://sloanreview.mit.edu/article/genai-manage-knowledge/) [A-tier]
+- [Microsoft Research: Worker Consequences](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/) [A-tier]

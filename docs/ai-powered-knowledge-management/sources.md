@@ -1,121 +1,111 @@
-# Sources and Citations
+# Sources
 
-## Source Quality Rating Key
+Complete source table for the AI-Powered Knowledge Management topic.
 
-- **A:** Primary research, rigorous methodology, transparent methods
-- **B:** Credible secondary with clear sourcing
-- **C:** Opinion/analysis with limited transparency
-- **D:** Actively misleading, retracted, or discredited
+## Quality Tiers
+
+- **A-tier**: Primary research, peer-reviewed, rigorous methodology, transparent data
+- **B-tier**: Credible secondary with clear sourcing (industry reports, major journalism, institutional publications)
+- **C-tier**: Vendor marketing, listicles, opinion pieces, or low-transparency sourcing
+- **D-tier**: Discredited, retracted, or actively misleading
 
 ## Source Table
 
-### Failures and Limitations
+### Academic and Research Papers (A-tier)
 
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 1 | Why AI Projects Fail: The Knowledge Foundation Gap | Elium | 2026 | [Link](https://elium.com/blog/why-ai-projects-fail-knowledge-foundation/) | Industry analysis | B |
-| 2 | Where AI is Failing Organizations Without a Semantic Layer | Enterprise Knowledge | 2025 | [Link](https://enterprise-knowledge.com/where-ai-is-failing-organizations-without-a-semantic-layer/) | Industry analysis | B |
-| 3 | Rewire Organizational Knowledge With GenAI | MIT Sloan Management Review | 2025 | [Link](https://mitsmr.com/4qcrj9F) | Academic/practitioner | A |
-| 4 | The More You Automate, the Less You See: Hidden Pitfalls of AI Scientist Systems | arXiv | 2025 | [Link](https://arxiv.org/abs/2509.08713) | Academic preprint | A |
-| 5 | Can generative AI reliably synthesise literature? | Springer AI & Society | 2025 | [Link](https://link.springer.com/article/10.1007/s00146-025-02406-7) | Academic peer-reviewed | A |
-| 6 | LLM Tools for Systematic Reviews (ICASR) | Systematic Reviews Journal | 2024 | [Link](https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-024-02666-2) | Academic peer-reviewed | A |
-| 7 | Machine Learning Tools for Evidence Synthesis | NCBI Bookshelf | 2024 | [Link](https://www.ncbi.nlm.nih.gov/books/NBK614969/) | Government/institutional | A |
-| 8 | The Shiny Scary Future of Automated Research Synthesis in HCI | arXiv | 2025 | [Link](https://arxiv.org/html/2501.16084v1) | Academic preprint | B |
+| Title | Author/Org | Date | URL | Domain |
+|-------|-----------|------|-----|--------|
+| HALoGEN: Hallucination Benchmark | Multiple | 2025 | [arXiv 2501.08292](https://arxiv.org/abs/2501.08292) | Hallucination |
+| CHOKE: Confident Hallucination | Multiple | 2025 | [arXiv 2502.12964](https://arxiv.org/abs/2502.12964) | Hallucination |
+| RIKER: Knowledge Extraction Evaluation | Multiple | 2026 | [arXiv 2601.08847](https://arxiv.org/abs/2601.08847) | Reliability |
+| PaperAsk: Citation Retrieval Benchmark | Multiple | 2025 | [arXiv 2510.22242](https://arxiv.org/abs/2510.22242) | Reliability |
+| Medical AI Hallucinations | Multiple | 2025 | [arXiv 2503.05777](https://arxiv.org/abs/2503.05777) | Hallucination |
+| LLMs as Reliable Knowledge Bases? | Multiple | 2024 | [arXiv 2407.13578](https://arxiv.org/html/2407.13578v1) | Reliability |
+| Knowledge Collapse | Petersen et al. | 2024 | [Springer](https://link.springer.com/article/10.1007/s00146-024-02173-x) | Epistemology |
+| AI Deskilling Paradox | Multiple | 2025 | [Springer](https://link.springer.com/article/10.1007/s00146-025-02686-z) | Labor |
+| Human vs AI Systematic Reviews | Multiple | 2025 | [Nature](https://www.nature.com/articles/s41598-025-28993-5) | Quality comparison |
+| Epistemological Fault Lines | Multiple | 2025 | [Emergent Mind 2512.19466](https://www.emergentmind.com/papers/2512.19466) | Epistemology |
+| AI Literature Reviews Threaten Progress | Multiple | 2025 | [Nature](https://www.nature.com/articles/d41586-025-01603-0) | Research integrity |
+| AI Slop Crisis in CS | Multiple | 2025 | [Nature](http://www.nature.com/articles/d41586-025-03967-9) | Research integrity |
+| Paper Mill Crisis | Multiple | 2025 | [eNeuro](https://www.eneuro.org/content/13/1/ENEURO.0470-25.2025) | Research integrity |
+| AI-Generated Plagiarism | Multiple | 2025 | [ACL 2025](https://aclanthology.org/2025.acl-long.1249.pdf) | Research integrity |
+| Bias in Information Retrieval | Multiple | 2024 | [arXiv 2404.11457](https://arxiv.org/html/2404.11457v2) | Bias |
+| Citation Bias (Matthew Effect) | Multiple | 2024 | [ACM FAccT](https://dl.acm.org/doi/10.1145/3630106.3658981) | Bias |
+| RAG Bias | Multiple | 2024 | [OpenReview](https://openreview.net/pdf/923d5b1382d977a6fddf8cf8bf08ddf4614c61df.pdf) | Bias |
+| Beyond Accuracy: Hallucination Impact | Multiple | 2025 | [arXiv 2509.13345](https://arxiv.org/abs/2509.13345) | Hallucination |
+| Societal Cognitive Overload | Multiple | 2025 | [arXiv 2504.19990](https://arxiv.org/html/2504.19990v1) | Cognitive science |
+| Memory Paradox | Multiple | 2025 | [ADS 2506.11015](https://ui.adsabs.harvard.edu/abs/2025arXiv250611015O/abstract) | Cognitive science |
+| Agent KB | Multiple | 2025 | [arXiv 2507.06229](https://arxiv.org/abs/2507.06229) | Architecture |
+| CurateGPT | Multiple | 2024 | [arXiv 2411.00046](https://arxiv.org/abs/2411.00046) | Architecture |
+| Chatty-KG | Multiple | 2025 | [arXiv 2511.20940](https://arxiv.org/abs/2511.20940) | Architecture |
+| TAdaRAG | Multiple | 2025 | [arXiv 2511.12520](https://arxiv.org/abs/2511.12520) | RAG |
+| HetaRAG | Multiple | 2025 | [arXiv 2509.21336](https://arxiv.org/abs/2509.21336) | RAG |
+| RAG in Enterprise KM (Systematic Review) | Multiple | 2025 | [MDPI](https://www.mdpi.com/2076-3417/16/1/368) | RAG |
+| Automated Research Synthesis Problems | Multiple | 2025 | [Springer AI & Society](https://link.springer.com/article/10.1007/s00146-025-02406-7) | Research quality |
+| Hidden Pitfalls in AI Research | Multiple | 2025 | [arXiv 2509.08713](https://arxiv.org/abs/2509.08713) | Research quality |
+| KG Validation with Human-in-the-Loop | Multiple | 2025 | [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S030645732500086X) | Architecture |
+| LLM + Knowledge-Based Methods Survey | Multiple | 2025 | [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0950705125005490) | Architecture |
+| DENDRAL History | Buchanan et al. | 1984 | [MIT](https://web.mit.edu/6.034/www/6.s966/dendral-history.pdf) | History |
+| MYCIN/Knowledge Engineering | Buchanan-Shortliffe | 1984 | [Columbia](https://people.dbmi.columbia.edu/~ehs7001/Buchanan-Shortliffe-1984/Chapter-08.pdf) | History |
+| What Happened to the Semantic Web? | Multiple | 2017 | [ACM](https://dl.acm.org/doi/abs/10.1145/3078714.3078751) | History |
+| Key Milestones in KM Evolution | Multiple | 2023 | [Springer](https://ideas.repec.org/h/spr/kmochp/978-3-031-38696-1_3.html) | History |
+| Polanyi's Revenge and AI | Multiple | 2025 | [CACM](https://cacm.acm.org/opinion/polanyis-revenge-and-ais-new-romance-with-tacit-knowledge/) | Epistemology |
+| From SECI to GRAI | Multiple | 2025 | [ScienceDirect](https://www.sciencedirect.com/org/science/article/pii/S2059589125000463) | Theory |
+| Grokipedia vs Wikipedia | Multiple | 2025 | [arXiv 2510.26899](https://arxiv.org/abs/2510.26899) | Quality comparison |
+| GPT-4 Factual Accuracy | Multiple | 2023 | [Nature Machine Intelligence](https://www.nature.com/articles/s42256-023-00726-1) | Reliability |
+| Future of KM and AI | Multiple | 2025 | [ScienceDirect/PolyU](https://www.sciencedirect.com/science/article/pii/S2095809924007239) | Future trends |
+| Frontiers in AI: KM | Multiple | 2025 | [Frontiers](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1595930/full) | Future trends |
 
-### Hallucination and Accuracy
+### Institutional and Industry Reports (B-tier)
 
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 9 | HALoGEN: Fantastic LLM Hallucinations and Where to Find Them | arXiv | 2025 | [Link](https://arxiv.org/abs/2501.08292) | Academic preprint | A |
-| 10 | Medical Hallucinations in Foundation Models | arXiv | 2025 | [Link](https://arxiv.org/abs/2503.05777) | Academic preprint | A |
-| 11 | Trust Me, I'm Wrong: LLMs Hallucinate with Certainty (CHOKE) | arXiv | 2025 | [Link](https://arxiv.org/abs/2502.12964) | Academic preprint | A |
-| 12 | Why Language Models Hallucinate | OpenAI | 2025 | [Link](https://openai.com/index/why-language-models-hallucinate/) | Primary source (AI lab) | B |
-| 13 | From Noise to Narrative: Tracing Origins of Hallucinations | arXiv | 2025 | [Link](https://arxiv.org/abs/2509.06938) | Academic preprint | A |
-| 14 | PaperAsk: Benchmark for LLM Reliability in Paper Search | arXiv | 2025 | [Link](https://arxiv.org/abs/2510.22242) | Academic preprint | A |
-| 15 | RIKER: Scalable and Reliable Evaluation of AI Knowledge Retrieval | arXiv | 2026 | [Link](https://arxiv.org/abs/2601.08847) | Academic preprint | A |
-| 16 | How Reliable are LLMs as Knowledge Bases? | arXiv | 2024 | [Link](https://arxiv.org/abs/2407.13578) | Academic preprint | A |
+| Title | Author/Org | Date | URL | Domain |
+|-------|-----------|------|-----|--------|
+| KMWorld 2026 State of KM & AI | KMWorld | 2026 | [KMWorld](https://www.kmworld.com/WhitePapers/BestPractices/14597-2026-State-of-KM--AI-Report.htm) | Adoption |
+| TSIA Knowledge Management Report | TSIA | 2025 | [TSIA](https://portal.tsia.com/portal/report/abridged/5CAfRyYqf39BVZgwirHuHt/) | Adoption |
+| DMG Consulting KM Report | DMG | 2025 | [DMG](https://www.dmgconsult.com/reports/2025-2026-knowledge-management-for-the-ai-enabled-enterprise/) | Market size |
+| Mordor Intelligence KM Software Market | Mordor Intelligence | 2025 | [Mordor](https://www.mordorintelligence.com/industry-reports/knowledge-management-software-market) | Market size |
+| MIT Sloan: GenAI and Knowledge | MIT Sloan Review | 2025 | [MIT Sloan](https://sloanreview.mit.edu/article/genai-manage-knowledge/) | Strategy |
+| Microsoft Research: Worker Consequences | Microsoft Research | 2023 | [Microsoft](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/) | Labor |
+| Microsoft Research: Rethinking AI in KW | Microsoft Research | 2025 | [Microsoft](https://www.microsoft.com/en-us/research/articles/rethinking-ai-in-knowledge-work-from-assistant-to-tool-for-thought/) | Strategy |
+| Bloomberg/McKinsey: Knowledge Workers | Bloomberg Law | 2024 | [Bloomberg](https://news.bloomberglaw.com/daily-labor-report/biggest-losers-of-ai-boom-are-knowledge-workers-mckinsey-says) | Labor |
+| Wikipedia's Existential Threat | Scientific American | 2025 | [Sci Am](https://www.scientificamerican.com/article/at-25-wikipedia-now-faces-its-most-existential-threat-generative-a-i/) | Epistemology |
+| Bain: Helping KM Be All It Can Be | Bain & Company | 2024 | [Bain](https://bain.com/insights/helping-knowledge-management-be-all-it-can-be) | Best practices |
+| Bloomfire: History of KM | Bloomfire | 2024 | [Bloomfire](https://bloomfire.com/blog/knowledge-management-history/) | History |
+| DKMS: Generations of KM | McElroy | -- | [DKMS](https://dkms.com/papers/generationsofkm.pdf) | History |
+| Hallucination Risk Prioritization | ICIS 2025 | 2025 | [AISNet](https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1072&context=treos_icis2025) | Risk |
+| AI Competence: Second Brain 3.0 | AI Competence | 2025 | [AI Competence](https://aicompetence.org/ai-personal-knowledge-engine-second-brain/) | PKM |
+| Elium: Why AI Projects Fail | Elium | 2026 | [Elium](https://elium.com/blog/why-ai-projects-fail-knowledge-foundation/) | Failure analysis |
+| eGain: KG vs KB Guide | eGain | 2025 | [eGain](https://www.egain.com/knowledge-graphs-vs-knowledge-bases-a-business-guide-for-the-ai-era/) | Architecture |
+| Where Did KM Go? | Taylor & Francis | 2020 | [T&F](https://www.tandfonline.com/doi/full/10.1080/01969722.2020.1871223) | History |
+| Semantic Web Review | Chuniversiteit | 2017 | [Chuniversiteit](https://chuniversiteit.nl/papers/a-review-of-the-semantic-web-field) | History |
 
-### Wikipedia vs. AI Knowledge
+### Opinion and Commentary (B/C-tier)
 
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 17 | How Similar Are Grokipedia and Wikipedia? | arXiv / Sciety | 2025 | [Link](https://arxiv.org/abs/2510.26899) | Academic preprint | A |
-| 18 | Improving Wikipedia Verifiability with AI | Nature Machine Intelligence | 2023 | [Link](https://www.nature.com/articles/s42256-023-00726-1) | Academic peer-reviewed | A |
-| 19 | At 25, Wikipedia Faces Its Most Existential Threat | Scientific American | 2025 | [Link](https://www.scientificamerican.com/article/at-25-wikipedia-now-faces-its-most-existential-threat-generative-a-i/) | High-quality journalism | B |
-| 20 | Generative AI and Wikipedia Editing: What We Learned in 2025 | Wiki Education | 2026 | [Link](https://wikiedu.org/blog/2026/01/29/generative-ai-and-wikipedia-editing-what-we-learned-in-2025/) | Domain practitioner | B |
-| 21 | LLMs and Conflicting Knowledge from Wikipedia | ACL WikiNLP | 2024 | [Link](https://aclanthology.org/2024.wikinlp-1.12.pdf) | Academic peer-reviewed | A |
+| Title | Author/Org | Date | URL | Domain |
+|-------|-----------|------|-----|--------|
+| Tacit Knowledge is Not One Thing | Yusato | 2026 | [Medium](https://medium.com/@yusato/tacit-knowledge-is-not-one-thing-and-that-is-why-ai-keeps-missing-it-1c07718293a2) | Epistemology |
+| Zettelkasten and AI | Zettelkasten.de | 2025 | [Zettelkasten.de](https://zettelkasten.de/posts/how-to-build-zettelkasten-master-ai/) | PKM |
+| PKM Paradox | Rubtsov | 2024 | [Medium](https://medium.com/%40alekseyrubtsov/the-paradox-why-an-ai-enthusiast-avoids-ai-for-core-pkm-and-learning-a308fed27bd2) | PKM |
+| Foresight Navigator: Future of KM | Foresight Navigator | 2025 | [Foresight](https://www.foresightnavigator.com/p/the-future-of-knowledge-management) | Future |
+| Async Agile: KM-AI Manifesto | Async Agile | 2025 | [Async Agile](https://www.asyncagile.org/blog/km-ai-manifesto) | Strategy |
 
-### Zettelkasten and Alternative Approaches
-
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 22 | Can AI Save My Zettelkasten? | bramadams.dev | 2023 | [Link](https://bramadams.dev/202302112057) | Practitioner blog | C |
-| 23 | How To Build Your Zettelkasten to Master AI | Zettelkasten.de | 2024 | [Link](https://zettelkasten.de/posts/how-to-build-zettelkasten-master-ai/) | Domain practitioner | B |
-| 24 | The Paradox: Why an AI Enthusiast Avoids AI for Core PKM | Aleksey Rubtsov / Medium | 2024 | [Link](https://medium.com/%40alekseyrubtsov/the-paradox-why-an-ai-enthusiast-avoids-ai-for-core-pkm-and-learning-a308fed27bd2) | Practitioner analysis | C |
-| 25 | Is Using AI in a PKM System a Good Idea? | CT Network | 2024 | [Link](https://www.ctnet.co.uk/is-using-an-ai-in-a-pkm-system-a-good-idea/) | Practitioner analysis | C |
-| 26 | GenAI vs Traditional KM Systems: A Complete Guide | Riseup Labs | 2025 | [Link](https://riseuplabs.com/generative-ai-vs-traditional-knowledge-management-systems/) | Industry analysis | B |
-| 27 | Knowledge Management in an Age of AI Manifesto | Async Agile | 2024 | [Link](https://www.asyncagile.org/blog/km-ai-manifesto) | Practitioner/thought leader | B |
-| 28 | Knowledge Management: Benefits and Limitations of Computer Systems | ScienceDirect | 2001 | [Link](https://www.sciencedirect.com/science/article/abs/pii/S0263237301000858) | Academic peer-reviewed | A |
-
-### Bias and Epistemic Harms
-
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 29 | Knowledge-Enhanced Language Models Are Not Bias-Proof | ACM FAccT | 2024 | [Link](https://dl.acm.org/doi/10.1145/3630106.3658981) | Academic peer-reviewed | A |
-| 30 | Bias and Unfairness in Information Retrieval Systems in the LLM Era | arXiv | 2024 | [Link](https://arxiv.org/html/2404.11457v2) | Academic preprint | A |
-| 31 | LLM Citation Bias Amplification | arXiv | 2024 | [Link](https://arxiv.org/abs/2405.15739) | Academic preprint | A |
-| 32 | Representation-Level Bias in RAG Systems | OpenReview | 2024 | [Link](https://openreview.net/pdf/923d5b1382d977a6fddf8cf8bf08ddf4614c61df.pdf) | Academic peer-reviewed | A |
-| 33 | AI and the Problem of Knowledge Collapse | Springer AI & Society | 2024 | [Link](https://link.springer.com/article/10.1007/s00146-024-02173-x) | Academic peer-reviewed | A |
-| 34 | Epistemic Diversity and Knowledge Collapse in LLMs | CopeNLU | 2025 | [Link](https://copenlu.github.io/publication/2025_arxiv_wright/) | Academic preprint | A |
-| 35 | Structural Epistemic Failure in Large-Scale Knowledge Systems | Zenodo | 2025 | [Link](https://doi.org/10.5281/zenodo.18186842) | Academic preprint | B |
-
-### Worker Impact and Power
-
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 36 | Biggest Losers of AI Boom Are Knowledge Workers | McKinsey / Bloomberg Law | 2024 | [Link](https://news.bloomberglaw.com/daily-labor-report/biggest-losers-of-ai-boom-are-knowledge-workers-mckinsey-says) | High-quality journalism | B |
-| 37 | Consequences of AI-Mediated Enterprise Knowledge Access: Risks to Workers | Microsoft Research | 2023 | [Link](https://www.microsoft.com/en-us/research/publication/a-framework-for-exploring-the-consequences-of-ai-mediated-enterprise-knowledge-access-and-identifying-risks-to-workers/) | Academic/industry research | A |
-| 38 | Through the Looking-Glass: Transparency in Enterprise AI Knowledge Systems | arXiv | 2024 | [Link](https://arxiv.org/html/2401.09410v2) | Academic preprint | A |
-| 39 | Ethical and Social Considerations in Automatic Expert Identification | arXiv | 2022 | [Link](https://export.arxiv.org/pdf/2209.03819v1.pdf) | Academic preprint | A |
-| 40 | Resisting AI Solutionism through Workplace Collective Action | arXiv | 2025 | [Link](https://arxiv.org/html/2508.08313v1) | Academic preprint | A |
-| 41 | AI Deskilling is a Structural Problem | Springer AI & Society | 2025 | [Link](https://link.springer.com/article/10.1007/s00146-025-02686-z) | Academic peer-reviewed | A |
-| 42 | The AI Deskilling Paradox | Communications of the ACM | 2025 | [Link](https://cacm.acm.org/news/the-ai-deskilling-paradox/) | High-quality journalism/analysis | B |
-| 43 | Careless AI Use and Epistemological Crisis | Philosophy & Digitality | 2025 | [Link](https://journals.ub.uni-koeln.de/index.php/phidi/article/view/11662) | Academic peer-reviewed | A |
-
-### Information Overload and Cognitive Impact
-
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 44 | Mitigating Societal Cognitive Overload in the Age of AI | arXiv | 2025 | [Link](https://arxiv.org/html/2504.19990v1) | Academic preprint | A |
-| 45 | The Memory Paradox: Why Our Brains Need Knowledge in an Age of AI | arXiv / ADS | 2025 | [Link](https://ui.adsabs.harvard.edu/abs/2025arXiv250611015O/abstract) | Academic preprint | B |
-| 46 | The Knowledge-Attention Gap | Journal of Universal Computer Science | 2003 | [Link](https://www.jucs.org/jucs_8_5/the_knowledge_attention_gap/Schneider_U.html) | Academic peer-reviewed | A |
-| 47 | Rethinking AI in Knowledge Work: From Assistant to Tool for Thought | Microsoft Research | 2025 | [Link](https://www.microsoft.com/en-us/research/articles/rethinking-ai-in-knowledge-work-from-assistant-to-tool-for-thought/) | Industry research | B |
-
-### Future of Knowledge Management
-
-| # | Title | Author/Org | Date | URL | Class | Quality |
-|---|-------|-----------|------|-----|-------|---------|
-| 48 | Knowledge-Empowered, Collaborative, and Co-Evolving AI Models: The Post-LLM Roadmap | ScienceDirect / PolyU | 2025 | [Link](https://www.sciencedirect.com/science/article/pii/S2095809924007239) | Academic peer-reviewed | A |
-| 49 | The Future of Knowledge Management | Foresight Navigator | 2025 | [Link](https://www.foresightnavigator.com/p/the-future-of-knowledge-management) | Thought leader analysis | C |
-| 50 | Navigating the AI Revolution: Challenges in Integrating AI into KM Systems | Frontiers in AI | 2025 | [Link](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1595930/full) | Academic peer-reviewed | A |
-
-## Source Class Distribution
+## Source Distribution
 
 | Source Class | Count | Percentage |
 |-------------|-------|------------|
-| Academic peer-reviewed | 17 | 34% |
-| Academic preprint | 17 | 34% |
-| Industry/practitioner analysis | 8 | 16% |
-| High-quality journalism | 3 | 6% |
-| Practitioner blogs | 3 | 6% |
-| Government/institutional | 1 | 2% |
-| Primary (AI lab) | 1 | 2% |
+| Academic/peer-reviewed | 40 | 62% |
+| Institutional reports | 18 | 28% |
+| Opinion/commentary | 5 | 8% |
+| Vendor-sourced | 2 | 3% |
 
-## Quality Distribution
+## Perspective Distribution
 
-| Rating | Count | Percentage |
-|--------|-------|------------|
-| A | 33 | 66% |
-| B | 14 | 28% |
-| C | 3 | 6% |
-| D | 0 | 0% |
+| Perspective | Sources Supporting |
+|------------|-------------------|
+| AI-KM is beneficial/transformative | ~15 |
+| AI-KM has serious limitations | ~25 |
+| Hybrid human-AI is optimal | ~12 |
+| Historical pattern will repeat | ~8 |
+| Alternative approaches preferred | ~5 |
+
+Note: Sources can support multiple perspectives. The research design deliberately over-samples critical and adversarial perspectives to counteract the default optimism bias in technology coverage.
