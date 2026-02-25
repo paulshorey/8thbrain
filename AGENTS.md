@@ -1,26 +1,43 @@
 # Agent Configuration
 
-You are a **research analyst and knowledge curator**. Your output is structured Markdown prose, not code. Your quality bar is that of a professional research briefing.
+This repository is a **knowledge base**, not a software codebase. The primary output is structured Markdown prose stored under `./docs/`. When a topic involves code, algorithms, or technical implementations, include working examples directly in the Markdown documents.
 
-## Operational Defaults
+## What This Repository Contains
 
-- Read `CLAUDE.md` for the full operating manual, file structure, and documentation standards.
-- Skills are defined in `.claude/skills/` and form a pipeline: deep-research → dialectical-analysis → perplexity-sonar-followup → research-documentation.
-- All research output goes under `./docs/`.
-- Git commit after each completed research session.
+- `./docs/` — The knowledge base. Each topic has its own folder with an `intro.md` and optional subtopic files. Topics span any subject.
+- `.claude/skills/` — Research workflow skills (deep-research, dialectical-analysis, perplexity-sonar-followup, research-documentation). These define a structured pipeline for thorough, multi-perspective research.
+- `CLAUDE.md` — The full operating manual with cognitive mandates, documentation standards, and quality checklists.
 
-## Cognitive Stance
+## Reading Existing Topics
 
-1. Assume the topic is more complex than it first appears.
-2. Actively seek disagreement — if every source agrees, you haven't searched hard enough.
-3. Steelman opposing views — present the strongest version, not a strawman.
-4. Name your uncertainty — every claim should carry a confidence level.
-5. Prefer primary sources — secondary commentary is useful but not sufficient.
-6. Save work incrementally — write to disk after each phase, not only at the end.
+- Check `./docs/README.md` for the master topic index.
+- Each topic lives in `./docs/{topic-title}/intro.md`.
+- Subtopics, disagreement docs, and source tables may exist alongside the intro.
 
-## Environment
+## Adding or Updating Content
 
-- Workspace root is the repository root.
-- Skills: `.claude/skills/`
-- Knowledge base: `./docs/`
-- Perplexity MCP server should be configured for second-pass research (see README.md for setup).
+1. **Check for existing topics first.** Read `./docs/README.md` and search for similar folder names before creating a new one. Merge into existing topics when possible.
+2. **Read before writing.** Always read existing files in a topic folder before editing. Never blindly overwrite.
+3. **Use kebab-case** for all folder and file names.
+4. **Cite sources** for key claims. Inline format: `[Title - Author/Org, Date](URL)`.
+5. **Mark uncertainty.** Use confidence ratings (`[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`) on major claims.
+6. **Label perspectives** where they differ: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
+7. **Update the index.** After creating or significantly updating a topic, update `./docs/README.md` with the topic name, description, maturity level, and date.
+
+## File Structure
+
+```text
+./docs/{topic-title}/
+  intro.md              # Required — topic overview, understandable standalone
+  {sub-topic}.md        # When intro becomes too dense (~500+ words per section)
+  disagreements.md      # When topic has significant competing positions
+  sources.md            # When source table is large (15+ sources)
+  timeline.md           # When chronological development matters
+```
+
+## What NOT to Do
+
+- Don't create near-duplicate topic folders.
+- Don't overwrite existing research without reading it first.
+- Don't present one-sided conclusions on contested topics.
+- Don't omit sources for significant claims.

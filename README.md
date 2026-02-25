@@ -1,29 +1,30 @@
 # Knowledge Base
 
-A Markdown-first knowledge base managed through **Claude Code**. Designed for continuous, deep, multi-perspective research across engineering, mathematics, investing, politics, world events, history, and current affairs.
+A Markdown-first knowledge base managed through **Claude Code**. Designed for continuous, deep, multi-perspective research on any topic — from technical implementations to historical analysis to scientific inquiry.
 
 ## What Makes This Different
 
-This system fights the most common failure mode of AI-assisted research: **confirmation bias and premature closure.** It enforces:
+This system fights the most common failure modes of AI-assisted research: **confirmation bias, shallow coverage, and premature closure.** It enforces:
 
-- **Adversarial search** — deliberately hunting for contradictions and opposing evidence
-- **Steelmanning** — presenting every viewpoint in its strongest form
+- **Broad search** — deliberately seeking contradictions, alternative approaches, and overlooked evidence
+- **Steelmanning** — presenting every position in its strongest form
 - **Assumption extraction** — making hidden premises visible and testable
 - **Perspective labeling** — marking claims as `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
 - **Confidence ratings** — explicit High / Medium / Low on major claims
-- **Dialectical analysis** — a dedicated skill for systematic contradiction-finding
+- **Dialectical analysis** — a dedicated skill for systematic challenge of findings
 - **Self-reflection** — documenting surprises, weaknesses, and future research directions
+- **Adaptive structure** — document shape follows the topic, not a rigid template
 
 ## Repository Structure
 
 ```text
 .
-├── CLAUDE.md                           # Operating manual (pipeline, standards, mandates)
-├── AGENTS.md                           # Agent identity and cognitive stance
+├── CLAUDE.md                           # Claude Code operating manual (deep research pipeline + quick-write mode)
+├── AGENTS.md                           # Cursor / Copilot agent orientation
 ├── .claude/skills/
 │   ├── deep-research/SKILL.md          # Multi-perspective source harvesting
-│   ├── dialectical-analysis/SKILL.md   # Contradiction and alternative paradigm discovery
-│   ├── perplexity-sonar-followup/SKILL.md  # Gap-filling via Perplexity MCP
+│   ├── dialectical-analysis/SKILL.md   # Contradiction and alternative framing discovery
+│   ├── perplexity-sonar-followup/SKILL.md  # Optional gap-filling via Perplexity MCP
 │   └── research-documentation/SKILL.md # Structured writing with merge-safe updates
 └── docs/
     ├── README.md                       # Master topic index
@@ -34,7 +35,20 @@ This system fights the most common failure mode of AI-assisted research: **confi
         └── sources.md
 ```
 
-## Research Pipeline
+### Configuration Files
+
+| File | Used By | Purpose |
+|------|---------|---------|
+| `CLAUDE.md` | Claude Code | Full operating manual with deep research pipeline, quick-write mode, cognitive mandates, and quality standards |
+| `AGENTS.md` | Cursor, Copilot, other editors | Knowledge base structure, file conventions, and content guidelines |
+
+## Operating Modes (Claude Code)
+
+Claude Code operates in two modes, chosen based on the user's request:
+
+### Deep Research Mode
+
+Triggered by requests for "deep research", "research [topic]", "full analysis", or anything calling for thorough multi-source investigation.
 
 ```text
 User Request
@@ -45,15 +59,15 @@ User Request
 └────────┬─────────┘
          ▼
 ┌──────────────────┐
-│  deep-research    │  14-20+ queries, 4+ source classes, saturation gates
+│  deep-research    │  Broad multi-perspective source harvesting with saturation gates
 └────────┬─────────┘
          ▼
 ┌──────────────────────┐
-│ dialectical-analysis  │  Assumption extraction, inversion search, paradigm discovery
+│ dialectical-analysis  │  (When topic warrants it — assumption extraction, challenge search)
 └────────┬─────────────┘
          ▼
 ┌────────────────────────────┐
-│ perplexity-sonar-followup   │  (Only when gaps remain)
+│ perplexity-sonar-followup   │  (Optional — skipped if unavailable)
 └────────┬───────────────────┘
          ▼
 ┌────────────────────────┐
@@ -61,13 +75,17 @@ User Request
 └────────────────────────┘
 ```
 
+### Quick-Write Mode
+
+Triggered by requests to "add a note", "update [topic] with", or other small additions. Skips the skills pipeline and writes directly to docs, still following knowledge base conventions.
+
 ## Quick Start
 
 ### 1. Prerequisites
 
 - Claude Code CLI installed and authenticated
 - Node.js + npm (for MCP server)
-- (Recommended) Perplexity API key
+- (Optional) Perplexity API key
 
 ### 2. Open Claude Code
 
@@ -75,7 +93,9 @@ User Request
 claude
 ```
 
-### 3. (Recommended) Configure Perplexity MCP
+### 3. (Optional) Configure Perplexity MCP
+
+Perplexity adds a second-pass research capability but is not required — the pipeline works without it.
 
 Get an API key from [Perplexity API settings](https://www.perplexity.ai/account/api/group), then:
 
@@ -91,17 +111,23 @@ claude mcp list
 
 ## How to Use
 
-### Start a new topic
+### Deep research on a new topic
 
 > Research [topic]. Perform deep research with multiple perspectives and dialectical analysis.
 
-### Continue an existing topic
+### Continue existing research
 
 > Continue research on [topic]. Merge new findings into existing files.
 
 ### Challenge existing research
 
 > Run dialectical analysis on [topic]. Find contradictions, hidden assumptions, and alternative frameworks.
+
+### Quick note or update
+
+> Add a note to [topic] about [specific thing].
+
+> Update [topic] with this new information: [details].
 
 ### Recall previous work
 

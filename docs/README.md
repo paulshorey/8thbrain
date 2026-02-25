@@ -23,11 +23,11 @@ All research is organized by topic in this directory.
 docs/{topic-title}/
   intro.md              # Entry point — understandable standalone
   {sub-topic}.md        # Deep dives on complex areas
-  disagreements.md      # Debate/controversy documentation (when needed)
+  disagreements.md      # Competing positions, trade-offs, or controversies (when needed)
   sources.md            # Extended source table (when 15+ sources)
   timeline.md           # Chronological development (when relevant)
 ```
 
-- Use perspective labels: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
+- Use perspective labels where applicable: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
 - Assign confidence ratings: `[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`
 - Update existing topics rather than creating duplicates.
