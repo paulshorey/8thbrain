@@ -63,7 +63,7 @@ User Request
 └────────┬─────────┘
          ▼
 ┌──────────────────────┐
-│ dialectical-analysis  │  Assumption extraction, challenge search, alternative framings
+│ dialectical-analysis  │  (When topic warrants it — assumption extraction, challenge search)
 └────────┬─────────────┘
          ▼
 ┌────────────────────────────┐

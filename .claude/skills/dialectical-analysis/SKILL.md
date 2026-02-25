@@ -13,23 +13,29 @@ allowed-tools:
 
 # Dialectical Analysis
 
-Stress-test research findings by systematically generating contradictions, alternative approaches, and the strongest possible challenges. This skill operationalizes the cognitive mandates in `CLAUDE.md`.
+Stress-test research findings by looking for contradictions, alternative approaches, and the strongest possible challenges. This skill is **optional** — it adds value for contested or nuanced topics but should be skipped when it would only produce forced controversy.
 
-## Core Principle
+## Should You Use This Skill?
 
-The goal is intellectual honesty about the full landscape of credible thought — not balance for its own sake, not contrarianism as performance. Comfort with your conclusions is a warning sign.
+Ask these questions after `deep-research` is complete:
 
-## When to Use
+1. **Does genuine disagreement exist?** Did the research surface credible sources that disagree with each other — not just about nuance, but about conclusions?
+2. **Are there competing approaches with real trade-offs?** (e.g., different design patterns, policy options, treatment protocols)
+3. **Are there hidden assumptions worth examining?** Could reasonable people frame the question differently and arrive at different answers?
+4. **Did the user request it?** ("find contradictions", "devil's advocate", "challenge this")
 
-- After `deep-research` on any topic where meaningful disagreement, competing approaches, or unexamined assumptions may exist.
-- When existing docs feel one-sided or suspiciously unanimous.
-- When user explicitly asks for contradictions, devil's-advocate analysis, or alternative views.
-- When a topic has real-world trade-offs that depend on context, values, or priorities.
+**If yes to any → use this skill.** If no to all — the deep-research perspective mapping already covers what's needed. Skip this skill and proceed to `research-documentation`.
 
 ## When NOT to Use
 
-- Purely factual, uncontested reference lookups.
+- The topic is primarily factual, mathematical, or reference-oriented (e.g., "list of sorting algorithms", "how does DNS work", "examples of design patterns").
+- The deep-research phase found broad source agreement with no meaningful dissent.
 - Before `deep-research` has been completed (this skill needs material to work with).
+- The user asked for a summary, tutorial, or reference document — not an analysis of competing views.
+
+## Core Principle
+
+The goal is intellectual honesty about the full landscape of credible thought — not balance for its own sake, not contrarianism as performance.
 
 ## Workflow
 
@@ -60,9 +66,9 @@ For each major conclusion, perform targeted challenge searches:
 - **Find historical reversals** — cases where equivalent consensus or practice was later revised.
 - **Find conditional inversions** — conditions under which the conclusion flips or breaks down.
 
-Minimum **8 targeted challenge searches** per major topic.
+Scale the number of challenge searches to the topic's complexity and the strength of disagreement found during deep-research. For deeply contested topics, aim for **8+ targeted searches**. For mildly nuanced topics, **3-4** focused searches may suffice.
 
-**Gate:** Each major conclusion has been deliberately challenged with specific counter-evidence.
+**Gate:** Major conclusions have been tested against credible alternatives where they exist.
 
 ### Phase 3 — Alternative Framing Discovery
 
@@ -74,7 +80,7 @@ Look beyond the current framing:
 - **Temporal reframing.** How has understanding of this changed over time, and where might it go?
 - **Scale reframing.** Does the conclusion hold at different scales (individual vs. system, prototype vs. production, local vs. global)?
 
-Minimum **4 alternative framing explorations**, yielding at least **2 genuinely different ways to think about the topic**.
+Explore alternative framings proportional to the topic's complexity. For deeply contested topics, aim for **4+ explorations** yielding at least **2 genuinely different ways to think about the topic**. For simpler topics, even one meaningful reframing adds value.
 
 **Gate:** Alternative framings documented.
 
@@ -117,6 +123,7 @@ This output feeds directly into `research-documentation`.
 
 ## Anti-Patterns
 
+- **Manufactured controversy** — forcing dialectical analysis on factual topics where no real disagreement exists. If the research found consensus, document the consensus.
 - **Fake balance** — treating unsupported claims as equivalent to well-evidenced findings
 - **Weak-manning** — finding the worst version of an opposing argument
 - **Nihilistic relativism** — concluding "nobody knows anything"

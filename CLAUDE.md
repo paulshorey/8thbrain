@@ -17,12 +17,12 @@ Decide which mode to use based on the user's request.
 Follow the full skills pipeline:
 
 ```text
-User Request → Scope Assessment → deep-research → dialectical-analysis → [perplexity-sonar-followup] → research-documentation → Self-Reflection → Commit
+User Request → Scope Assessment → deep-research → [dialectical-analysis] → [perplexity-sonar-followup] → research-documentation → Self-Reflection → Commit
 ```
 
 - **deep-research** is always required.
-- **dialectical-analysis** is required when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives.
-- **perplexity-sonar-followup** is triggered only when specific gaps remain after the first two phases. If Perplexity is unavailable or fails, skip it and continue — never block the pipeline on this step.
+- **dialectical-analysis** is recommended when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives. Skip it for purely factual, reference, or tutorial-style topics where no real controversy exists.
+- **perplexity-sonar-followup** is triggered only when specific gaps remain after the earlier phases. If Perplexity is unavailable or fails, skip it and continue — never block the pipeline on this step.
 - **research-documentation** converts validated research into the knowledge base.
 - **Self-reflection** is the final check: what surprised you, where are you least confident, what would you research next.
 
@@ -61,8 +61,8 @@ Default to **Standard**. Escalate to **Deep** when the topic is deeply contested
 
 These govern every research task:
 
-1. **Challenge the obvious answer.** If your first instinct points to a conclusion, search for its negation. If nothing in your findings surprises you, something was missed.
-2. **Steelman before dismissing.** Present the strongest form of every position, especially unpopular ones.
+1. **Don't stop at the first answer.** If the topic has depth or nuance, look beyond the obvious conclusion. For contested topics, search for the negation. For factual topics, look for edge cases, caveats, or common misconceptions.
+2. **Steelman before dismissing.** When multiple positions exist, present the strongest form of each, especially unpopular ones.
 3. **Name your assumptions.** Every conclusion rests on assumptions — make them visible.
 4. **Track confidence explicitly.** Use High / Medium / Low. Explain what would change each rating.
 5. **Distinguish fact from interpretation.** Separate what is established from what is inferred.

@@ -58,7 +58,7 @@ Create a query lattice scaled to the scope tier. For Standard/Deep, use at least
 | Failure-mode | "what went wrong with X", "unintended consequences" |
 | Synthesis | "meta-analysis of X", "systematic review of X", "state of the art in X" |
 
-At least **one-third of queries should probe weaknesses, alternatives, or non-obvious angles.**
+For contested or nuanced topics, a significant portion of queries should probe weaknesses, alternatives, or non-obvious angles. For factual or reference topics, focus query diversity on completeness and accuracy instead.
 
 **Gate:** Query lattice covers broad, critical, and domain-appropriate variants.
 
@@ -103,13 +103,15 @@ For **technical topics**, map:
 | Known limitations | Where the standard approach breaks down | 2 |
 | Emerging developments | What's changing or improving | 1 |
 
-**Stress test** (must all pass before proceeding):
+**Stress test** (apply where the topic has competing positions or meaningful trade-offs):
 
 - [ ] Can you articulate the strongest alternative position as its advocate would?
-- [ ] Have you found at least one credible source that challenges your emerging conclusion?
-- [ ] Have you identified which assumptions, if changed, would reverse the conclusion?
+- [ ] Have you found at least one credible source that challenges or complicates your emerging conclusion?
+- [ ] Have you identified which assumptions, if changed, would change the conclusion?
 
-**Gate:** Core claims have explicit supporting and challenging evidence.
+For factual or reference topics where no real disagreement exists, the stress test is satisfied by confirming source agreement and noting any caveats or edge cases.
+
+**Gate:** Core claims are well-sourced. Where alternatives exist, they are documented.
 
 ### Phase 5 — Quality Assessment
 
@@ -119,7 +121,7 @@ Assess source reliability:
 - **Moderate:** Credible secondary source with clear sourcing
 - **Weak:** Opinionated, low transparency, or poorly sourced (document why it's still included)
 
-**Saturation check:** If the last two search passes produce less than 10% net-new insights, saturation is near. If no challenges to the main findings have emerged, perform one more targeted critical search before accepting saturation.
+**Saturation check:** If the last two search passes produce less than 10% net-new insights, saturation is near. If the topic is contested and no challenges to the main findings have emerged, perform one more targeted search from a different angle before accepting saturation.
 
 **Gate:** Sources are assessed and saturation trend is known.
 
@@ -131,8 +133,8 @@ Do not proceed unless **all** are true:
 - [ ] Alternative perspectives documented where they exist
 - [ ] Major claims cite strong or moderate sources
 - [ ] Key uncertainties are named with resolution conditions
-- [ ] At least one finding that challenges or complicates the obvious answer
-- [ ] Alternative framings of the core question have been explored
+- [ ] At least one finding that challenges, complicates, or adds nuance to the obvious answer (where the topic permits)
+- [ ] Alternative framings or approaches have been considered (where relevant)
 - [ ] Saturation reached or limitations documented
 
 If gate fails, return to Phase 2 with targeted gap-filling queries.
@@ -163,7 +165,7 @@ Consider escalating to `perplexity-sonar-followup` when:
 - Coverage is stale or fragmented on time-sensitive topics
 - The topic is fast-moving or highly contested
 - Alternative perspectives are poorly sourced
-- Research feels "too clean" — no real disagreements or trade-offs found
+- Research feels "too clean" on a topic that should have trade-offs or disagreements
 
 **Perplexity is optional.** If the MCP server is unavailable, fails, or returns errors, skip it immediately and continue. Do not retry more than once. Do not block the pipeline. Note the gap briefly in the research bundle and proceed to `dialectical-analysis` (if warranted by topic complexity) or directly to `research-documentation`.
 
