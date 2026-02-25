@@ -4,13 +4,13 @@ The main context (orchestrator) launches research subagents in parallel, combine
 
 ## Objective
 
-Your goal: Produce a unified research context from multiple subagent bundles, then document it under `./docs/{topic}/` via skills.
+Produce a unified research context from multiple subagent bundles, then document it under `./docs/{topic}/`. Research applies to **any topic type**: factual lists, technical guides, implementation plans, political/contested topics, reference compilations. Subagents harvest exhaustively — many sources and many ideas — regardless of whether the topic has opposing opinions or not.
 
 ## Routing
 
 | Condition | Action |
 |-----------|--------|
-| User asks for deep research, multi-perspective analysis, thorough investigation | Run this pipeline |
+| User asks for deep research, find many examples, implementation plan, thorough investigation, multi-perspective analysis | Run this pipeline |
 | User asks to "add a note", "update [topic] with", small edit | Skip. Use Quick-Write (CLAUDE.md). |
 | Perplexity or Gemini MCP/API unavailable | Launch subagents anyway. Proceed with whatever succeeds. Never block on one provider. |
 
@@ -44,7 +44,7 @@ Execute after subagents complete. Input: research bundles from successful subage
 2. **Deduplicate sources** — Merge source tables by URL. Keep earliest publication date, best quality metadata.
 3. **Merge claim-to-source** — Aggregate claim-to-source mappings. When multiple subagents cite the same claim, keep all source links.
 4. **Reconcile conflicts** — When subagents disagree on a claim: keep both positions. Label with perspective tags (e.g. [CONTESTED]). Do not pick a winner.
-5. **Produce unified context** — Single structure: scope, source table, claim-to-source, perspective map, unresolved questions, confidence per finding. Pass this to dialectical-analysis and research-documentation.
+5. **Produce unified context** — Single structure: scope, source table, claim-to-source, perspective map (when topic has debate), unresolved questions, confidence per finding. Pass this to dialectical-analysis (if warranted) and research-documentation.
 
 ## When to Skip Subagents
 
@@ -52,9 +52,14 @@ Execute after subagents complete. Input: research bundles from successful subage
 
 ## When to Skip Dialectical-Analysis
 
-- Topic is purely factual, reference, or tutorial.
+**Skip when any apply:**
+
+- Topic is purely factual, reference, technical, or tutorial.
 - Subagent research found broad agreement, no real controversy.
+- Topic is an implementation plan, technical deep dive, or exhaustive fact list.
 - Research incomplete or uncited.
 - User wants summary or tutorial only.
+
+**Run only when:** Topic has genuine disagreement, competing approaches with real trade-offs, or user explicitly requested ("find contradictions", "devil's advocate").
 
 Do not skip research-documentation when research is complete.

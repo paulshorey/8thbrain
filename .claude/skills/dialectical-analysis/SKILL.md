@@ -1,6 +1,6 @@
 ---
 name: dialectical-analysis
-description: Find contradictions, alternative framings, hidden assumptions, opposing viewpoints. Run after subagent research when topic has meaningful disagreement.
+description: Find contradictions, alternative framings, hidden assumptions, opposing viewpoints. Run ONLY when topic has meaningful disagreement.
 allowed-tools:
   - WebSearch
   - Read
@@ -17,18 +17,25 @@ allowed-tools:
 
 **Execute phases 1–5 in order. Do not skip phases.** Phase is complete when the gate artifact exists.
 
-## Run When
+---
+
+## ⚠️ Do NOT Run When (Skip This Skill)
+
+- Topic is purely factual, reference-oriented, technical, or tutorial-style.
+- Topic is an implementation plan, technical deep dive, or exhaustive fact list.
+- Subagent research found broad agreement with no real controversy.
+- Research is incomplete or uncited.
+- User wants summary or tutorial only.
+
+**Default: SKIP** for most factual and technical topics.
+
+---
+
+## Run When (All Must Apply)
 
 - Topic has genuine disagreement, competing approaches with real trade-offs.
 - Hidden assumptions worth examining.
-- User requested ("find contradictions", "devil's advocate").
-
-## Do NOT Run When
-
-- Topic is purely factual, reference-oriented, or tutorial-style.
-- Subagent research found broad agreement.
-- Research is incomplete or uncited.
-- User wants summary or tutorial only.
+- User explicitly requested ("find contradictions", "devil's advocate").
 
 ## Phase 1 — Assumption Extraction
 

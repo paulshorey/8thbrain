@@ -15,6 +15,8 @@ allowed-tools:
 
 **Goal:** Invoke Google Gemini Deep Research to perform autonomous multi-step research across 100+ sources on the given topic. Normalize output to the standard bundle format. You are a leaf agent — do not invoke other subagents. If unavailable, return a clear failure note; the orchestrator will ignore failed subagents.
 
+**Applies to all research types:** Factual, technical, implementation plans, reference compilations, contested topics. Request exhaustive coverage — many sources and ideas — from Gemini.
+
 ## Setup Priority
 
 1. **MCP** — If gemini-deep-research MCP is configured, invoke its tools with user topic and depth/breadth parameters.

@@ -17,6 +17,8 @@ allowed-tools:
 
 **Goal:** Use Perplexity MCP (Sonar model) to perform deep web research on the given topic. Meet or exceed the orchestrator's min sources for the tier. Run at least 8 distinct queries. You are a leaf agent — do not invoke other subagents. If MCP is unavailable, return an error note immediately; the orchestrator will ignore failed subagents.
 
+**Applies to all research types:** Factual, technical, implementation plans, reference compilations, contested topics. Harvest exhaustively — many sources, many ideas — adapting query style to the topic.
+
 ## Tier Targets
 
 The orchestrator passes a scope tier. Meet these minimums:
@@ -31,7 +33,7 @@ If no tier is passed, use Standard.
 
 ## Execute in Order
 
-1. **Query variants** — Run multiple distinct queries: user's exact phrasing, broader and narrower scopes, critical angle ("challenges", "limitations", "controversy"), comparative ("X vs alternatives"), temporal ("latest", "2024", "future"). Do not repeat the same query.
+1. **Query variants** — Run multiple distinct queries: user's exact phrasing, broader and narrower scopes, critical angle ("challenges", "limitations") when topic has debate, comparative ("X vs alternatives"), temporal ("latest", "2024", "future"). For factual/technical topics, favor completeness and implementations. Do not repeat the same query.
 
 2. **Tool selection** — Use `perplexity_research` for deep synthesis and comprehensive reports. Use `perplexity_search` for breadth and quick coverage. Use `perplexity_ask` for specific factual questions. Use `perplexity_reason` for complex analytical reconciliation.
 

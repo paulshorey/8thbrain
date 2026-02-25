@@ -1,6 +1,6 @@
 # Knowledge Base
 
-Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective research on any topic.
+Markdown-first knowledge base managed via Claude Code. Exhaustive research on any topic — factual, technical, reference, contested, or implementation-focused. Output adapts to the topic: one file for simple topics, multiple files for complex subtopics.
 
 ## Repository Structure
 
@@ -17,7 +17,7 @@ Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective r
     └── {topic}/
 ```
 
-**Note:** Files under `.claude/` serve both human orientation and AI agent instructions. For agents: `AGENT.md` and `SKILL.md` hold full procedural instructions; `README` files are indexes.
+**Note:** Files under `.claude/` serve both human orientation and AI agent instructions. For agents: `AGENT.md` and `SKILL.md` hold full procedural instructions; `README` files are indexes and should point agents to those files. See `.claude/README.md` for layout and file roles.
 
 ## Pipeline (Deep Research Mode)
 
@@ -40,7 +40,7 @@ Combine bundles → dialectical-analysis (if warranted) → research-documentati
 
 ## Example Prompts
 
-- **Deep research:** *Research [topic]. Perform deep research with multiple perspectives.*
+- **Deep research:** *Research [topic].* / *Find many examples of [politician] saying [X].* / *Develop an implementation plan for [data analysis with ML].*
 - **Continue:** *Continue research on [topic].*
 - **Quick note:** *Add a note to [topic] about [thing].*
 - **Recall:** *Summarize what we know about [topic].*
