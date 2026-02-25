@@ -4,7 +4,9 @@ This repository is a **knowledge base**, not a software codebase. The primary ou
 
 ## Mission
 
-Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
+Continuously convert high-quality external knowledge into comprehensive, citation-backed documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
+
+**Research style adapts to the topic.** Not every topic has competing perspectives or controversies. The output may be an exhaustive list of facts, a technical deep dive with code examples, a timeline of events, a comparison of approaches, or a multi-perspective analysis of a contested issue. Match the format to what the topic actually requires — not to a fixed template.
 
 ## Routing Rules
 
@@ -55,25 +57,25 @@ Respect documentation standards: citations where possible, confidence ratings on
 
 Apply to Deep Research Mode only. Assess topic complexity before launching subagents. **Pass the tier and its numeric targets to every subagent** so they scale effort accordingly.
 
-| Tier | Complexity | Min Sources | Min Queries | Min Alternative Perspectives | Estimated Effort |
-|------|-----------|-------------|-------------|------------------------------|------------------|
-| Quick | Simple factual, narrow scope | 5 | 6 | 1 | Light |
-| Standard | Moderate analysis, some nuance | 12 | 14 | 3 | Medium |
-| Deep | Complex, contested, high-stakes | 20+ | 20+ | 5+ | Heavy |
+| Tier | Complexity | Min Sources | Min Queries | Estimated Effort |
+|------|-----------|-------------|-------------|------------------|
+| Quick | Simple factual, narrow scope | 5 | 6 | Light |
+| Standard | Moderate depth, some nuance | 12 | 14 | Medium |
+| Deep | Complex, technical, or contested | 20+ | 20+ | Heavy |
 
-Default to **Standard**. Escalate to **Deep** when the topic is deeply contested, has significant real-world consequences, or resists simple answers. Use **Quick** only for narrow factual lookups.
+Default to **Standard**. Escalate to **Deep** when the topic is large, deeply technical, or actively contested. Use **Quick** only for narrow, simple factual lookups.
 
 ## Cognitive Mandates
 
 These govern every research task:
 
-1. **Don't stop at the first answer.** If the topic has depth or nuance, look beyond the obvious conclusion. For contested topics, search for the negation. For factual topics, look for edge cases, caveats, or common misconceptions.
-2. **Steelman before dismissing.** When multiple positions exist, present the strongest form of each, especially unpopular ones.
+1. **Don't stop at the first answer.** Look beyond the obvious. For contested topics, search for the negation. For factual topics, look for edge cases, caveats, and common misconceptions. For technical topics, look for limitations, failure modes, and alternatives.
+2. **When multiple approaches or positions exist, steelman each.** Present the strongest form of every credible position — especially less popular ones — before comparing them. Skip this for topics where genuine alternatives don't exist.
 3. **Name your assumptions.** Every conclusion rests on assumptions — make them visible.
 4. **Track confidence explicitly.** Use High / Medium / Low. Explain what would change each rating.
 5. **Distinguish fact from interpretation.** Separate what is established from what is inferred.
 6. **Respect temporal context.** Ideas that seem wrong now may have been reasonable then, and vice versa.
-7. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
+7. **Prefer primary sources.** Prefer original research, official documentation, specifications, and firsthand accounts over commentary or summaries.
 8. **Reason from mechanisms and first principles.** Decompose complex topics into foundational components. Explain *why* something happens, not just *that* it happens.
 9. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
 
@@ -81,7 +83,8 @@ These govern every research task:
 
 Before completing any research update, confirm:
 
-- [ ] Steelman considered — strongest form of opposing positions presented.
+- [ ] Depth check — did you go beyond the first obvious answer? Edge cases, caveats, and uncommon details captured?
+- [ ] Steelman (if contested) — strongest form of each competing position presented.
 - [ ] Assumptions named — key assumptions underlying conclusions are visible.
 - [ ] Confidence tagged — every major finding has High/Medium/Low with rationale.
 - [ ] Fact vs interpretation distinguished — what is established vs inferred is clear.
@@ -153,7 +156,7 @@ Always read existing topic files before writing. Merge new findings with existin
 |-------|------|-------------|
 | 1 | Seed | Initial research, basic intro exists |
 | 2 | Growing | Multiple subtopics, decent source diversity |
-| 3 | Mature | Comprehensive coverage, strong perspective diversity, well-cited |
+| 3 | Mature | Comprehensive coverage, well-cited, depth appropriate to topic type |
 | 4 | Needs Update | Previously mature but stale |
 
 ## Topic Lifecycle
@@ -187,8 +190,7 @@ Before finishing any research update, verify:
 - [ ] Complex sections have dedicated subtopic files
 - [ ] Citations are present for key claims
 - [ ] Existing content was preserved or thoughtfully merged
-- [ ] Alternative perspectives, approaches, or trade-offs are represented where they exist
+- [ ] Alternative perspectives, approaches, or trade-offs are represented — where they genuinely exist
 - [ ] Confidence ratings are assigned to major findings
-- [ ] At least one finding challenges or complicates the obvious answer (where the topic permits)
 - [ ] Cross-references to related topics are included
 - [ ] `docs/README.md` index is updated

@@ -29,17 +29,31 @@ If no tier is passed, use Standard.
 
 ## Execute in Order
 
-1. **Term expansion** — Generate query variants before searching: direct terms, synonyms, domain jargon, related concepts, negative framings ("problems with X", "limitations of X"), comparative ("X vs Y"), temporal ("X history", "X 2024"), stakeholder framings.
+1. **Classify the topic** — Before searching, decide which type best fits: (a) **factual/reference** — enumerable facts, specifications, data; (b) **technical** — how systems work, implementation details, engineering; (c) **analytical/contested** — topics where perspectives, trade-offs, or disagreements are central. This determines search priorities below.
 
-2. **Search** — Execute at least the min queries for your tier. Include: causal ("why does X happen", "how X works"), critical ("problems with X", "X failures"), alternative paradigms ("alternatives to X", "beyond X"), synthesis ("state of the art X", "meta-analysis X"). Do not stop after 5–10 queries.
+2. **Term expansion** — Generate query variants before searching. Always include: direct terms, synonyms, domain jargon, related concepts, temporal ("X 2024", "latest X"). Add based on topic type:
+   - Factual/reference: enumerations, lists, specifications, official records, authoritative references.
+   - Technical: "how X works", "X internals", "X specification", "X implementation", worked examples, edge cases, failure modes.
+   - Analytical/contested: negative framings ("problems with X", "limitations of X"), comparative ("X vs Y"), stakeholder framings, "criticism of X".
 
-3. **Source diversity** — Target at least 4 classes: primary (research, docs, specs), academic/technical (papers, standards), long-form analysis (reporting, commentary), critical/dissenting (critics, alternatives).
+3. **Search** — Execute at least the min queries for your tier. Do not stop after 5–10 queries. For factual topics: seek exhaustive coverage and authoritative sources. For technical topics: prioritize official docs, specs, implementations, and worked examples. For contested topics: include causal, critical, and alternative paradigm queries. In all cases, include synthesis queries ("overview of X", "comprehensive guide X").
 
-4. **Quality** — Note publication dates. Flag stale content. Assess reliability. If saturation reached (last passes yield little new insight), add one targeted search from a different angle.
+4. **Source diversity** — Adapt source classes to topic type:
+   - Factual/technical: primary sources (official docs, specs, standards), academic/technical (papers, RFCs, standards bodies), implementation examples, authoritative references.
+   - Analytical/contested: add long-form analysis (reporting, commentary) and critical/dissenting sources (critics, alternative schools of thought).
+
+5. **Quality** — Note publication dates. Flag stale content. Assess reliability. If saturation reached (last passes yield little new insight), add one targeted search from a different angle.
 
 ## Output
 
-Produce a research bundle with: scope and query lattice, source table (title, author/org, date, URL, class, quality), claim-to-source mapping, perspective map with strength ratings, unresolved questions, confidence per major finding (High/Medium/Low).
+Produce a research bundle with:
+- **Scope** — topic type classification, tier, query count
+- **Query lattice** — all queries run, organized by angle
+- **Source table** — title, author/org, date, URL, class, quality notes
+- **Key findings** — organized by subtopic or claim, each linked to sources
+- **Confidence per finding** — High/Medium/Low with brief rationale
+- **Unresolved questions** — gaps, areas needing verification
+- **Perspective map** (for contested topics only) — positions, evidence, strength ratings
 
 **Save path:** When the orchestrator provides `topic_slug`, save to `./docs/{topic_slug}/research-bundles/deeper-research-bundle.md`. If no slug, return structured markdown in your response.
 

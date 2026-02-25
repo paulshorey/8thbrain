@@ -1,6 +1,6 @@
 # Agent Configuration
 
-**Objective:** Maintain a knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when topics involve implementations.
+**Objective:** Maintain a knowledge base. Output: comprehensive Markdown under `./docs/`. Adapt research depth and document format to the topic — exhaustive facts for technical/reference topics, multiple perspectives for contested topics. Include working code examples when topics involve implementations.
 
 ## Routing
 
@@ -26,7 +26,7 @@
 3. Use kebab-case for folder and file names.
 4. Cite sources: `[Title - Author/Org, Date](URL)`.
 5. Assign confidence ratings: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
-6. Label perspectives: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
+6. Label perspectives when competing positions exist: [CONSENSUS], [CONTESTED], [MINORITY VIEW]. Skip labels for factual or technical topics with no meaningful disagreement.
 7. Update `./docs/README.md` with topic name, description, maturity, date.
 
 **File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
