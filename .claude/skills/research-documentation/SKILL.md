@@ -39,6 +39,8 @@ Write research artifacts to:
 
 ```text
 ./docs/{topic_title}/intro.md
+./docs/{topic_title}/perspectives.md
+./docs/{topic_title}/research-report-YYYY-MM-DD.md
 ./docs/{topic_title}/{sub_topic}.md
 ```
 
@@ -46,6 +48,7 @@ Where:
 
 - `{topic_title}` is a kebab-case topic directory (for example, `quantum-computing`).
 - `{sub_topic}` is a concise kebab-case file name (for example, `error-correction`).
+- `research-report-YYYY-MM-DD.md` is a dated synthesis snapshot for non-trivial updates.
 
 ## Workflow
 
@@ -87,6 +90,7 @@ Write or update `./docs/{topic_title}/intro.md` with:
 6. References / citations
 
 The intro should be understandable standalone and should link to subtopic files.
+`intro.md` should also link to `perspectives.md` and the latest dated report.
 
 **Exit criteria:** `intro.md` is comprehensive and cross-linked.
 
@@ -112,6 +116,24 @@ Include:
 - technical or conceptual depth
 - perspective differences if relevant
 - citations
+
+### Phase 4.5 - Perspectives and Report Snapshot
+
+**Entry criteria:** Intro and key subtopic drafts exist.
+
+1. Create or update `./docs/{topic_title}/perspectives.md`:
+   - supporting case
+   - critical case
+   - mixed/nuanced case
+   - unresolved disagreements
+2. Create or update `./docs/{topic_title}/research-report-YYYY-MM-DD.md`:
+   - executive summary
+   - key findings
+   - disagreement map
+   - uncertainty and monitoring notes
+   - dated source table
+
+**Exit criteria:** Topic has a contradiction-aware perspectives page and a dated report snapshot.
 
 **Exit criteria:** Important complex areas are split into dedicated files.
 
@@ -166,6 +188,8 @@ Before saving final edits:
 
 - [ ] Topic content is saved under `./docs/{topic_title}/`
 - [ ] `intro.md` covers core concepts and multiple perspectives
+- [ ] `perspectives.md` captures agreement/disagreement clearly
+- [ ] `research-report-YYYY-MM-DD.md` exists for non-trivial updates
 - [ ] Complex subtopics are split into dedicated files
 - [ ] Existing files were merged rather than blindly replaced
 - [ ] Citations and links are present for important claims

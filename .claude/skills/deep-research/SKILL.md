@@ -71,6 +71,7 @@ Create a query lattice with at least 12 searches split across:
 - **Stakeholder framing:** investor, regulator, engineer, historian, policymaker
 
 At least 4 query branches must be intentionally non-obvious.
+At least 2 branches must be explicitly contrarian (critical/opposing).
 
 **Exit criteria:** Query lattice includes broad, contrarian, and domain-specific variants.
 
@@ -105,6 +106,13 @@ For each major claim, identify:
 - agreement sources
 - disagreement sources
 - unresolved uncertainty
+
+Also produce a contradiction log with:
+
+- claim statement
+- strongest supporting source(s)
+- strongest opposing source(s)
+- current confidence (high/medium/low)
 
 **Exit criteria:** Core claims have explicit supporting and opposing evidence.
 
@@ -152,6 +160,11 @@ Produce a structured research context bundle containing:
 - claim-to-source mapping
 - perspective matrix
 - unresolved questions
+- contradiction log
+- recommended report outputs:
+  - `./docs/{topic-title}/intro.md`
+  - `./docs/{topic-title}/perspectives.md`
+  - `./docs/{topic-title}/research-report-YYYY-MM-DD.md`
 
 Use this bundle as the only input to drafting and documentation skills.
 
@@ -169,6 +182,20 @@ Escalate to `perplexity-sonar-followup` when any condition is true:
 - the topic is fast-moving or highly contested
 
 **Exit criteria:** Either proceed to documentation or trigger Perplexity follow-up.
+
+### Phase 9 - Research Report Handoff
+
+**Entry criteria:** Structured context is complete.
+
+Prepare a documentation handoff that can be written directly into the knowledge base:
+
+1. Executive summary
+2. What changed since last update
+3. Supporting vs opposing evidence
+4. Uncertainties and monitoring triggers
+5. Source table with links and dates
+
+**Exit criteria:** Context is ready for `research-documentation` with minimal transformation.
 
 ## Anti-Patterns
 

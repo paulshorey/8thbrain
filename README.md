@@ -56,7 +56,7 @@ Get an API key from Perplexity API settings:
 Then add the MCP server:
 
 ```bash
-claude mcp add perplexity --env PERPLEXITY_API_KEY="your_key_here" -- npx -yq @perplexity-ai/mcp-server
+claude mcp add perplexity --env PERPLEXITY_API_KEY="your_key_here" -- npx -y @perplexity-ai/mcp-server
 ```
 
 Verify:
@@ -88,6 +88,56 @@ Continue research on <topic>. Merge new findings into existing files and add new
 ```text
 Summarize what we already know about <topic> from this repository, including key disagreements and open questions.
 ```
+
+## Deep Search Mode (Recommended Default)
+
+To push Claude Code beyond shallow answers, use a prompt that explicitly asks for:
+
+- multi-query reframing
+- opposing viewpoints
+- uncertainty labeling
+- saved report artifacts in `./docs/`
+
+Suggested operator prompt:
+
+```text
+Research <topic> using deep search. Build a query lattice with direct, contrarian,
+regional, temporal, comparative, and stakeholder framings. Include at least two
+serious opposing viewpoints and label unresolved uncertainties. Then write/update:
+1) ./docs/<topic>/intro.md
+2) ./docs/<topic>/perspectives.md
+3) ./docs/<topic>/research-report-YYYY-MM-DD.md
+with citations for major claims.
+```
+
+## Research Output Contract (Non-trivial Topics)
+
+For any substantial research run, expect these files:
+
+```text
+docs/{topic-title}/
+  intro.md
+  perspectives.md
+  research-report-YYYY-MM-DD.md
+  {sub-topic}.md
+```
+
+Where:
+
+- `intro.md` = topic-level synthesis and navigation
+- `perspectives.md` = explicit agreement/disagreement map
+- `research-report-YYYY-MM-DD.md` = dated source-backed update snapshot
+- `{sub-topic}.md` = deeper analysis files for complex sections
+
+## Minimum Evidence Bar
+
+Before finalizing a research update, verify:
+
+1. At least 3 source classes (primary, technical/academic, high-quality analysis/journalism)
+2. At least 15 unique sources for non-trivial topics
+3. At least 2 opposing perspectives represented with citations
+4. Uncertainties and disputed claims explicitly labeled
+5. Existing topic files merged/extended rather than overwritten
 
 ## What Makes This Fully Functional
 

@@ -6,6 +6,14 @@ This repository uses Claude Code skills to run a repeatable research pipeline:
 2. Escalate with Perplexity Sonar when coverage is still weak (`perplexity-sonar-followup`)
 3. Publish and maintain structured Markdown documentation (`research-documentation`)
 
+The default expectation for non-trivial topics is a contradiction-aware, citation-backed
+output package under `./docs/{topic-title}/` that includes:
+
+- `intro.md`
+- `perspectives.md`
+- `research-report-YYYY-MM-DD.md`
+- one or more focused subtopic files
+
 ## Skill layout
 
 Each skill lives in its own folder and is recognized by a `SKILL.md` file:

@@ -35,6 +35,24 @@ For any non-trivial information request, run this pipeline:
 
 Never skip deep research for complex topics.
 
+## Deep Search Configuration Defaults
+
+When running `deep-research`, enforce these defaults:
+
+1. Build a query lattice with at least 12 searches across:
+   - direct formulation
+   - terminology variants
+   - contrarian framing
+   - regional framing
+   - temporal framing
+   - stakeholder framing
+2. Include at least 2 explicit opposing perspectives.
+3. Track unresolved uncertainty areas.
+4. Prefer primary and high-credibility sources.
+5. Do not synthesize final conclusions until saturation checks pass.
+
+If Perplexity MCP is unavailable, continue with non-Perplexity research and clearly note the limitation.
+
 ## Knowledge-Base File Rules
 
 ### Core location
@@ -49,6 +67,8 @@ All topic knowledge lives in:
 
 - `./docs/{topic-title}/intro.md` for topic-level synthesis
 - `./docs/{topic-title}/{sub-topic}.md` for complex deep dives
+- `./docs/{topic-title}/research-report-YYYY-MM-DD.md` for non-trivial dated updates
+- `./docs/{topic-title}/perspectives.md` when topic disagreement is material
 
 ### Naming conventions
 
