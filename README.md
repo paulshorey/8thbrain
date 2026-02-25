@@ -20,7 +20,7 @@ This system fights the most common failure modes of AI-assisted research: **conf
 ```text
 .
 ├── CLAUDE.md                           # Claude Code operating manual (deep research pipeline + quick-write mode)
-├── AGENTS.md                           # Cursor / Copilot agent orientation (lightweight, no pipeline)
+├── AGENTS.md                           # Cursor / Copilot agent orientation
 ├── .claude/skills/
 │   ├── deep-research/SKILL.md          # Multi-perspective source harvesting
 │   ├── dialectical-analysis/SKILL.md   # Contradiction and alternative framing discovery
@@ -40,7 +40,7 @@ This system fights the most common failure modes of AI-assisted research: **conf
 | File | Used By | Purpose |
 |------|---------|---------|
 | `CLAUDE.md` | Claude Code | Full operating manual with deep research pipeline, quick-write mode, cognitive mandates, and quality standards |
-| `AGENTS.md` | Cursor, Copilot, other editors | Lightweight orientation to the knowledge base structure and conventions |
+| `AGENTS.md` | Cursor, Copilot, other editors | Knowledge base structure, file conventions, and content guidelines |
 
 ## Operating Modes (Claude Code)
 
@@ -85,7 +85,7 @@ Triggered by requests to "add a note", "update [topic] with", or other small add
 
 - Claude Code CLI installed and authenticated
 - Node.js + npm (for MCP server)
-- (Recommended) Perplexity API key
+- (Optional) Perplexity API key
 
 ### 2. Open Claude Code
 

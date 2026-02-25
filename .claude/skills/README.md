@@ -9,7 +9,7 @@ Four skills form the research pipeline:
 | 3 | `perplexity-sonar-followup` | Targeted gap-filling via Perplexity MCP (only when gaps remain after steps 1-2) |
 | 4 | `research-documentation` | Structured Markdown writing with adaptive structure, confidence ratings, self-reflection, and merge-safe updates |
 
-Skills are auto-invoked by Claude Code based on their frontmatter `description`. Each skill references `CLAUDE.md` for shared standards (cognitive mandates, perspective labels, confidence ratings, file structure).
+In Deep Research Mode, skills are invoked sequentially as part of the pipeline defined in `CLAUDE.md`. Each skill references `CLAUDE.md` for shared standards (cognitive mandates, perspective labels, confidence ratings, file structure).
 
 ## Layout
 

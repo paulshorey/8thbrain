@@ -45,9 +45,9 @@ Quick-write mode still respects documentation standards (citations where possibl
 
 Default to **Deep Research Mode**. It is better to over-research than to add poorly sourced content to the knowledge base.
 
-### Scope Tiers
+## Scope Tiers
 
-Assess topic complexity before starting. This controls research depth and prevents runaway sessions.
+These apply to Deep Research Mode. Assess topic complexity before starting. This controls research depth and prevents runaway sessions.
 
 | Tier | Complexity | Min Sources | Min Queries | Min Alternative Perspectives | Estimated Effort |
 |------|-----------|-------------|-------------|------------------------------|------------------|
@@ -61,17 +61,15 @@ Default to **Standard**. Escalate to **Deep** when the topic is deeply contested
 
 These govern every research task:
 
-1. **Challenge the obvious answer.** If your first instinct points to a conclusion, search for its negation.
+1. **Challenge the obvious answer.** If your first instinct points to a conclusion, search for its negation. If nothing in your findings surprises you, something was missed.
 2. **Steelman before dismissing.** Present the strongest form of every position, especially unpopular ones.
 3. **Name your assumptions.** Every conclusion rests on assumptions — make them visible.
 4. **Track confidence explicitly.** Use High / Medium / Low. Explain what would change each rating.
-5. **Seek the uncomfortable finding.** Zero surprises means something was missed.
-6. **Distinguish fact from interpretation.** Separate what is established from what is inferred.
-7. **Respect temporal context.** Ideas that seem wrong now may have been reasonable then, and vice versa.
-8. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
-9. **Reason from first principles.** Decompose complex topics into foundational components before building up to conclusions.
-10. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
-11. **Prefer mechanisms over correlations.** When possible, explain *why* something happens, not just *that* it happens.
+5. **Distinguish fact from interpretation.** Separate what is established from what is inferred.
+6. **Respect temporal context.** Ideas that seem wrong now may have been reasonable then, and vice versa.
+7. **Prefer primary sources.** Evaluate whether sources are original work or derivative summaries. Prefer original research, data, documentation, and firsthand accounts over commentary.
+8. **Reason from mechanisms and first principles.** Decompose complex topics into foundational components. Explain *why* something happens, not just *that* it happens.
+9. **Think by analogy across domains.** When a topic is hard to evaluate directly, look for structurally similar problems in other fields that have been studied more thoroughly.
 
 ## Perspective Labeling System
 
@@ -81,12 +79,10 @@ Use these inline labels when documenting topics where perspectives differ. Not e
 |-------|---------|
 | `[CONSENSUS]` | Widely agreed upon by credible sources in the relevant field |
 | `[MAJORITY VIEW]` | Held by most qualified voices but with notable dissent |
-| `[CONTESTED]` | Actively debated with strong reasoning on multiple sides |
+| `[CONTESTED]` | Actively debated — specific claims or interpretations under dispute with strong reasoning on multiple sides |
 | `[MINORITY VIEW]` | Held by a credible minority; not fringe |
 | `[HETERODOX]` | Outside mainstream but intellectually serious |
-| `[DISPUTED]` | Specific claims under active dispute |
 | `[EVOLVING]` | Understanding is actively changing |
-| `[LOW CONFIDENCE]` | Insufficient evidence for strong conclusions |
 
 ## Confidence Ratings
 
@@ -127,7 +123,7 @@ Always read existing topic files before writing. Merge new findings with existin
 4. **Subtopic extraction.** If a section exceeds ~500 words of dense material, split it into its own file and link from `intro.md`.
 5. **Contradiction preservation.** When sources disagree, document both positions with their best evidence.
 6. **Assumption visibility.** State key assumptions underlying major conclusions.
-7. **Adaptive structure.** Let the topic dictate the document shape. A technical tutorial, a policy analysis, and a historical overview each need different section structures. Use the intro skeleton as a starting point, not a rigid template.
+7. **Adaptive structure.** Let the topic dictate the document shape. A technical tutorial, a policy analysis, and a historical overview each need different section structures. Select from the building blocks in `research-documentation` rather than following a rigid template.
 
 ## Cross-Referencing
 
@@ -178,6 +174,6 @@ Before finishing any research update, verify:
 - [ ] Existing content was preserved or thoughtfully merged
 - [ ] Alternative perspectives, approaches, or trade-offs are represented where they exist
 - [ ] Confidence ratings are assigned to major findings
-- [ ] At least one finding challenges or complicates the obvious answer
+- [ ] At least one finding challenges or complicates the obvious answer (where the topic permits)
 - [ ] Cross-references to related topics are included
 - [ ] `docs/README.md` index is updated

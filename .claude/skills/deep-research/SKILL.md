@@ -82,7 +82,7 @@ Target at least **4 distinct source classes** per the scope tier. Let the topic 
 
 ### Phase 4 — Perspective Mapping
 
-Build a perspective map appropriate to the topic. The goal is to capture the full landscape of credible thought, not to force debate where none exists.
+Build a perspective map appropriate to the topic. The goal is to capture the full landscape of credible thought, not to force debate where none exists. The tables below are starting templates — adapt the categories to fit the topic.
 
 For **contested topics**, map:
 
@@ -150,7 +150,7 @@ Produce a research context bundle containing:
 - Unresolved questions
 - Confidence assessment per major finding (High / Medium / Low with rationale)
 
-**Save this bundle to disk** before proceeding to the next skill.
+**Save this bundle to disk** in the topic folder (e.g., `./docs/{topic-title}/research-bundle.md`) before proceeding to the next skill. This file can be removed or folded into the final docs during the documentation phase.
 
 **Gate:** Research context is synthesis-ready, traceable, and conflict-aware.
 
