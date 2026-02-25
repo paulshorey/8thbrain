@@ -1,16 +1,40 @@
-# Knowledge Documents
+# Knowledge Base Topic Index
 
-All research output should be stored by topic:
+All research output is organized by topic in this directory.
+
+## Topic Directory
+
+| Topic | Description | Maturity | Last Updated |
+|-------|-------------|----------|--------------|
+| [AI-Powered Knowledge Management](./ai-powered-knowledge-management/intro.md) | How AI agents build, maintain, and improve structured knowledge bases | Seed | 2026-02-25 |
+
+## Maturity Levels
+
+| Level | Label | Meaning |
+|-------|-------|---------|
+| 1 | **Seed** | Initial research complete, basic intro and structure exist |
+| 2 | **Growing** | Multiple subtopics documented, decent source diversity |
+| 3 | **Mature** | Comprehensive coverage, strong perspective diversity, well-cited |
+| 4 | **Needs Update** | Previously mature but new developments require refresh |
+
+## File Conventions
+
+Each topic folder contains:
 
 ```text
 docs/{topic-title}/
-  intro.md
-  {sub-topic}.md
+  intro.md              # Topic overview, perspectives, and navigation
+  {sub-topic}.md        # Deep dives on complex areas
+  disagreements.md      # Dedicated debate/controversy documentation (when needed)
+  sources.md            # Extended source table (when source list is large)
+  timeline.md           # Chronological development (when relevant)
 ```
 
-Guidelines:
+## Guidelines
 
-- `intro.md` = broad synthesis and navigation page for the topic
-- subtopic files = deeper treatment of specific complex areas
-- keep citations close to claims
-- prefer updating existing topic folders over creating duplicates
+- `intro.md` is the entry point -- it should be understandable standalone
+- Subtopic files handle depth; intro handles breadth
+- Citations stay close to claims
+- Update existing topic folders rather than creating duplicates
+- Label perspectives using: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
+- Assign confidence ratings: `[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`
