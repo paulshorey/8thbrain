@@ -2,26 +2,52 @@
 
 Knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when the topic involves implementations.
 
+**Full operating manual:** Read `CLAUDE.md` for the complete instruction set — cognitive mandates, quality checklists, documentation standards, source quality tiers, and all operating modes.
+
+This file covers Cursor-specific procedures only. `CLAUDE.md` is the canonical source of truth.
+
+## Quick Reference
+
+| Mode | Trigger | Action |
+|------|---------|--------|
+| Deep Research | "research [topic]", "full analysis" | Orchestration pipeline (`.claude/ORCHESTRATOR.md`) |
+| Recall | "what do we know about [topic]", "summarize [topic]" | Read existing `./docs/` files, synthesize response |
+| Quick-Write | "add a note", "update [topic] with" | Direct edit to docs, skip subagents |
+
 ## Repository Layout
 
-- `./docs/` — Knowledge base. Topic folders contain `intro.md` plus optional subtopics, disagreements.md, sources.md.
-- `.claude/subagents/` — Three parallel research agents. See `.claude/ORCHESTRATOR.md` for launch logic.
-- `.claude/skills/` — dialectical-analysis, research-documentation.
-- `CLAUDE.md` — Full operating manual. Read for cognitive mandates and quality checklists.
+- `./docs/` — Knowledge base. Topic folders contain `intro.md` plus optional subtopics, disagreements.md, sources.md, reflection.md.
+- `.claude/ORCHESTRATOR.md` — Subagent launch logic and standardized bundle format.
+- `.claude/subagents/` — Three parallel research agents (deeper-research, perplexity-deep-research, gemini-deep-research).
+- `.claude/skills/` — Orchestrator skills (dialectical-analysis, research-documentation).
+- `CLAUDE.md` — Full operating manual.
 
-## Procedures
+## Cursor-Specific Procedures
 
-**Read existing topics:** Check `./docs/README.md` for index. Topic entry: `./docs/{topic-title}/intro.md`.
+### Launching Subagents
 
-**Add or update content:**
-1. Read `./docs/README.md`. Search for similar folder names. Merge into existing topics when possible.
+Use the `Task` tool with `subagent_type: "generalPurpose"`. See `.claude/ORCHESTRATOR.md` for the prompt template and parallel dispatch pattern.
+
+### Skills
+
+Cursor agent skills for this project:
+- `dialectical-analysis` — Challenge research findings (read `.claude/skills/dialectical-analysis/SKILL.md`)
+- `research-documentation` — Convert research to docs (read `.claude/skills/research-documentation/SKILL.md`)
+
+### Writing to the Knowledge Base
+
+1. Read `./docs/README.md` for the topic index. Check for semantic duplicates before creating new topics.
 2. Read all existing files in the target topic folder before writing. Never overwrite blindly.
 3. Use kebab-case for folder and file names.
 4. Cite sources: `[Title - Author/Org, Date](URL)`.
-5. Assign confidence ratings on major claims: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
-6. Label perspectives where they differ: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
+5. Assign confidence ratings: `[HIGH CONFIDENCE]`, `[MEDIUM CONFIDENCE]`, `[LOW CONFIDENCE]`.
+6. Label perspectives: `[CONSENSUS]`, `[CONTESTED]`, `[MINORITY VIEW]`, etc.
 7. Update `./docs/README.md` with topic name, description, maturity, date.
 
-**File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
+### Prohibited
 
-**Prohibited:** Near-duplicate topic folders. Overwriting without reading. One-sided conclusions on contested topics. Omitting sources for significant claims.
+- Near-duplicate topic folders (check semantic equivalents, not just exact names).
+- Overwriting without reading existing content first.
+- One-sided conclusions on contested topics.
+- Omitting sources for significant claims.
+- Producing empty output when subagents fail (use the fallback strategy in ORCHESTRATOR.md).

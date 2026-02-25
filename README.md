@@ -9,26 +9,45 @@ Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective r
 ├── CLAUDE.md              # Claude Code operating manual (AI)
 ├── AGENTS.md              # Cursor/Copilot agent orientation (AI)
 ├── .claude/
-│   ├── ORCHESTRATOR.md    # Subagent launch and combine (AI)
+│   ├── ORCHESTRATOR.md    # Subagent launch, bundle format, combine logic
 │   ├── subagents/         # 3 parallel research agents
 │   └── skills/            # dialectical-analysis, research-documentation
 └── docs/
     ├── README.md          # Topic index
     └── {topic}/
+        ├── intro.md       # Required — topic synthesis
+        ├── {subtopic}.md  # When sections exceed ~500 words
+        ├── disagreements.md
+        ├── sources.md
+        ├── reflection.md  # Self-reflection from research sessions
+        └── research-bundles/  # Working files from subagents
 ```
+
+## Operating Modes
+
+| Mode | Trigger | What Happens |
+|------|---------|-------------|
+| **Deep Research** | "research [topic]", "full analysis" | Scope assessment → parallel subagents → combine → dialectical analysis → documentation → commit |
+| **Recall** | "what do we know about [topic]", "summarize" | Read existing docs, synthesize response, suggest refresh if stale |
+| **Quick-Write** | "add a note", "update [topic] with" | Direct edit, skip subagents |
 
 ## Pipeline (Deep Research Mode)
 
 ```text
 User Request → Scope Assessment (Quick/Standard/Deep)
     ↓
-PARALLEL SUBAGENTS (launch all 3, ignore failures)
-    deeper-research | perplexity-deep-research | gemini-deep-research
+PARALLEL SUBAGENTS (launch per tier; ignore failures)
+    Quick: deeper-research only
+    Standard/Deep: deeper-research | perplexity-deep-research | gemini-deep-research
     ↓
-Combine bundles → dialectical-analysis (if warranted) → research-documentation → Commit
+Combine bundles (standardized format)
+    ↓
+Dialectical analysis (if topic has real disagreement)
+    ↓
+Research documentation → Reflection → Commit
 ```
 
-**Quick-Write Mode:** "add a note", "update [topic] with" — skips subagents, writes directly.
+If all subagents fail, the orchestrator falls back to direct WebSearch in the main context.
 
 ## Quick Start
 
@@ -40,8 +59,8 @@ Combine bundles → dialectical-analysis (if warranted) → research-documentati
 
 - **Deep research:** *Research [topic]. Perform deep research with multiple perspectives.*
 - **Continue:** *Continue research on [topic].*
+- **Recall:** *What do we know about [topic]?*
 - **Quick note:** *Add a note to [topic] about [thing].*
-- **Recall:** *Summarize what we know about [topic].*
 
 ## References
 
