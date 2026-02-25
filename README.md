@@ -19,12 +19,12 @@ This system fights the most common failure modes of AI-assisted research: **conf
 
 ```text
 .
-├── CLAUDE.md                           # Operating manual (pipeline, standards, mandates)
-├── AGENTS.md                           # Agent identity and cognitive stance
+├── CLAUDE.md                           # Claude Code operating manual (deep research pipeline + quick-write mode)
+├── AGENTS.md                           # Cursor / Copilot agent orientation (lightweight, no pipeline)
 ├── .claude/skills/
 │   ├── deep-research/SKILL.md          # Multi-perspective source harvesting
-│   ├── dialectical-analysis/SKILL.md   # Contradiction and alternative paradigm discovery
-│   ├── perplexity-sonar-followup/SKILL.md  # Gap-filling via Perplexity MCP
+│   ├── dialectical-analysis/SKILL.md   # Contradiction and alternative framing discovery
+│   ├── perplexity-sonar-followup/SKILL.md  # Optional gap-filling via Perplexity MCP
 │   └── research-documentation/SKILL.md # Structured writing with merge-safe updates
 └── docs/
     ├── README.md                       # Master topic index
@@ -35,7 +35,20 @@ This system fights the most common failure modes of AI-assisted research: **conf
         └── sources.md
 ```
 
-## Research Pipeline
+### Configuration Files
+
+| File | Used By | Purpose |
+|------|---------|---------|
+| `CLAUDE.md` | Claude Code | Full operating manual with deep research pipeline, quick-write mode, cognitive mandates, and quality standards |
+| `AGENTS.md` | Cursor, Copilot, other editors | Lightweight orientation to the knowledge base structure and conventions |
+
+## Operating Modes (Claude Code)
+
+Claude Code operates in two modes, chosen based on the user's request:
+
+### Deep Research Mode
+
+Triggered by requests for "deep research", "research [topic]", "full analysis", or anything calling for thorough multi-source investigation.
 
 ```text
 User Request
@@ -54,13 +67,17 @@ User Request
 └────────┬─────────────┘
          ▼
 ┌────────────────────────────┐
-│ perplexity-sonar-followup   │  (Only when gaps remain)
+│ perplexity-sonar-followup   │  (Optional — skipped if unavailable)
 └────────┬───────────────────┘
          ▼
 ┌────────────────────────┐
 │ research-documentation  │  Structured Markdown + self-reflection
 └────────────────────────┘
 ```
+
+### Quick-Write Mode
+
+Triggered by requests to "add a note", "update [topic] with", or other small additions. Skips the skills pipeline and writes directly to docs, still following knowledge base conventions.
 
 ## Quick Start
 
@@ -76,7 +93,9 @@ User Request
 claude
 ```
 
-### 3. (Recommended) Configure Perplexity MCP
+### 3. (Optional) Configure Perplexity MCP
+
+Perplexity adds a second-pass research capability but is not required — the pipeline works without it.
 
 Get an API key from [Perplexity API settings](https://www.perplexity.ai/account/api/group), then:
 
@@ -92,17 +111,23 @@ claude mcp list
 
 ## How to Use
 
-### Start a new topic
+### Deep research on a new topic
 
 > Research [topic]. Perform deep research with multiple perspectives and dialectical analysis.
 
-### Continue an existing topic
+### Continue existing research
 
 > Continue research on [topic]. Merge new findings into existing files.
 
 ### Challenge existing research
 
 > Run dialectical analysis on [topic]. Find contradictions, hidden assumptions, and alternative frameworks.
+
+### Quick note or update
+
+> Add a note to [topic] about [specific thing].
+
+> Update [topic] with this new information: [details].
 
 ### Recall previous work
 

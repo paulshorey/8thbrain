@@ -156,7 +156,7 @@ Produce a research context bundle containing:
 
 ### Phase 8 — Escalation Decision
 
-Escalate to `perplexity-sonar-followup` when:
+Consider escalating to `perplexity-sonar-followup` when:
 
 - Source diversity is weak (fewer than 4 classes)
 - Confidence remains low despite research effort
@@ -165,7 +165,7 @@ Escalate to `perplexity-sonar-followup` when:
 - Alternative perspectives are poorly sourced
 - Research feels "too clean" — no real disagreements or trade-offs found
 
-Otherwise, proceed to `dialectical-analysis` (if warranted by topic complexity) or directly to `research-documentation`.
+**Perplexity is optional.** If the MCP server is unavailable, fails, or returns errors, skip it immediately and continue. Do not retry more than once. Do not block the pipeline. Note the gap briefly in the research bundle and proceed to `dialectical-analysis` (if warranted by topic complexity) or directly to `research-documentation`.
 
 ## Anti-Patterns
 

@@ -6,19 +6,44 @@ This repository is a **knowledge base**, not a software codebase. The primary ou
 
 Continuously convert high-quality external knowledge into structured, citation-backed, multi-perspective documents under `./docs/`. Topics are unrestricted — any subject the user asks about is in scope.
 
-## Research Pipeline
+## Operating Modes
 
-Every non-trivial research request follows this sequence:
+Decide which mode to use based on the user's request.
+
+### Deep Research Mode
+
+**Trigger:** The user asks for "deep research", "research [topic]", "all perspectives", "full analysis", or any request that clearly calls for thorough, multi-source investigation.
+
+Follow the full skills pipeline:
 
 ```text
 User Request → Scope Assessment → deep-research → dialectical-analysis → [perplexity-sonar-followup] → research-documentation → Self-Reflection → Commit
 ```
 
-- **deep-research** is always required for non-trivial topics.
+- **deep-research** is always required.
 - **dialectical-analysis** is required when the topic has meaningful disagreement, competing approaches, or multiple legitimate perspectives.
-- **perplexity-sonar-followup** is triggered only when specific gaps remain after the first two phases.
+- **perplexity-sonar-followup** is triggered only when specific gaps remain after the first two phases. If Perplexity is unavailable or fails, skip it and continue — never block the pipeline on this step.
 - **research-documentation** converts validated research into the knowledge base.
 - **Self-reflection** is the final check: what surprised you, where are you least confident, what would you research next.
+
+### Quick-Write Mode
+
+**Trigger:** The user asks to "add a note", "jot down", "update [topic] with", "log this", or makes a request that is clearly a small addition, correction, or editorial change — not a call for broad research.
+
+Skip the skills pipeline. Instead:
+
+1. Resolve the target topic path (create the folder if new, merge if existing).
+2. Read existing files in that topic folder.
+3. Write or update the relevant Markdown file(s) directly.
+4. Follow the knowledge base file structure, naming rules, and merge-first behavior defined below.
+5. Update `docs/README.md` if a new topic was created.
+6. Commit.
+
+Quick-write mode still respects documentation standards (citations where possible, confidence ratings on claims, no blind overwrites), but does not require the full query lattice, saturation gates, or dialectical analysis.
+
+### When in doubt
+
+Default to **Deep Research Mode**. It is better to over-research than to add poorly sourced content to the knowledge base.
 
 ### Scope Tiers
 
@@ -139,7 +164,7 @@ Research can be extensive. To avoid losing work:
 ## Error Recovery
 
 - **Web search fails:** Try alternate query formulations. If search is completely unavailable, document what you can from existing knowledge and flag the topic as `[NEEDS VERIFICATION]`.
-- **Perplexity MCP unavailable:** Skip perplexity-sonar-followup. Note the gap and proceed with documentation.
+- **Perplexity MCP unavailable or fails:** Skip `perplexity-sonar-followup` entirely and proceed to the next pipeline step. Do not retry more than once, do not wait, and do not treat this as a blocking error. The pipeline is designed to produce good output without Perplexity — it is an optional enhancement, not a requirement. Note the gap briefly in the research bundle and move on.
 - **Existing files are corrupted or contradictory:** Preserve both versions, label the conflict, and flag for human review.
 
 ## Quality Checklist

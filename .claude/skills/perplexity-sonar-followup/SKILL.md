@@ -13,7 +13,16 @@ allowed-tools:
 
 # Perplexity Sonar Follow-Up
 
-Use Perplexity MCP tools to close specific research gaps identified after deep-research. This is a targeted amplifier, not a replacement for first-pass research.
+Use Perplexity MCP tools to close specific research gaps identified after deep-research. This is a **targeted, optional amplifier** — not a replacement for first-pass research. The pipeline produces good output without this step.
+
+## Failure Behavior
+
+**This entire skill is skippable.** If the Perplexity MCP server is unavailable, misconfigured, or returns errors at any point during execution:
+
+1. Stop attempting Perplexity calls immediately (do not retry more than once).
+2. Note briefly which gaps remain unfilled.
+3. Proceed to the next pipeline step (`research-documentation`).
+4. Do not treat this as a failure of the overall research process.
 
 ## When to Use
 
@@ -26,7 +35,7 @@ Use Perplexity MCP tools to close specific research gaps identified after deep-r
 
 - No research gap has been identified (run `deep-research` first).
 - User explicitly disallows external APIs.
-- MCP server is unavailable — skip this skill, note the gap, and proceed.
+- MCP server is unavailable — skip this skill entirely and proceed.
 
 ## Workflow
 
