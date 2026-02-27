@@ -76,14 +76,14 @@ This server currently implements **only `sonar-pro`**. That is correct for “qu
 - **Cursor:** Expects a **Streamable HTTP** MCP server when using a `url`. Configuration is via `url` and `headers` (and optionally `type: "streamableHttp"`). This server’s endpoints and auth match that.
 - **Claude:** Custom Connectors use the same HTTPS URL and support header-based auth; the server meets that.
 
-No missing pieces for standard remote Cursor/Claude connections over HTTPS, assuming TLS is provided by the reverse proxy and `MCP_API_KEY` is set and passed as `X-API-Key`.
+No missing pieces for standard remote Cursor/Claude connections over HTTPS, assuming TLS is provided by the reverse proxy and `MCP_KEY` is set and passed as `X-API-Key`.
 
 ---
 
 ## 4. Summary
 
-| Backend   | API / model              | Status        | Notes                                                |
-|-----------|---------------------------|---------------|------------------------------------------------------|
-| Gemini    | Deep Research (Interactions API) | Correct       | Agent ID and polling flow match docs.                |
-| Perplexity| Sonar Pro (chat completions)      | Correct       | Optional: add Sonar Deep Research for long research. |
-| MCP       | Streamable HTTP, stateless        | Correct       | GET/POST/DELETE handled; suitable for Cursor/Claude. |
+| Backend    | API / model                      | Status  | Notes                                                |
+| ---------- | -------------------------------- | ------- | ---------------------------------------------------- |
+| Gemini     | Deep Research (Interactions API) | Correct | Agent ID and polling flow match docs.                |
+| Perplexity | Sonar Pro (chat completions)     | Correct | Optional: add Sonar Deep Research for long research. |
+| MCP        | Streamable HTTP, stateless       | Correct | GET/POST/DELETE handled; suitable for Cursor/Claude. |

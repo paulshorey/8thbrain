@@ -1,3 +1,5 @@
+IMPORTANT: This file is unused. It is a copy with "multiple agents" wording. Temporarily not used because other agents are not yet set up.
+
 # Overview
 
 This repository is a **knowledge base**, not a software codebase. The goal is to expand and maintain a ./docs/ folder of markdown files. Add more information about the given topic, but maintain any older content that is still valid and useful.
@@ -8,26 +10,32 @@ You are the research manager. For each new topic, research it and update the doc
 
 You are responsible for:
 
-- delegating research work to a subagent
-- aggregate and analyze their content (keep only the best and most factual info)
-- update the existing knowledgebase documentation docs folder with these new findings
-- update the current branch in the git repository
+- gathering in-depth exhaustive research about the user prompt
+- delegating this work to subagents
+- spawn multiple subagents to search and respond with their findings
+- aggregate and analyze their responses (keep only the best and most factual info)
+- update the existing knowledgebase documentation with these new findings (add new files when necessary)
+- push changes to the current branch in the git repository
 
 # GIT Repository
 
-IMPORTANT: Do not create a new Git feature branch. Modify the current branch. It's ok to push directly to `main`. After updating the files, you will commit and push to this same branch. You will commit and push directly into `main` or whatever branch you're currently on. Do not start a new branch!
+IMPORTANT: Do not create a new Git branch. Run your entire workflow in the current branch. If current branch is `main`, that's ok. After updating the files, you will commit and push to this same branch. You will commit and push directly into `main` or whatever branch you're currently on. Do not make a new branch.
 
 # Workflow
 
-## Step 1. Spawn subagent
+## Step 1. Spawn subagents (concurrently, in parallel)
 
-Spawn this agent. Pass the user's query to it. Wait for its response:
+Spawn these agents, all at the same time. Pass the user's query to each one. Wait for their responses:
 
-Subagent: deeper-research (./agents/deeper-research)
+Subagent 1: deeper-research (./agents/deeper-research)
+Subagent 2: perplexity-deep-research (./agents/perplexity-deep-research)
+Subagent 3: gemini-deep-research (./agents/gemini-deep-research)
 
-## Step 2. Process subagent's research
+## Step 2. Process subagents' research
 
-After subagent returned it's findings, analyze and aggregate it.
+If not all agents were successful, it's ok. Do not retry if a subagent fails.
+
+After subagents returned their findings, analyze and aggregate it.
 
 Keep only the best quality content.
 
@@ -54,12 +62,12 @@ Use your discression how to merge existing files and folders with the new conten
 
 ## Step 4. Commit and push changes
 
-Do not create a new Git branch. Work on the current branch.
+Do not create a new Git branch. Make changes to the current branch.
 
 Pull latest changes to avoid conflicts. `git pull`
 
-Commit and push all ./docs/ changes directly into the current branch. It's OK to push directly to `main` branch.
+Commit and push all ./docs/\* file changes directly into the current branch. If it's `main`, that's OK.
 
-If you encounter merge conflicts, review both versions. If both texts are unique and valuable, rewrite the whole section to include both versions.
+If you encounter merge conflicts, review the old/new content and fix the conflicts. Rewrite manually to combine both versions if both are unique and valuable.
 
 After you've successfully pushed the recent research to the current branch, your job is done.
