@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "gemini-deep-research": {
-      "command": "uv",
-      "args": ["run", "python", "mcp_server.py"],
-      "cwd": "mcp-gemini-deep-research"
-    }
-  }
-}
