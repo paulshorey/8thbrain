@@ -1,50 +1,13 @@
-# Knowledge Base
-
-Markdown-first knowledge base managed via Claude Code. Deep, multi-perspective research on any topic.
-
 ## Repository Structure
 
-```text
-.
-├── CLAUDE.md              # Operating manual — routing, modes, cognitive mandates (AI)
-├── AGENTS.md              # Cursor/Copilot agent orientation (AI)
-├── .claude/
-│   ├── ORCHESTRATOR.md    # Pipeline, combine procedure, subagent launch (AI)
-│   ├── subagents/         # 3 parallel research agents — README + AGENT.md per agent
-│   └── skills/            # dialectical-analysis, research-documentation — README + SKILL.md each
-└── docs/
-    ├── README.md          # Topic index (human + agent)
-    └── {topic}/
-```
+- README.md - instructions for humans
+- AGENTS.md - instructions for AI agents helping to build and configure the codebase and Claude Code instructions
+- CLAUDE.md - instructions for Claude Code AI agent to manage the research and documentation
+- .claude/ - commands, skills, subagents, and other configurations for Claude Code
+- .cursor/ - Cursor IDE MCP server configuration
+- mcp-gemini-deep-research/ - MCP server exposing Google Gemini Deep Research as a tool (Python)
+- mcp-gemini-node/ - Same MCP server in TypeScript/Node.js
 
-**Note:** Files under `.claude/` serve both human orientation and AI agent instructions. For agents: `AGENT.md` and `SKILL.md` hold full procedural instructions; `README` files are indexes.
+## MCP Gemini Deep Research
 
-## Pipeline (Deep Research Mode)
-
-```text
-User Request → Routing (Deep Research vs Quick-Write)
-    ↓
-Scope Assessment (tier + slug) → PARALLEL SUBAGENTS (launch all 3, ignore failures)
-    deeper-research | perplexity-deep-research | gemini-deep-research
-    ↓
-Combine bundles → dialectical-analysis (if warranted) → research-documentation → Commit
-```
-
-**Quick-Write Mode:** "add a note", "update [topic] with" — skips subagents, writes directly. See CLAUDE.md routing rules.
-
-## Quick Start
-
-1. `claude` (CLI installed, authenticated)
-2. Optional MCPs: Perplexity (`PERPLEXITY_API_KEY`), Gemini (`GEMINI_API_KEY`)
-3. See `docs/claude-subagents-setup/` for setup.
-
-## Example Prompts
-
-- **Deep research:** *Research [topic]. Perform deep research with multiple perspectives.*
-- **Continue:** *Continue research on [topic].*
-- **Quick note:** *Add a note to [topic] about [thing].*
-- **Recall:** *Summarize what we know about [topic].*
-
-## References
-
-[Claude Sub-Agents](https://code.claude.com/docs/en/sub-agents) · [Perplexity MCP](https://github.com/perplexityai/modelcontextprotocol) · [Gemini Deep Research MCP](https://pypi.org/project/gemini-deep-research-mcp/)
+To add more research depth, an MCP server exposes the Google Gemini Deep Research agent. See [mcp-gemini-deep-research/README.md](mcp-gemini-deep-research/README.md) for setup. Requires Python 3.10+ and a `GOOGLE_API_KEY` in `.env`.

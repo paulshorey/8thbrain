@@ -1,36 +1,21 @@
-# Agent Configuration
+# Overview
 
-**Objective:** Maintain a knowledge base. Output: structured Markdown under `./docs/`. Include working code examples when topics involve implementations.
+Goal: Build a knowledge base that continuously extends and improves.
 
-## Routing
+Solution: Do this by configuring Claude Code commands, skills, and subagents.
 
-- **Deep research** (research [topic], all perspectives, full analysis) → CLAUDE.md Deep Research Mode → `.claude/ORCHESTRATOR.md` pipeline.
-- **Quick-write** (add a note, update [topic] with) → CLAUDE.md Quick-Write Mode. Skip subagents and skills.
+End result: User starts a new research topic. AI agent will research that topic, find existing documentation in this knowledgebase, and rewrite the documentation to include the new information.
 
-## Repository Layout
+# To do
 
-- `./docs/` — Knowledge base. Topic folders: `intro.md`, optional subtopics, disagreements.md, sources.md.
-- `./docs/README.md` — Topic index. Check before creating or updating topics.
-- `.claude/ORCHESTRATOR.md` — Pipeline, combine procedure, subagent launch logic.
-- `.claude/subagents/` — Three parallel research agents. Read `AGENT.md` in each folder.
-- `.claude/skills/` — dialectical-analysis, research-documentation. Read `SKILL.md` in each folder.
-- `CLAUDE.md` — Full operating manual. Cognitive mandates, quality checklist, scope tiers.
+This Claude Code configuration is unfinished.
 
-## Procedures
+Your job is to help set up the best architecture for agentic AI research management.
 
-**Read existing topics:** Check `./docs/README.md` for index. Topic entry: `./docs/{topic-title}/intro.md`.
+## Repository Structure
 
-**Add or update content:**
-1. Read `./docs/README.md`. Search for similar folder names. Merge into existing topics when possible.
-2. Read all existing files in the target topic folder before writing. Never overwrite blindly.
-3. Use kebab-case for folder and file names.
-4. Cite sources: `[Title - Author/Org, Date](URL)`.
-5. Assign confidence ratings: [HIGH CONFIDENCE], [MEDIUM CONFIDENCE], [LOW CONFIDENCE].
-6. Label perspectives: [CONSENSUS], [CONTESTED], [MINORITY VIEW].
-7. Update `./docs/README.md` with topic name, description, maturity, date.
-
-**File structure per topic:** intro.md (required), {sub-topic}.md (when section exceeds ~500 words), disagreements.md (when significant debates), sources.md (when 15+ sources).
-
-## Prohibited
-
-Near-duplicate topic folders. Overwriting without reading. One-sided conclusions on contested topics. Omitting sources for significant claims.
+- README.md - instructions for humans
+- AGENTS.md - instructions for AI agents helping to build and configure the codebase and Claude Code instructions
+- CLAUDE.md - instructions for Claude Code AI agent to manage the research and documentation
+- .claude/ - folder of commands, skills, subagents, and other configurations for Claude Code
+- docs/ - folder where Claude Code AI agent will read and write all research documentation as .md files
