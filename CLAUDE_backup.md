@@ -66,7 +66,7 @@ Do not create a new Git branch. Make changes to the current branch.
 
 Pull latest changes to avoid conflicts. `git pull`
 
-Commit and push all ./docs/\* file changes directly into the current branch. If it's `main`, that's OK.
+Commit and push all ./docs/ file changes directly into the current branch. If it's `main`, that's OK.
 
 If you encounter merge conflicts, review the old/new content and fix the conflicts. Rewrite manually to combine both versions if both are unique and valuable.
 

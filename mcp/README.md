@@ -2,10 +2,12 @@
 
 TypeScript/Node.js MCP server exposing **multiple research backends** as tools for Claude Code and Cursor agents:
 
+
 | Tool                | Backend       | Model                             | Use case                                           |
 | ------------------- | ------------- | --------------------------------- | -------------------------------------------------- |
 | `run_deep_research` | Google Gemini | deep-research-pro-preview-12-2025 | Exhaustive, multi-step research with cited reports |
 | `sonar_research`    | Perplexity    | sonar-pro                         | Quick, factual real-time research (non-streaming)  |
+
 
 ## Prerequisites
 
@@ -129,3 +131,4 @@ mcp/
 ├── package.json
 └── tsconfig.json
 ```
+

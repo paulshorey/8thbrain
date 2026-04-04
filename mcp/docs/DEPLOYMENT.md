@@ -21,18 +21,15 @@ This guide covers hosting the MCP server on a VPS with a public domain and HTTPS
 
 1. **Install Node.js** on the VPS and clone/upload this project (e.g. under `/opt/mcp` or your app user’s home).
 2. **Environment:** Create a `.env` (or use systemd/process manager env) with:
-   - `GOOGLE_API_KEY` or `GEMINI_API_KEY`
-   - `PERPLEXITY_API_KEY`
-   - `MCP_KEY` (strong random secret for remote clients)
-   - Optionally: `MCP_HOST=127.0.0.1`, `MCP_PORT=8000` (so only the reverse proxy talks to the app).
+  - `GOOGLE_API_KEY` or `GEMINI_API_KEY`
+  - `PERPLEXITY_API_KEY`
+  - `MCP_KEY` (strong random secret for remote clients)
+  - Optionally: `MCP_HOST=127.0.0.1`, `MCP_PORT=8000` (so only the reverse proxy talks to the app).
 3. **Run the server:**
-   ```bash
+  ```bash
    npm start
-   ```
+  ```
    Or with env from file:
-   ```bash
-   set -a && source .env && set +a && node --import tsx src/index.ts
-   ```
 4. **Process manager:** Use systemd, PM2, or similar so the process restarts on failure and runs under a dedicated user.
 
 ## HTTPS (reverse proxy)

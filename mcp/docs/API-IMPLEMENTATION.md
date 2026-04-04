@@ -34,7 +34,7 @@ This document summarizes how this MCP server uses the **Perplexity** and **Googl
 ### Official API
 
 - **Chat completions:** [Perplexity Chat Completions](https://docs.perplexity.ai/api-reference/chat-completions-post), OpenAI-compatible.
-- **Model:** This server uses **`sonar-pro`** for fast, factual, real-time research (single request/response, non-streaming).
+- **Model:** This server uses `**sonar-pro`** for fast, factual, real-time research (single request/response, non-streaming).
 - **Auth:** `Authorization: Bearer <api_key>` (handled by the official SDK).
 
 ### Implementation in this server
@@ -82,8 +82,11 @@ No missing pieces for standard remote Cursor/Claude connections over HTTPS, assu
 
 ## 4. Summary
 
+
 | Backend    | API / model                      | Status  | Notes                                                |
 | ---------- | -------------------------------- | ------- | ---------------------------------------------------- |
 | Gemini     | Deep Research (Interactions API) | Correct | Agent ID and polling flow match docs.                |
 | Perplexity | Sonar Pro (chat completions)     | Correct | Optional: add Sonar Deep Research for long research. |
 | MCP        | Streamable HTTP, stateless       | Correct | GET/POST/DELETE handled; suitable for Cursor/Claude. |
+
+
